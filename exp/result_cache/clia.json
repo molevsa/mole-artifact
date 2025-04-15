@@ -1,0 +1,1963 @@
+{
+    "RawVSA": {
+        "zeroafter1": [
+            {
+                "status": true,
+                "result": "+(Param0,-(Param1,ite(=(Param4,Param3),0,Param4)))",
+                "time": 0.699,
+                "node_cnt": 15954,
+                "edge_cnt": 773430,
+                "example_cnt": 10
+            }
+        ],
+        "mpg_plane2": [
+            {
+                "status": true,
+                "result": "+(Param0,+(Param0,+(Param0,+(Param1,+(Param1,+(Param1,+(1,+(1,1))))))))",
+                "time": 3.56382,
+                "node_cnt": 72606,
+                "edge_cnt": 15269614,
+                "example_cnt": 3
+            }
+        ],
+        "qm_neg_1": [
+            {
+                "status": true,
+                "result": "ite(<=(0,Param0),0,1)",
+                "time": 0.13226,
+                "node_cnt": 201,
+                "edge_cnt": 582,
+                "example_cnt": 2
+            }
+        ],
+        "sum": [
+            {
+                "status": true,
+                "result": "+(Param0,Param1)",
+                "time": 0.06953,
+                "node_cnt": 21,
+                "edge_cnt": 38,
+                "example_cnt": 2
+            }
+        ],
+        "mpg_example4": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example1": [
+            {
+                "status": false
+            }
+        ],
+        "max4": [
+            {
+                "status": false
+            }
+        ],
+        "qm_max2": [
+            {
+                "status": true,
+                "result": "ite(<=(Param1,Param0),Param0,Param1)",
+                "time": 0.1887,
+                "node_cnt": 291,
+                "edge_cnt": 1596,
+                "example_cnt": 4
+            }
+        ],
+        "max1s": [
+            {
+                "status": false
+            }
+        ],
+        "zerostar1star": [
+            {
+                "status": true,
+                "result": "ite(&&(>=(Param3,Param4),>=(Param1,Param0)),Param0,0)",
+                "time": 1.90479,
+                "node_cnt": 51156,
+                "edge_cnt": 4238694,
+                "example_cnt": 14
+            }
+        ],
+        "array_sum_3_15": [
+            {
+                "status": false
+            }
+        ],
+        "s3": [
+            {
+                "status": true,
+                "result": "-1",
+                "time": 0.02445,
+                "node_cnt": 2,
+                "edge_cnt": 4,
+                "example_cnt": 1
+            }
+        ],
+        "max13": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_2_5": [
+            {
+                "status": true,
+                "result": "ite(>=(5,+(Param0,Param1)),0,+(Param0,Param1))",
+                "time": 1.31187,
+                "node_cnt": 15862,
+                "edge_cnt": 6008218,
+                "example_cnt": 5
+            }
+        ],
+        "mpg_guard1": [
+            {
+                "status": true,
+                "result": "+(Param0,ite(<(0,+(Param0,Param1)),Param1,-(0,Param1)))",
+                "time": 3.24507,
+                "node_cnt": 63216,
+                "edge_cnt": 15152683,
+                "example_cnt": 8
+            }
+        ],
+        "max6": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_7_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_3_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_9": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_15": [
+            {
+                "status": false
+            }
+        ],
+        "balanced": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard4": [
+            {
+                "status": false
+            }
+        ],
+        "mss": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_3": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,0),&&(<(Param2,0),<(Param0,0))),1,0)",
+                "time": 35.56268,
+                "node_cnt": 634582,
+                "edge_cnt": 161406998,
+                "example_cnt": 14
+            }
+        ],
+        "qm_max3": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_3": [
+            {
+                "status": true,
+                "result": "ite(||(<=(1,Param1),||(<=(1,Param0),<=(1,Param2))),0,1)",
+                "time": 16.38736,
+                "node_cnt": 561142,
+                "edge_cnt": 81987240,
+                "example_cnt": 16
+            }
+        ],
+        "max15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_8": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_10_15": [
+            {
+                "status": false
+            }
+        ],
+        "LspPage9_1": [
+            {
+                "status": true,
+                "result": "ite(||(<(Param1,Param0),<(Param3,Param4)),0,Param0)",
+                "time": 3.23074,
+                "node_cnt": 89435,
+                "edge_cnt": 9157260,
+                "example_cnt": 17
+            }
+        ],
+        "mts": [
+            {
+                "status": true,
+                "result": "ite(<(Param0,-(Param1,Param3)),Param1,+(Param0,Param3))",
+                "time": 2.85361,
+                "node_cnt": 67303,
+                "edge_cnt": 11192090,
+                "example_cnt": 14
+            }
+        ],
+        "array_sum_9_15": [
+            {
+                "status": false
+            }
+        ],
+        "mps": [
+            {
+                "status": true,
+                "result": "ite(<(Param1,-(Param0,Param2)),Param0,+(Param1,Param2))",
+                "time": 0.9381,
+                "node_cnt": 20921,
+                "edge_cnt": 1256870,
+                "example_cnt": 12
+            }
+        ],
+        "max12": [
+            {
+                "status": false
+            }
+        ],
+        "max9": [
+            {
+                "status": false
+            }
+        ],
+        "issorted": [
+            {
+                "status": true,
+                "result": "ite(||(<(Param1,Param0),<(Param3,Param4)),0,Param0)",
+                "time": 3.20804,
+                "node_cnt": 89435,
+                "edge_cnt": 9157260,
+                "example_cnt": 17
+            }
+        ],
+        "max7": [
+            {
+                "status": false
+            }
+        ],
+        "thirdmin": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_12": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_plane1": [
+            {
+                "status": true,
+                "result": "+(Param0,Param1)",
+                "time": 0.07697,
+                "node_cnt": 29,
+                "edge_cnt": 59,
+                "example_cnt": 3
+            }
+        ],
+        "array_search_10": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_2": [
+            {
+                "status": true,
+                "result": "ite(<(Param2,Param0),0,ite(<(Param1,Param2),2,1))",
+                "time": 1.8379,
+                "node_cnt": 44905,
+                "edge_cnt": 8017284,
+                "example_cnt": 4
+            }
+        ],
+        "array_sum_5_15": [
+            {
+                "status": false
+            }
+        ],
+        "qm_choose_yz": [
+            {
+                "status": true,
+                "result": "ite(<=(Param0,0),Param1,Param2)",
+                "time": 0.2131,
+                "node_cnt": 374,
+                "edge_cnt": 1381,
+                "example_cnt": 5
+            }
+        ],
+        "qm_max5": [
+            {
+                "status": false
+            }
+        ],
+        "max8": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_1": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),0,1)",
+                "time": 0.1396,
+                "node_cnt": 170,
+                "edge_cnt": 427,
+                "example_cnt": 2
+            }
+        ],
+        "LspPage9_2": [
+            {
+                "status": true,
+                "result": "ite(<=(Param2,-(10,Param3)),1,0)",
+                "time": 1.23255,
+                "node_cnt": 21885,
+                "edge_cnt": 4498545,
+                "example_cnt": 8
+            }
+        ],
+        "qm_loop_1": [
+            {
+                "status": true,
+                "result": "ite(<=(1,Param0),-(Param0,1),+(1,+(1,1)))",
+                "time": 0.3556,
+                "node_cnt": 7004,
+                "edge_cnt": 243311,
+                "example_cnt": 4
+            }
+        ],
+        "array_search_7": [
+            {
+                "status": false
+            }
+        ],
+        "linesight": [
+            {
+                "status": true,
+                "result": "ite(<(Param3,Param2),0,Param1)",
+                "time": 0.2167,
+                "node_cnt": 380,
+                "edge_cnt": 1221,
+                "example_cnt": 5
+            }
+        ],
+        "mpg_guard3": [
+            {
+                "status": false
+            }
+        ],
+        "qm_loop_3": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_5": [
+            {
+                "status": false
+            }
+        ],
+        "max14": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_3": [
+            {
+                "status": false
+            }
+        ],
+        "dropwhile": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_7_15": [
+            {
+                "status": false
+            }
+        ],
+        "secondmin": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_2": [
+            {
+                "status": true,
+                "result": "ite(&&(<=(Param0,0),<=(Param1,0)),1,0)",
+                "time": 0.54232,
+                "node_cnt": 10871,
+                "edge_cnt": 439374,
+                "example_cnt": 9
+            }
+        ],
+        "qm_max4": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_11": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example3": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_5_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_4": [
+            {
+                "status": false
+            }
+        ],
+        "max10": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_8_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_2_15": [
+            {
+                "status": true,
+                "result": "ite(>=(15,+(Param1,Param0)),0,+(Param1,Param0))",
+                "time": 1.3263,
+                "node_cnt": 16376,
+                "edge_cnt": 6208677,
+                "example_cnt": 5
+            }
+        ],
+        "array_sum_8_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_13": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_4_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_loop_2": [
+            {
+                "status": true,
+                "result": "ite(<=(1,Param1),Param0,ite(=(Param0,Param1),+(1,+(1,1)),-(Param0,1)))",
+                "time": 13.97347,
+                "node_cnt": 218842,
+                "edge_cnt": 69766088,
+                "example_cnt": 6
+            }
+        ],
+        "LinExpr_inv1_ex": [
+            {
+                "status": true,
+                "result": "ite(||(=(1,Param1),=(Param0,1)),+(1,+(1,1)),1)",
+                "time": 8.66007,
+                "node_cnt": 123860,
+                "edge_cnt": 48321108,
+                "example_cnt": 7
+            }
+        ],
+        "max1spos_reduce": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_ite2": [
+            {
+                "status": false
+            }
+        ],
+        "max1spos": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_2": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,0),<(Param0,0)),1,0)",
+                "time": 0.47835,
+                "node_cnt": 8583,
+                "edge_cnt": 599489,
+                "example_cnt": 5
+            }
+        ],
+        "array_sum_6_15": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard2": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_ite1": [
+            {
+                "status": false
+            }
+        ],
+        "count1s": [
+            {
+                "status": true,
+                "result": "-(Param0,-(ite(<(Param3,Param4),0,Param4),Param1))",
+                "time": 0.70737,
+                "node_cnt": 14179,
+                "edge_cnt": 415386,
+                "example_cnt": 11
+            }
+        ],
+        "array_sum_9_5": [
+            {
+                "status": false
+            }
+        ],
+        "s2": [
+            {
+                "status": true,
+                "result": "-1",
+                "time": 0.02586,
+                "node_cnt": 2,
+                "edge_cnt": 4,
+                "example_cnt": 1
+            }
+        ],
+        "array_search_14": [
+            {
+                "status": false
+            }
+        ],
+        "qm_in_range": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,Param0),<(Param0,Param2)),1,0)",
+                "time": 1.33181,
+                "node_cnt": 29772,
+                "edge_cnt": 3502374,
+                "example_cnt": 11
+            }
+        ],
+        "mpg_example5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_4": [
+            {
+                "status": false
+            }
+        ],
+        "max5": [
+            {
+                "status": false
+            }
+        ],
+        "max3": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_4_15": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_4": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example2": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_6_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_10_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_choose_01": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),0,1)",
+                "time": 0.11129,
+                "node_cnt": 170,
+                "edge_cnt": 427,
+                "example_cnt": 2
+            }
+        ],
+        "array_search_6": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_plane3": [
+            {
+                "status": false
+            }
+        ],
+        "max_11": [
+            {
+                "status": false
+            }
+        ]
+    },
+    "Mole": {
+        "zeroafter1": [
+            {
+                "status": true,
+                "result": "+(Param0,-(Param1,ite(=(Param4,Param3),0,Param4)))",
+                "time": 0.57702,
+                "node_cnt": 4295,
+                "edge_cnt": 118750,
+                "example_cnt": 12
+            }
+        ],
+        "mpg_plane2": [
+            {
+                "status": true,
+                "result": "+(Param0,+(Param0,+(Param0,+(Param1,+(Param1,+(Param1,+(1,+(1,1))))))))",
+                "time": 1.2402,
+                "node_cnt": 13472,
+                "edge_cnt": 628625,
+                "example_cnt": 4
+            }
+        ],
+        "qm_neg_1": [
+            {
+                "status": true,
+                "result": "ite(<=(0,Param0),0,1)",
+                "time": 0.15955,
+                "node_cnt": 122,
+                "edge_cnt": 347,
+                "example_cnt": 3
+            }
+        ],
+        "sum": [
+            {
+                "status": true,
+                "result": "+(Param0,Param1)",
+                "time": 0.06484,
+                "node_cnt": 14,
+                "edge_cnt": 32,
+                "example_cnt": 1
+            }
+        ],
+        "mpg_example4": [
+            {
+                "status": false
+            }
+        ],
+        "max4": [
+            {
+                "status": false
+            }
+        ],
+        "max1s": [
+            {
+                "status": false
+            }
+        ],
+        "qm_max2": [
+            {
+                "status": true,
+                "result": "ite(<(Param1,Param0),Param0,Param1)",
+                "time": 0.181,
+                "node_cnt": 183,
+                "edge_cnt": 602,
+                "example_cnt": 4
+            }
+        ],
+        "zerostar1star": [
+            {
+                "status": true,
+                "result": "ite(&&(<=(Param4,Param3),<=(Param0,Param1)),Param0,0)",
+                "time": 0.9413,
+                "node_cnt": 8758,
+                "edge_cnt": 144475,
+                "example_cnt": 15
+            }
+        ],
+        "mpg_example1": [
+            {
+                "status": false
+            }
+        ],
+        "max13": [
+            {
+                "status": false
+            }
+        ],
+        "s3": [
+            {
+                "status": true,
+                "result": "-1",
+                "time": 0.04017,
+                "node_cnt": 5,
+                "edge_cnt": 13,
+                "example_cnt": 2
+            }
+        ],
+        "max6": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_2_5": [
+            {
+                "status": true,
+                "result": "ite(<=(Param1,-(5,Param0)),0,+(Param1,Param0))",
+                "time": 0.40157,
+                "node_cnt": 1601,
+                "edge_cnt": 32320,
+                "example_cnt": 9
+            }
+        ],
+        "mpg_guard1": [
+            {
+                "status": true,
+                "result": "+(Param0,ite(<(0,+(Param0,Param1)),Param1,-(0,Param1)))",
+                "time": 0.72333,
+                "node_cnt": 6087,
+                "edge_cnt": 130619,
+                "example_cnt": 7
+            }
+        ],
+        "array_sum_7_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_3_15": [
+            {
+                "status": true,
+                "result": "+(Param1,ite(<(15,+(Param0,Param1)),Param0,ite(<(15,+(Param2,Param1)),Param2,-(0,Param1))))",
+                "time": 155.86276,
+                "node_cnt": 1188890,
+                "edge_cnt": 120298065,
+                "example_cnt": 18
+            }
+        ],
+        "balanced": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_3_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_3": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param2,0),&&(<(Param0,0),<(Param1,0))),1,0)",
+                "time": 1.69777,
+                "node_cnt": 30365,
+                "edge_cnt": 768239,
+                "example_cnt": 12
+            }
+        ],
+        "mpg_guard4": [
+            {
+                "status": true,
+                "result": "+(Param0,ite(<(0,+(Param0,+(Param0,+(Param1,+(Param1,Param2))))),Param1,-(0,Param1)))",
+                "time": 18.8138,
+                "node_cnt": 364673,
+                "edge_cnt": 22734590,
+                "example_cnt": 13
+            }
+        ],
+        "array_search_9": [
+            {
+                "status": false
+            }
+        ],
+        "qm_max3": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param0,Param2),<(Param1,Param2)),Param2,ite(<(Param0,Param1),Param1,Param0))",
+                "time": 3.3814,
+                "node_cnt": 84415,
+                "edge_cnt": 2354398,
+                "example_cnt": 14
+            }
+        ],
+        "max15": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_3": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,1),&&(<(Param0,1),<(Param2,1))),1,0)",
+                "time": 1.85643,
+                "node_cnt": 31984,
+                "edge_cnt": 879817,
+                "example_cnt": 13
+            }
+        ],
+        "max12": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_8": [
+            {
+                "status": false
+            }
+        ],
+        "LspPage9_1": [
+            {
+                "status": true,
+                "result": "ite(&&(<=(Param4,Param3),<(0,Param1)),Param0,0)",
+                "time": 1.33685,
+                "node_cnt": 15284,
+                "edge_cnt": 221802,
+                "example_cnt": 19
+            }
+        ],
+        "array_sum_9_15": [
+            {
+                "status": false
+            }
+        ],
+        "mts": [
+            {
+                "status": true,
+                "result": "ite(<(Param0,-(Param1,Param3)),Param1,+(Param0,Param3))",
+                "time": 0.88571,
+                "node_cnt": 6899,
+                "edge_cnt": 106932,
+                "example_cnt": 13
+            }
+        ],
+        "mss": [
+            {
+                "status": false
+            }
+        ],
+        "mps": [
+            {
+                "status": true,
+                "result": "ite(<(Param1,-(Param0,Param2)),Param0,+(Param1,Param2))",
+                "time": 0.72655,
+                "node_cnt": 5065,
+                "edge_cnt": 55335,
+                "example_cnt": 10
+            }
+        ],
+        "max7": [
+            {
+                "status": false
+            }
+        ],
+        "max9": [
+            {
+                "status": false
+            }
+        ],
+        "issorted": [
+            {
+                "status": true,
+                "result": "ite(&&(<=(Param4,Param3),<(0,Param1)),Param0,0)",
+                "time": 1.3606,
+                "node_cnt": 15284,
+                "edge_cnt": 221802,
+                "example_cnt": 19
+            }
+        ],
+        "array_sum_10_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_12": [
+            {
+                "status": false
+            }
+        ],
+        "thirdmin": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_plane1": [
+            {
+                "status": true,
+                "result": "+(Param0,Param1)",
+                "time": 0.06254,
+                "node_cnt": 14,
+                "edge_cnt": 36,
+                "example_cnt": 1
+            }
+        ],
+        "array_sum_5_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_2": [
+            {
+                "status": true,
+                "result": "ite(<(Param2,Param0),0,ite(<(Param1,Param2),2,1))",
+                "time": 0.62829,
+                "node_cnt": 4738,
+                "edge_cnt": 117248,
+                "example_cnt": 7
+            }
+        ],
+        "max8": [
+            {
+                "status": false
+            }
+        ],
+        "qm_choose_yz": [
+            {
+                "status": true,
+                "result": "ite(<(Param0,1),Param1,Param2)",
+                "time": 0.22908,
+                "node_cnt": 281,
+                "edge_cnt": 960,
+                "example_cnt": 6
+            }
+        ],
+        "array_search_10": [
+            {
+                "status": false
+            }
+        ],
+        "qm_loop_3": [
+            {
+                "status": true,
+                "result": "ite(<(0,+(Param1,Param2)),Param0,ite(<(Param1,Param0),-(Param0,1),+(1,+(1,1))))",
+                "time": 8.0911,
+                "node_cnt": 218118,
+                "edge_cnt": 8473542,
+                "example_cnt": 10
+            }
+        ],
+        "qm_max5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_1": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),0,1)",
+                "time": 0.16116,
+                "node_cnt": 101,
+                "edge_cnt": 269,
+                "example_cnt": 2
+            }
+        ],
+        "LspPage9_2": [
+            {
+                "status": true,
+                "result": "ite(<=(Param3,-(10,Param2)),1,0)",
+                "time": 0.47671,
+                "node_cnt": 2114,
+                "edge_cnt": 27668,
+                "example_cnt": 6
+            }
+        ],
+        "qm_loop_1": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),-(Param0,1),+(1,+(1,1)))",
+                "time": 0.32045,
+                "node_cnt": 1225,
+                "edge_cnt": 14972,
+                "example_cnt": 4
+            }
+        ],
+        "dropwhile": [
+            {
+                "status": true,
+                "result": "ite(<(Param3,Param2),Param1,ite(<(Param2,1),Param0,+(Param4,Param5)))",
+                "time": 6.11442,
+                "node_cnt": 142368,
+                "edge_cnt": 6828145,
+                "example_cnt": 21
+            }
+        ],
+        "linesight": [
+            {
+                "status": true,
+                "result": "ite(<(Param3,Param2),0,Param1)",
+                "time": 0.22196,
+                "node_cnt": 186,
+                "edge_cnt": 569,
+                "example_cnt": 5
+            }
+        ],
+        "mpg_guard3": [
+            {
+                "status": true,
+                "result": "+(Param0,ite(<(0,+(Param0,+(Param0,+(Param1,Param2)))),Param1,-(0,Param1)))",
+                "time": 4.22237,
+                "node_cnt": 75159,
+                "edge_cnt": 3942340,
+                "example_cnt": 15
+            }
+        ],
+        "max14": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_3": [
+            {
+                "status": true,
+                "result": "ite(<(Param2,Param3),3,ite(<(Param1,Param3),2,ite(<(Param0,Param3),1,0)))",
+                "time": 21.15849,
+                "node_cnt": 367404,
+                "edge_cnt": 23985748,
+                "example_cnt": 16
+            }
+        ],
+        "array_search_7": [
+            {
+                "status": false
+            }
+        ],
+        "secondmin": [
+            {
+                "status": true,
+                "result": "ite(<(Param0,Param3),Param0,ite(<(Param1,Param2),Param1,ite(<(Param3,Param2),Param2,Param3)))",
+                "time": 26.67121,
+                "node_cnt": 877616,
+                "edge_cnt": 31850164,
+                "example_cnt": 25
+            }
+        ],
+        "qm_max4": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_2": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,1),<(Param0,1)),1,0)",
+                "time": 0.46138,
+                "node_cnt": 2205,
+                "edge_cnt": 25527,
+                "example_cnt": 7
+            }
+        ],
+        "array_search_4": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_11": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_7_15": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example3": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_5_5": [
+            {
+                "status": false
+            }
+        ],
+        "max10": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_8_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_2_15": [
+            {
+                "status": true,
+                "result": "ite(<=(Param1,-(15,Param0)),0,+(Param1,Param0))",
+                "time": 0.36736,
+                "node_cnt": 1333,
+                "edge_cnt": 28574,
+                "example_cnt": 8
+            }
+        ],
+        "mpg_example5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_loop_2": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param1),Param0,ite(<(Param1,Param0),-(Param0,1),+(1,+(1,1))))",
+                "time": 1.28712,
+                "node_cnt": 14105,
+                "edge_cnt": 607380,
+                "example_cnt": 7
+            }
+        ],
+        "array_search_13": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_8_15": [
+            {
+                "status": false
+            }
+        ],
+        "LinExpr_inv1_ex": [
+            {
+                "status": true,
+                "result": "+(1,ite(||(=(Param1,1),=(Param0,1)),+(1,1),0))",
+                "time": 0.73521,
+                "node_cnt": 6197,
+                "edge_cnt": 126702,
+                "example_cnt": 8
+            }
+        ],
+        "array_sum_4_5": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard2": [
+            {
+                "status": true,
+                "result": "+(Param0,ite(<(0,+(Param0,+(Param1,Param2))),Param1,-(0,Param1)))",
+                "time": 1.75643,
+                "node_cnt": 26442,
+                "edge_cnt": 974851,
+                "example_cnt": 10
+            }
+        ],
+        "mpg_ite2": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_2": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param0,0),<(Param1,0)),1,0)",
+                "time": 0.47488,
+                "node_cnt": 1950,
+                "edge_cnt": 22997,
+                "example_cnt": 9
+            }
+        ],
+        "max1spos": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_ite1": [
+            {
+                "status": true,
+                "result": "+(1,ite(<(Param0,-(1,Param1)),Param2,ite(<(Param0,-(1,Param2)),Param1,Param0)))",
+                "time": 8.16216,
+                "node_cnt": 198122,
+                "edge_cnt": 8843530,
+                "example_cnt": 14
+            }
+        ],
+        "array_sum_6_15": [
+            {
+                "status": false
+            }
+        ],
+        "count1s": [
+            {
+                "status": true,
+                "result": "+(Param0,-(Param1,ite(<(0,Param4),Param3,0)))",
+                "time": 0.65617,
+                "node_cnt": 4413,
+                "edge_cnt": 44107,
+                "example_cnt": 11
+            }
+        ],
+        "max1spos_reduce": [
+            {
+                "status": false
+            }
+        ],
+        "s2": [
+            {
+                "status": true,
+                "result": "-1",
+                "time": 0.04196,
+                "node_cnt": 5,
+                "edge_cnt": 13,
+                "example_cnt": 2
+            }
+        ],
+        "max3": [
+            {
+                "status": true,
+                "result": "ite(&&(<=(Param1,Param0),<=(Param2,Param0)),Param0,ite(<=(Param2,Param1),Param1,Param2))",
+                "time": 3.14559,
+                "node_cnt": 64266,
+                "edge_cnt": 2072480,
+                "example_cnt": 16
+            }
+        ],
+        "qm_in_range": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,Param0),<(Param0,Param2)),1,0)",
+                "time": 0.74049,
+                "node_cnt": 3698,
+                "edge_cnt": 54650,
+                "example_cnt": 9
+            }
+        ],
+        "qm_neg_4": [
+            {
+                "status": true,
+                "result": "ite(||(<=(0,Param2),||(<=(0,Param3),||(<=(0,Param0),<=(0,Param1)))),0,1)",
+                "time": 64.0653,
+                "node_cnt": 2054035,
+                "edge_cnt": 66365954,
+                "example_cnt": 24
+            }
+        ],
+        "array_sum_9_5": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_4": [
+            {
+                "status": false
+            }
+        ],
+        "max5": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_14": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_10_5": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example2": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_4_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_6_5": [
+            {
+                "status": false
+            }
+        ],
+        "max_11": [
+            {
+                "status": false
+            }
+        ],
+        "qm_choose_01": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),0,1)",
+                "time": 0.18965,
+                "node_cnt": 101,
+                "edge_cnt": 269,
+                "example_cnt": 2
+            }
+        ],
+        "mpg_plane3": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_6": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_5": [
+            {
+                "status": false
+            }
+        ]
+    },
+    "Mole-TopDown": {
+        "zeroafter1": [
+            {
+                "status": true,
+                "result": "+(-(Param1,ite(<(Param3,Param4),1,0)),Param0)",
+                "time": 1.34219,
+                "node_cnt": 15773,
+                "edge_cnt": 2327866,
+                "example_cnt": 12
+            }
+        ],
+        "max4": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_1": [
+            {
+                "status": true,
+                "result": "ite(<=(0,Param0),0,1)",
+                "time": 0.16519,
+                "node_cnt": 128,
+                "edge_cnt": 375,
+                "example_cnt": 3
+            }
+        ],
+        "sum": [
+            {
+                "status": true,
+                "result": "+(Param0,Param1)",
+                "time": 0.10593,
+                "node_cnt": 14,
+                "edge_cnt": 32,
+                "example_cnt": 1
+            }
+        ],
+        "max1s": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example4": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_plane2": [
+            {
+                "status": false
+            }
+        ],
+        "qm_max2": [
+            {
+                "status": true,
+                "result": "ite(<(Param1,Param0),Param0,Param1)",
+                "time": 0.16772,
+                "node_cnt": 158,
+                "edge_cnt": 533,
+                "example_cnt": 2
+            }
+        ],
+        "array_sum_3_15": [
+            {
+                "status": false
+            }
+        ],
+        "max13": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example1": [
+            {
+                "status": false
+            }
+        ],
+        "s3": [
+            {
+                "status": true,
+                "result": "-1",
+                "time": 0.00844,
+                "node_cnt": 1,
+                "edge_cnt": 7,
+                "example_cnt": 0
+            }
+        ],
+        "array_sum_7_5": [
+            {
+                "status": false
+            }
+        ],
+        "zerostar1star": [
+            {
+                "status": false
+            }
+        ],
+        "max6": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_2_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_3_5": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard1": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_9": [
+            {
+                "status": false
+            }
+        ],
+        "balanced": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard4": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_15": [
+            {
+                "status": false
+            }
+        ],
+        "mss": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_3": [
+            {
+                "status": false
+            }
+        ],
+        "qm_max3": [
+            {
+                "status": false
+            }
+        ],
+        "max12": [
+            {
+                "status": false
+            }
+        ],
+        "max15": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_10_15": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_3": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_8": [
+            {
+                "status": false
+            }
+        ],
+        "mts": [
+            {
+                "status": false
+            }
+        ],
+        "LspPage9_1": [
+            {
+                "status": false
+            }
+        ],
+        "mps": [
+            {
+                "status": true,
+                "result": "ite(<(Param0,+(Param2,Param1)),+(Param2,Param1),Param0)",
+                "time": 1.28708,
+                "node_cnt": 9941,
+                "edge_cnt": 2178016,
+                "example_cnt": 10
+            }
+        ],
+        "array_sum_9_15": [
+            {
+                "status": false
+            }
+        ],
+        "max7": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_5": [
+            {
+                "status": false
+            }
+        ],
+        "thirdmin": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_5_15": [
+            {
+                "status": false
+            }
+        ],
+        "max9": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_plane1": [
+            {
+                "status": true,
+                "result": "+(Param0,Param1)",
+                "time": 0.06231,
+                "node_cnt": 14,
+                "edge_cnt": 36,
+                "example_cnt": 1
+            }
+        ],
+        "issorted": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_12": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_2": [
+            {
+                "status": false
+            }
+        ],
+        "qm_choose_yz": [
+            {
+                "status": true,
+                "result": "ite(<(Param0,1),Param1,Param2)",
+                "time": 0.21092,
+                "node_cnt": 235,
+                "edge_cnt": 778,
+                "example_cnt": 5
+            }
+        ],
+        "qm_max5": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_10": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_7": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_1": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),0,1)",
+                "time": 0.13448,
+                "node_cnt": 108,
+                "edge_cnt": 284,
+                "example_cnt": 2
+            }
+        ],
+        "LspPage9_2": [
+            {
+                "status": true,
+                "result": "ite(<=(+(Param2,Param3),10),1,0)",
+                "time": 0.62935,
+                "node_cnt": 4206,
+                "edge_cnt": 867514,
+                "example_cnt": 6
+            }
+        ],
+        "qm_loop_1": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),-(Param0,1),+(1,+(1,1)))",
+                "time": 0.33166,
+                "node_cnt": 4276,
+                "edge_cnt": 155001,
+                "example_cnt": 4
+            }
+        ],
+        "max8": [
+            {
+                "status": false
+            }
+        ],
+        "linesight": [
+            {
+                "status": true,
+                "result": "ite(<(Param3,Param2),0,Param1)",
+                "time": 0.22855,
+                "node_cnt": 195,
+                "edge_cnt": 589,
+                "example_cnt": 5
+            }
+        ],
+        "dropwhile": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_5": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard3": [
+            {
+                "status": false
+            }
+        ],
+        "qm_loop_3": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_3": [
+            {
+                "status": false
+            }
+        ],
+        "max14": [
+            {
+                "status": false
+            }
+        ],
+        "qm_max4": [
+            {
+                "status": false
+            }
+        ],
+        "secondmin": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_2": [
+            {
+                "status": true,
+                "result": "ite(||(<(0,Param0),<(0,Param1)),0,1)",
+                "time": 2.4018,
+                "node_cnt": 10555,
+                "edge_cnt": 6530742,
+                "example_cnt": 6
+            }
+        ],
+        "array_sum_7_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_11": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_5_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_4": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example3": [
+            {
+                "status": false
+            }
+        ],
+        "max10": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_4_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_8_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_2_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_8_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_13": [
+            {
+                "status": false
+            }
+        ],
+        "max1spos": [
+            {
+                "status": false
+            }
+        ],
+        "max1spos_reduce": [
+            {
+                "status": false
+            }
+        ],
+        "qm_loop_2": [
+            {
+                "status": false
+            }
+        ],
+        "LinExpr_inv1_ex": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_2": [
+            {
+                "status": true,
+                "result": "ite(&&(<(Param1,0),<(Param0,0)),1,0)",
+                "time": 0.62147,
+                "node_cnt": 4369,
+                "edge_cnt": 603485,
+                "example_cnt": 7
+            }
+        ],
+        "mpg_ite2": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_6_15": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_guard2": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_ite1": [
+            {
+                "status": false
+            }
+        ],
+        "count1s": [
+            {
+                "status": true,
+                "result": "+(-(Param1,ite(<(Param3,Param4),Param3,Param4)),Param0)",
+                "time": 1.80411,
+                "node_cnt": 16039,
+                "edge_cnt": 4566741,
+                "example_cnt": 8
+            }
+        ],
+        "s2": [
+            {
+                "status": true,
+                "result": "-1",
+                "time": 0.00918,
+                "node_cnt": 1,
+                "edge_cnt": 7,
+                "example_cnt": 0
+            }
+        ],
+        "array_sum_9_5": [
+            {
+                "status": false
+            }
+        ],
+        "max3": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_4": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_14": [
+            {
+                "status": false
+            }
+        ],
+        "qm_in_range": [
+            {
+                "status": false
+            }
+        ],
+        "qm_neg_eq_4": [
+            {
+                "status": false
+            }
+        ],
+        "max5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_4_15": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_6_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_sum_10_5": [
+            {
+                "status": false
+            }
+        ],
+        "array_search_5": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_example2": [
+            {
+                "status": false
+            }
+        ],
+        "qm_choose_01": [
+            {
+                "status": true,
+                "result": "ite(<(0,Param0),0,1)",
+                "time": 0.11994,
+                "node_cnt": 108,
+                "edge_cnt": 284,
+                "example_cnt": 2
+            }
+        ],
+        "array_search_6": [
+            {
+                "status": false
+            }
+        ],
+        "mpg_plane3": [
+            {
+                "status": false
+            }
+        ],
+        "max_11": [
+            {
+                "status": false
+            }
+        ]
+    }
+}

@@ -1,0 +1,1906 @@
+{
+    "Mole-Blaze": {
+        "phone-7_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-2,0),str.indexof(Param0,Digits,-2,1))",
+                "time": 0.006221,
+                "node_cnt": 1210,
+                "edge_cnt": 3700,
+                "example_cnt": 2
+            }
+        ],
+        "initials-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 0.204421,
+                "node_cnt": 12528,
+                "edge_cnt": 201970,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-3": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.245576,
+                "node_cnt": 15910,
+                "edge_cnt": 206608,
+                "example_cnt": 2
+            }
+        ],
+        "initials": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 0.202246,
+                "node_cnt": 12528,
+                "edge_cnt": 201970,
+                "example_cnt": 2
+            }
+        ],
+        "phone-5": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.003028,
+                "node_cnt": 576,
+                "edge_cnt": 1973,
+                "example_cnt": 2
+            }
+        ],
+        "phone-3": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.463287,
+                "node_cnt": 26190,
+                "edge_cnt": 332254,
+                "example_cnt": 1
+            }
+        ],
+        "dr-name-long": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.024729,
+                "node_cnt": 4111,
+                "edge_cnt": 11920,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-4_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 1.30806,
+                "node_cnt": 56271,
+                "edge_cnt": 962740,
+                "example_cnt": 2
+            }
+        ],
+        "lastname-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.005022,
+                "node_cnt": 850,
+                "edge_cnt": 2994,
+                "example_cnt": 2
+            }
+        ],
+        "phone-4-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 1.98212,
+                "node_cnt": 71590,
+                "edge_cnt": 1255416,
+                "example_cnt": 1
+            }
+        ],
+        "univ_3_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA)))",
+                "time": 0.71121,
+                "node_cnt": 24574,
+                "edge_cnt": 214615,
+                "example_cnt": 3
+            }
+        ],
+        "reverse-name-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.425105,
+                "node_cnt": 25953,
+                "edge_cnt": 298570,
+                "example_cnt": 2
+            }
+        ],
+        "univ_2": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA))))))",
+                "time": 223.75813,
+                "node_cnt": 1467061,
+                "edge_cnt": 47093818,
+                "example_cnt": 1
+            }
+        ],
+        "univ_2_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA))))))",
+                "time": 224.282,
+                "node_cnt": 1467061,
+                "edge_cnt": 47093818,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))))",
+                "time": 0.726519,
+                "node_cnt": 35476,
+                "edge_cnt": 411465,
+                "example_cnt": 2
+            }
+        ],
+        "univ_6_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,EndT,-1,1))",
+                "time": 0.00242,
+                "node_cnt": 528,
+                "edge_cnt": 1709,
+                "example_cnt": 1
+            }
+        ],
+        "lastname": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.004802,
+                "node_cnt": 850,
+                "edge_cnt": 2994,
+                "example_cnt": 2
+            }
+        ],
+        "phone-6_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-3,0),str.indexof(Param0,Digits,-3,1))",
+                "time": 0.006577,
+                "node_cnt": 1294,
+                "edge_cnt": 3854,
+                "example_cnt": 2
+            }
+        ],
+        "univ_2-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-8_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,EndT,-1,1))",
+                "time": 0.005895,
+                "node_cnt": 1160,
+                "edge_cnt": 3615,
+                "example_cnt": 1
+            }
+        ],
+        "dr-name": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.029204,
+                "node_cnt": 4885,
+                "edge_cnt": 13745,
+                "example_cnt": 2
+            }
+        ],
+        "dr-name_small": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.029521,
+                "node_cnt": 4885,
+                "edge_cnt": 13745,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1))))",
+                "time": 0.684695,
+                "node_cnt": 37524,
+                "edge_cnt": 392522,
+                "example_cnt": 2
+            }
+        ],
+        "phone-8-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,EndT,-1,1))",
+                "time": 0.006282,
+                "node_cnt": 1160,
+                "edge_cnt": 3615,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine-2-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.65992,
+                "node_cnt": 61669,
+                "edge_cnt": 1099519,
+                "example_cnt": 2
+            }
+        ],
+        "firstname-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.002844,
+                "node_cnt": 498,
+                "edge_cnt": 1815,
+                "example_cnt": 2
+            }
+        ],
+        "univ_4_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_4": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-2": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.6627,
+                "node_cnt": 61669,
+                "edge_cnt": 1099519,
+                "example_cnt": 2
+            }
+        ],
+        "phone-2-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,EndT,-1,1))",
+                "time": 0.003004,
+                "node_cnt": 528,
+                "edge_cnt": 1709,
+                "example_cnt": 1
+            }
+        ],
+        "phone-1-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.00194,
+                "node_cnt": 293,
+                "edge_cnt": 836,
+                "example_cnt": 1
+            }
+        ],
+        "bikes-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.001953,
+                "node_cnt": 404,
+                "edge_cnt": 1541,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-4-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 1.31311,
+                "node_cnt": 56271,
+                "edge_cnt": 962740,
+                "example_cnt": 2
+            }
+        ],
+        "phone-1-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.001651,
+                "node_cnt": 293,
+                "edge_cnt": 836,
+                "example_cnt": 1
+            }
+        ],
+        "phone-1_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.001119,
+                "node_cnt": 293,
+                "edge_cnt": 836,
+                "example_cnt": 1
+            }
+        ],
+        "phone-9-long": [
+            {
+                "status": false
+            }
+        ],
+        "dr-name-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.024831,
+                "node_cnt": 4111,
+                "edge_cnt": 11920,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-2-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.649,
+                "node_cnt": 61743,
+                "edge_cnt": 1099681,
+                "example_cnt": 2
+            }
+        ],
+        "lastname-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.00513,
+                "node_cnt": 850,
+                "edge_cnt": 2994,
+                "example_cnt": 2
+            }
+        ],
+        "lastname_small": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.00483,
+                "node_cnt": 850,
+                "edge_cnt": 2994,
+                "example_cnt": 2
+            }
+        ],
+        "firstname_small": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.002727,
+                "node_cnt": 498,
+                "edge_cnt": 1815,
+                "example_cnt": 2
+            }
+        ],
+        "phone-5_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.003038,
+                "node_cnt": 576,
+                "edge_cnt": 1973,
+                "example_cnt": 2
+            }
+        ],
+        "phone-8-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,EndT,-1,1))",
+                "time": 0.006647,
+                "node_cnt": 1160,
+                "edge_cnt": 3615,
+                "example_cnt": 1
+            }
+        ],
+        "reverse-name": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.414926,
+                "node_cnt": 25953,
+                "edge_cnt": 298570,
+                "example_cnt": 2
+            }
+        ],
+        "phone-5-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.003322,
+                "node_cnt": 576,
+                "edge_cnt": 1973,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-2_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.6849,
+                "node_cnt": 61743,
+                "edge_cnt": 1099681,
+                "example_cnt": 2
+            }
+        ],
+        "bikes-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.001984,
+                "node_cnt": 404,
+                "edge_cnt": 1541,
+                "example_cnt": 2
+            }
+        ],
+        "phone-1": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.001109,
+                "node_cnt": 293,
+                "edge_cnt": 836,
+                "example_cnt": 1
+            }
+        ],
+        "firstname-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.002949,
+                "node_cnt": 498,
+                "edge_cnt": 1815,
+                "example_cnt": 2
+            }
+        ],
+        "phone-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.000938,
+                "node_cnt": 187,
+                "edge_cnt": 712,
+                "example_cnt": 1
+            }
+        ],
+        "univ_5-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5": [
+            {
+                "status": false
+            }
+        ],
+        "phone-7": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-2,0),str.indexof(Param0,Digits,-2,1))",
+                "time": 0.006157,
+                "node_cnt": 1210,
+                "edge_cnt": 3700,
+                "example_cnt": 2
+            }
+        ],
+        "reverse-name_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.412034,
+                "node_cnt": 25953,
+                "edge_cnt": 298570,
+                "example_cnt": 2
+            }
+        ],
+        "phone-7-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-2,0),str.indexof(Param0,Digits,-2,1))",
+                "time": 0.006605,
+                "node_cnt": 1210,
+                "edge_cnt": 3700,
+                "example_cnt": 2
+            }
+        ],
+        "phone_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.000801,
+                "node_cnt": 187,
+                "edge_cnt": 712,
+                "example_cnt": 1
+            }
+        ],
+        "phone-3-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.459321,
+                "node_cnt": 26190,
+                "edge_cnt": 332254,
+                "example_cnt": 1
+            }
+        ],
+        "univ_6-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-6": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-3,0),str.indexof(Param0,Digits,-3,1))",
+                "time": 0.006553,
+                "node_cnt": 1294,
+                "edge_cnt": 3854,
+                "example_cnt": 2
+            }
+        ],
+        "phone-9-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "univ_2-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-3-long": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.46609,
+                "node_cnt": 26190,
+                "edge_cnt": 332254,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1))))",
+                "time": 0.671714,
+                "node_cnt": 37524,
+                "edge_cnt": 392522,
+                "example_cnt": 2
+            }
+        ],
+        "phone-6-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-3,0),str.indexof(Param0,Digits,-3,1))",
+                "time": 0.006974,
+                "node_cnt": 1294,
+                "edge_cnt": 3854,
+                "example_cnt": 2
+            }
+        ],
+        "phone-4": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 1.96025,
+                "node_cnt": 71590,
+                "edge_cnt": 1255416,
+                "example_cnt": 1
+            }
+        ],
+        "initials_small": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 0.2025,
+                "node_cnt": 12528,
+                "edge_cnt": 201970,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-3-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.244508,
+                "node_cnt": 15910,
+                "edge_cnt": 206608,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-4-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 1.31277,
+                "node_cnt": 56271,
+                "edge_cnt": 962740,
+                "example_cnt": 2
+            }
+        ],
+        "univ_3-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-10_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,EndT,-1,1))",
+                "time": 0.002665,
+                "node_cnt": 528,
+                "edge_cnt": 1709,
+                "example_cnt": 1
+            }
+        ],
+        "bikes": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.001978,
+                "node_cnt": 404,
+                "edge_cnt": 1541,
+                "example_cnt": 2
+            }
+        ],
+        "phone-3_short": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.465664,
+                "node_cnt": 26190,
+                "edge_cnt": 332254,
+                "example_cnt": 1
+            }
+        ],
+        "phone-7-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-2,0),str.indexof(Param0,Digits,-2,1))",
+                "time": 0.006929,
+                "node_cnt": 1210,
+                "edge_cnt": 3700,
+                "example_cnt": 2
+            }
+        ],
+        "phone": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.000801,
+                "node_cnt": 187,
+                "edge_cnt": 712,
+                "example_cnt": 1
+            }
+        ],
+        "phone-4-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 1.97054,
+                "node_cnt": 71590,
+                "edge_cnt": 1255416,
+                "example_cnt": 1
+            }
+        ],
+        "univ_1-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_6": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,CAPS,-1,1)))))",
+                "time": 27.3484,
+                "node_cnt": 175509,
+                "edge_cnt": 2472734,
+                "example_cnt": 2
+            }
+        ],
+        "phone-4_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.002845,
+                "node_cnt": 498,
+                "edge_cnt": 1815,
+                "example_cnt": 1
+            }
+        ],
+        "phone-8": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,EndT,-1,1))",
+                "time": 0.005882,
+                "node_cnt": 1160,
+                "edge_cnt": 3615,
+                "example_cnt": 1
+            }
+        ],
+        "initials-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 0.200895,
+                "node_cnt": 12528,
+                "edge_cnt": 201970,
+                "example_cnt": 2
+            }
+        ],
+        "phone-10": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA)))",
+                "time": 0.713389,
+                "node_cnt": 24574,
+                "edge_cnt": 214615,
+                "example_cnt": 3
+            }
+        ],
+        "name-combine-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1))))",
+                "time": 0.677172,
+                "node_cnt": 37524,
+                "edge_cnt": 392522,
+                "example_cnt": 2
+            }
+        ],
+        "phone-10-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,EndT,-1,1))",
+                "time": 0.002465,
+                "node_cnt": 528,
+                "edge_cnt": 1709,
+                "example_cnt": 1
+            }
+        ],
+        "phone-10-long": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-4": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 1.31586,
+                "node_cnt": 56271,
+                "edge_cnt": 962740,
+                "example_cnt": 2
+            }
+        ],
+        "univ_4-long": [
+            {
+                "status": false
+            }
+        ],
+        "reverse-name-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.41317,
+                "node_cnt": 25953,
+                "edge_cnt": 298570,
+                "example_cnt": 2
+            }
+        ],
+        "univ_1": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,CAPS,-1,1)))))",
+                "time": 27.7002,
+                "node_cnt": 176235,
+                "edge_cnt": 2474213,
+                "example_cnt": 2
+            }
+        ],
+        "bikes_small": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.001986,
+                "node_cnt": 404,
+                "edge_cnt": 1541,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-3-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.240716,
+                "node_cnt": 15910,
+                "edge_cnt": 206608,
+                "example_cnt": 2
+            }
+        ],
+        "phone-6-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-3,0),str.indexof(Param0,Digits,-3,1))",
+                "time": 0.007314,
+                "node_cnt": 1294,
+                "edge_cnt": 3854,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-3_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.241766,
+                "node_cnt": 15910,
+                "edge_cnt": 206608,
+                "example_cnt": 2
+            }
+        ],
+        "firstname": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.002698,
+                "node_cnt": 498,
+                "edge_cnt": 1815,
+                "example_cnt": 2
+            }
+        ],
+        "phone-5-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.00371,
+                "node_cnt": 576,
+                "edge_cnt": 1973,
+                "example_cnt": 2
+            }
+        ],
+        "phone-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.0013,
+                "node_cnt": 187,
+                "edge_cnt": 712,
+                "example_cnt": 1
+            }
+        ],
+        "univ_5_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9": [
+            {
+                "status": false
+            }
+        ],
+        "univ_6-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_4-long-repeat": [
+            {
+                "status": false
+            }
+        ]
+    },
+    "Blaze": {
+        "phone-7_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,3,0),str.indexof(Param0,Digits,3,1))",
+                "time": 0.025258,
+                "node_cnt": 4036,
+                "edge_cnt": 16459,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine-3": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.251679,
+                "node_cnt": 27234,
+                "edge_cnt": 225854,
+                "example_cnt": 0
+            }
+        ],
+        "initials": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 0.40049,
+                "node_cnt": 28700,
+                "edge_cnt": 410656,
+                "example_cnt": 2
+            }
+        ],
+        "phone-5": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.006009,
+                "node_cnt": 970,
+                "edge_cnt": 4040,
+                "example_cnt": 0
+            }
+        ],
+        "initials-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.48121,
+                "node_cnt": 137114,
+                "edge_cnt": 1095868,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-4_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 1.181,
+                "node_cnt": 66176,
+                "edge_cnt": 983928,
+                "example_cnt": 0
+            }
+        ],
+        "phone-3": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.785102,
+                "node_cnt": 48703,
+                "edge_cnt": 595848,
+                "example_cnt": 1
+            }
+        ],
+        "dr-name-long": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.206836,
+                "node_cnt": 25183,
+                "edge_cnt": 114130,
+                "example_cnt": 1
+            }
+        ],
+        "lastname-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.010295,
+                "node_cnt": 1640,
+                "edge_cnt": 6711,
+                "example_cnt": 0
+            }
+        ],
+        "univ_3_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA)))",
+                "time": 0.445792,
+                "node_cnt": 26697,
+                "edge_cnt": 266388,
+                "example_cnt": 0
+            }
+        ],
+        "reverse-name-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 1.72109,
+                "node_cnt": 129008,
+                "edge_cnt": 1057402,
+                "example_cnt": 2
+            }
+        ],
+        "phone-4-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 12.4943,
+                "node_cnt": 632906,
+                "edge_cnt": 6513240,
+                "example_cnt": 1
+            }
+        ],
+        "univ_2_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA))))))",
+                "time": 246.366,
+                "node_cnt": 1635040,
+                "edge_cnt": 67934891,
+                "example_cnt": 0
+            }
+        ],
+        "univ_2": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA))))))",
+                "time": 246.426,
+                "node_cnt": 1634882,
+                "edge_cnt": 67934409,
+                "example_cnt": 0
+            }
+        ],
+        "name-combine-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))))",
+                "time": 1.92838,
+                "node_cnt": 134072,
+                "edge_cnt": 1068441,
+                "example_cnt": 2
+            }
+        ],
+        "univ_2-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,Digits,3,1))",
+                "time": 0.011078,
+                "node_cnt": 1938,
+                "edge_cnt": 7570,
+                "example_cnt": 1
+            }
+        ],
+        "lastname": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.009793,
+                "node_cnt": 1640,
+                "edge_cnt": 6711,
+                "example_cnt": 0
+            }
+        ],
+        "phone-6_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,2,0),str.indexof(Param0,Digits,2,1))",
+                "time": 0.025343,
+                "node_cnt": 4058,
+                "edge_cnt": 16502,
+                "example_cnt": 2
+            }
+        ],
+        "phone-8_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,Digits,-1,1))",
+                "time": 0.033603,
+                "node_cnt": 5365,
+                "edge_cnt": 22063,
+                "example_cnt": 1
+            }
+        ],
+        "dr-name": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.030544,
+                "node_cnt": 5063,
+                "edge_cnt": 21650,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1))))",
+                "time": 0.616561,
+                "node_cnt": 42417,
+                "edge_cnt": 412973,
+                "example_cnt": 2
+            }
+        ],
+        "dr-name_small": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.031158,
+                "node_cnt": 5063,
+                "edge_cnt": 21650,
+                "example_cnt": 1
+            }
+        ],
+        "univ_6_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-8-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,Digits,-1,1))",
+                "time": 0.687583,
+                "node_cnt": 59172,
+                "edge_cnt": 262071,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine-2-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 4.51262,
+                "node_cnt": 269854,
+                "edge_cnt": 3184350,
+                "example_cnt": 1
+            }
+        ],
+        "firstname-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.005355,
+                "node_cnt": 859,
+                "edge_cnt": 3369,
+                "example_cnt": 0
+            }
+        ],
+        "univ_4_short": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-2": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 2.02909,
+                "node_cnt": 77211,
+                "edge_cnt": 1635764,
+                "example_cnt": 1
+            }
+        ],
+        "phone-2-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,Digits,3,1))",
+                "time": 0.223383,
+                "node_cnt": 21302,
+                "edge_cnt": 93486,
+                "example_cnt": 1
+            }
+        ],
+        "phone-1-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.097769,
+                "node_cnt": 10980,
+                "edge_cnt": 39290,
+                "example_cnt": 1
+            }
+        ],
+        "bikes-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.004025,
+                "node_cnt": 792,
+                "edge_cnt": 3101,
+                "example_cnt": 0
+            }
+        ],
+        "univ_4": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-4-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 3.16642,
+                "node_cnt": 206402,
+                "edge_cnt": 2269738,
+                "example_cnt": 0
+            }
+        ],
+        "phone-1-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.096549,
+                "node_cnt": 10980,
+                "edge_cnt": 39290,
+                "example_cnt": 1
+            }
+        ],
+        "phone-1_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.004998,
+                "node_cnt": 1016,
+                "edge_cnt": 3382,
+                "example_cnt": 1
+            }
+        ],
+        "phone-9-long": [
+            {
+                "status": false
+            }
+        ],
+        "dr-name-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(Dr.,str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.204203,
+                "node_cnt": 25183,
+                "edge_cnt": 114130,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine-2-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 4.4752,
+                "node_cnt": 269854,
+                "edge_cnt": 3184350,
+                "example_cnt": 1
+            }
+        ],
+        "lastname-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.010386,
+                "node_cnt": 1640,
+                "edge_cnt": 6711,
+                "example_cnt": 0
+            }
+        ],
+        "lastname_small": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,-1,1))",
+                "time": 0.009689,
+                "node_cnt": 1640,
+                "edge_cnt": 6711,
+                "example_cnt": 0
+            }
+        ],
+        "firstname_small": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.004878,
+                "node_cnt": 859,
+                "edge_cnt": 3369,
+                "example_cnt": 0
+            }
+        ],
+        "phone-5_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.005746,
+                "node_cnt": 970,
+                "edge_cnt": 4040,
+                "example_cnt": 0
+            }
+        ],
+        "phone-8-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,Digits,-1,1))",
+                "time": 0.690036,
+                "node_cnt": 59172,
+                "edge_cnt": 262071,
+                "example_cnt": 1
+            }
+        ],
+        "reverse-name": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.645175,
+                "node_cnt": 43348,
+                "edge_cnt": 500825,
+                "example_cnt": 2
+            }
+        ],
+        "phone-5-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.006269,
+                "node_cnt": 970,
+                "edge_cnt": 4040,
+                "example_cnt": 0
+            }
+        ],
+        "name-combine-2_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.995,
+                "node_cnt": 77211,
+                "edge_cnt": 1635764,
+                "example_cnt": 1
+            }
+        ],
+        "bikes-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.004024,
+                "node_cnt": 792,
+                "edge_cnt": 3101,
+                "example_cnt": 0
+            }
+        ],
+        "phone-1": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,4,7)",
+                "time": 0.005,
+                "node_cnt": 1016,
+                "edge_cnt": 3382,
+                "example_cnt": 1
+            }
+        ],
+        "firstname-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.005225,
+                "node_cnt": 859,
+                "edge_cnt": 3369,
+                "example_cnt": 0
+            }
+        ],
+        "phone-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.001905,
+                "node_cnt": 369,
+                "edge_cnt": 1330,
+                "example_cnt": 0
+            }
+        ],
+        "univ_6-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-7": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,3,0),str.indexof(Param0,Digits,3,1))",
+                "time": 0.025258,
+                "node_cnt": 4036,
+                "edge_cnt": 16459,
+                "example_cnt": 1
+            }
+        ],
+        "reverse-name_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 0.639484,
+                "node_cnt": 43348,
+                "edge_cnt": 500825,
+                "example_cnt": 2
+            }
+        ],
+        "phone-7-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,3,0),str.indexof(Param0,Digits,3,1))",
+                "time": 0.453568,
+                "node_cnt": 38749,
+                "edge_cnt": 172180,
+                "example_cnt": 1
+            }
+        ],
+        "phone_short": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.001733,
+                "node_cnt": 369,
+                "edge_cnt": 1330,
+                "example_cnt": 0
+            }
+        ],
+        "phone-3-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 4.03892,
+                "node_cnt": 279064,
+                "edge_cnt": 2021631,
+                "example_cnt": 1
+            }
+        ],
+        "phone-6": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,2,0),str.indexof(Param0,Digits,2,1))",
+                "time": 0.025236,
+                "node_cnt": 4058,
+                "edge_cnt": 16502,
+                "example_cnt": 2
+            }
+        ],
+        "univ_5": [
+            {
+                "status": false
+            }
+        ],
+        "univ_2-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-3-long": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 4.01126,
+                "node_cnt": 279064,
+                "edge_cnt": 2021631,
+                "example_cnt": 1
+            }
+        ],
+        "name-combine_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1))))",
+                "time": 0.62341,
+                "node_cnt": 42417,
+                "edge_cnt": 412973,
+                "example_cnt": 2
+            }
+        ],
+        "phone-6-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,2,0),str.indexof(Param0,Digits,2,1))",
+                "time": 0.452919,
+                "node_cnt": 38771,
+                "edge_cnt": 172223,
+                "example_cnt": 2
+            }
+        ],
+        "phone-4": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 3.88791,
+                "node_cnt": 132168,
+                "edge_cnt": 2555652,
+                "example_cnt": 1
+            }
+        ],
+        "initials_small": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 0.39994,
+                "node_cnt": 28700,
+                "edge_cnt": 410656,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-3-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.915099,
+                "node_cnt": 85437,
+                "edge_cnt": 625607,
+                "example_cnt": 0
+            }
+        ],
+        "name-combine-4-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 3.15781,
+                "node_cnt": 206402,
+                "edge_cnt": 2269738,
+                "example_cnt": 0
+            }
+        ],
+        "phone-9-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2-long": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,Digits,3,1))",
+                "time": 0.224834,
+                "node_cnt": 21302,
+                "edge_cnt": 93486,
+                "example_cnt": 1
+            }
+        ],
+        "bikes": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.004056,
+                "node_cnt": 792,
+                "edge_cnt": 3101,
+                "example_cnt": 0
+            }
+        ],
+        "phone-3_short": [
+            {
+                "status": true,
+                "result": "str.++((,str.++(str.substr(Param0,0,3),str.++(),str.++( ,str.substr(Param0,4,str.indexof(Param0,Digits,3,1))))))",
+                "time": 0.786214,
+                "node_cnt": 48703,
+                "edge_cnt": 595848,
+                "example_cnt": 1
+            }
+        ],
+        "phone-7-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,3,0),str.indexof(Param0,Digits,3,1))",
+                "time": 0.460986,
+                "node_cnt": 38749,
+                "edge_cnt": 172180,
+                "example_cnt": 1
+            }
+        ],
+        "phone": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.001704,
+                "node_cnt": 369,
+                "edge_cnt": 1330,
+                "example_cnt": 0
+            }
+        ],
+        "phone-4-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 12.4538,
+                "node_cnt": 632906,
+                "edge_cnt": 6513240,
+                "example_cnt": 1
+            }
+        ],
+        "univ_1-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-10_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_6": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,CAPS,-1,1)))))",
+                "time": 11.6996,
+                "node_cnt": 133792,
+                "edge_cnt": 2503560,
+                "example_cnt": 2
+            }
+        ],
+        "phone-4_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,3),str.++(.,str.++(str.substr(Param0,4,7),str.++(.,str.substr(Param0,8,str.indexof(Param0,Digits,3,1))))))",
+                "time": 3.89202,
+                "node_cnt": 132168,
+                "edge_cnt": 2555652,
+                "example_cnt": 1
+            }
+        ],
+        "phone-8": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,-1,0),str.indexof(Param0,Digits,-1,1))",
+                "time": 0.033603,
+                "node_cnt": 5365,
+                "edge_cnt": 22063,
+                "example_cnt": 1
+            }
+        ],
+        "initials-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,CAPS,2,1)),.)))",
+                "time": 1.48459,
+                "node_cnt": 137114,
+                "edge_cnt": 1095868,
+                "example_cnt": 2
+            }
+        ],
+        "phone-10": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,AlphabetsWSpaces,3,1)),str.++(,,str.++( ,USA)))",
+                "time": 0.447124,
+                "node_cnt": 26697,
+                "edge_cnt": 266388,
+                "example_cnt": 0
+            }
+        ],
+        "name-combine-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1)),str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1))))",
+                "time": 1.72852,
+                "node_cnt": 126124,
+                "edge_cnt": 959127,
+                "example_cnt": 2
+            }
+        ],
+        "univ_4-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,8,str.indexof(Param0,Digits,3,1))",
+                "time": 0.010921,
+                "node_cnt": 1938,
+                "edge_cnt": 7570,
+                "example_cnt": 1
+            }
+        ],
+        "phone-10-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-4": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++(,,str.++( ,str.++(str.substr(Param0,0,1),.))))",
+                "time": 1.17218,
+                "node_cnt": 66176,
+                "edge_cnt": 983928,
+                "example_cnt": 0
+            }
+        ],
+        "phone-10-long": [
+            {
+                "status": false
+            }
+        ],
+        "reverse-name-long-repeat": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)),str.++( ,str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))))",
+                "time": 1.73231,
+                "node_cnt": 129008,
+                "edge_cnt": 1057402,
+                "example_cnt": 2
+            }
+        ],
+        "univ_1": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,str.indexof(Param0,AlphabetsWSpaces,1,1)),str.++(,,str.++( ,str.substr(Param0,str.indexof(Param0,AlphabetsWSpaces,2,0),str.indexof(Param0,CAPS,-1,1)))))",
+                "time": 11.7105,
+                "node_cnt": 133792,
+                "edge_cnt": 2503560,
+                "example_cnt": 2
+            }
+        ],
+        "bikes_small": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.004021,
+                "node_cnt": 792,
+                "edge_cnt": 3101,
+                "example_cnt": 0
+            }
+        ],
+        "name-combine-3-long": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.910087,
+                "node_cnt": 85437,
+                "edge_cnt": 625607,
+                "example_cnt": 0
+            }
+        ],
+        "phone-6-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,str.indexof(Param0,Digits,2,0),str.indexof(Param0,Digits,2,1))",
+                "time": 0.456274,
+                "node_cnt": 38771,
+                "edge_cnt": 172223,
+                "example_cnt": 2
+            }
+        ],
+        "name-combine-3_short": [
+            {
+                "status": true,
+                "result": "str.++(str.substr(Param0,0,1),str.++(.,str.++( ,str.substr(Param0,str.indexof(Param0,ProperCase,2,0),str.indexof(Param0,ProperCase,2,1)))))",
+                "time": 0.252124,
+                "node_cnt": 27234,
+                "edge_cnt": 225854,
+                "example_cnt": 0
+            }
+        ],
+        "firstname": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,str.indexof(Param0,ProperCase,1,1))",
+                "time": 0.004861,
+                "node_cnt": 859,
+                "edge_cnt": 3369,
+                "example_cnt": 0
+            }
+        ],
+        "phone-5-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,1,str.indexof(Param0,Digits,1,1))",
+                "time": 0.006607,
+                "node_cnt": 970,
+                "edge_cnt": 4040,
+                "example_cnt": 0
+            }
+        ],
+        "phone-long-repeat": [
+            {
+                "status": true,
+                "result": "str.substr(Param0,0,3)",
+                "time": 0.002265,
+                "node_cnt": 369,
+                "edge_cnt": 1330,
+                "example_cnt": 0
+            }
+        ],
+        "univ_6-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9": [
+            {
+                "status": false
+            }
+        ],
+        "univ_4-long-repeat": [
+            {
+                "status": false
+            }
+        ]
+    }
+}
