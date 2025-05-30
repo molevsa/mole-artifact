@@ -105,6 +105,10 @@ $ python exp/python/main.py -d clia -t 60
 
 ## The Structure of This Repository
 
+### Appendix
+
+The proofs of lemmas and theorems in our paper are available in `appendix.pdf`.
+
 ### Evaluation results
 
 All evaluation results are available in directory `exp`.
