@@ -27,7 +27,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
     find_package(glog 0.4.0 REQUIRED)
 
     #Z3
-    set(Z3_PATH /home/fta/z3)
+    set(Z3_PATH Z3PATH)
     link_directories(${Z3_PATH}/build)
     set(Z3_FILE libz3.so)
     include_directories(${Z3_PATH}/src/api/c++)
@@ -44,7 +44,7 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     set(GLOG_FILE /usr/local/opt/glog/lib/libglog.dylib)
 
     #z3
-    set(Z3_PATH /Users/pro/z3)
+    set(Z3_PATH Z3PATH)
     set(Z3_FILE /usr/local/lib/libz3.dylib)
     include_directories(${Z3_PATH}/src/api/c++)
     include_directories(${Z3_PATH}/src/api)

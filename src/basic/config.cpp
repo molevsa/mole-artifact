@@ -8,7 +8,7 @@
 
 #include <ctime>
 
-const std::string config::KSourcePath = "/path/to/mole";
+const std::string config::KSourcePath = SOURCEPATH;
 const int config::KDefaultSmallVecSize = 64;
 bool config::KIsMultiThread = false;
 

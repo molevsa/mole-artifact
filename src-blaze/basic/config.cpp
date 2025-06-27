@@ -4,8 +4,7 @@
 
 #include "istool/basic/config.h"
 
-const std::string config::KSourcePath =
-    "/path/to/mole-blaze";
+const std::string config::KSourcePath = SOURCEPATH;
 const int config::KDefaultSmallVecSize = 1;
 bool config::KIsMultiThread;
 const int config::KIntRange = 5;

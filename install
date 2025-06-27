@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# install z3
+pushd thirdparty
+wget https://github.com/Z3Prover/z3/archive/refs/tags/z3-4.15.1.tar.gz
+tar xvfz z3-4.15.1.tar.gz
+pushd z3-z3-4.15.1
+python3 scripts/mk_make.py
+pushd build
+make -j 8
+popd
+z3path=`pwd`
+echo ${z3path}
+popd
+popd
+sz3path=${z3path//\//\\\/}
+sed -i "s/Z3PATH/${sz3path}/g" src/CMakeLists.txt
+sed -i "s/Z3PATH/${sz3path}/g" src-blaze/CMakeLists.txt
+
+# build Mole
+pushd src
+path=`pwd`
+spath=${path//\//\\\/}
+sed -i "s/SOURCEPATH/\"${spath}\"/g" basic/config.cpp
+cmake .
+make
+popd
+
+# build Mole-Blaze
+pushd src-blaze
+path=`pwd`
+spath=${path//\//\\\/}
+sed -i "s/SOURCEPATH/\"${spath}\"/g" basic/config.cpp
+cmake .
+make
+popd

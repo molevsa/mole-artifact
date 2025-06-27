@@ -19,3 +19,6 @@ task_fta
 test
 scripts
 tmp*
+*.tar.gz
+Dockerfile
+.dockerignore
