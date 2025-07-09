@@ -77,7 +77,7 @@ The output (in `stdout` and `result.txt`) should contain the target program, the
 ```bash
 # remove original experiment result
 $ rm exp/result_cache/string-blaze.json
-$ python exp/python/main.py -e rq2 -t 1
+$ python3 exp/python/main.py -e rq2 -t 1
 ```
 
 The test result will be stored in `exp/result_cache/string-blaze.json` (see the **Evaluation Results** section for the detailed information), and a figure (`string-blaze-time.png`) shows the number of tasks solved by different solvers over time will be drawn.
@@ -110,13 +110,13 @@ We provide a script `exp/python/main.py` to reproduce the experiment results in 
 
 ```bash
 # You need to run the script in root directory of Mole
-$ python exp/python/main.py [-e {rq1,rq2,rq3,all}] [-t TIMEOUT] [-m MEMORY_LIMIT]
+$ python3 exp/python/main.py [-e {rq1,rq2,rq3,all}] [-t TIMEOUT] [-m MEMORY_LIMIT]
                           [-merge MERGE_ALL] [-s SOLVER] [-d {clia,circuit,string,string-blaze}]
 
 # Example: run specific experiment in our paper
-$ python exp/python/main.py -e rq1
+$ python3 exp/python/main.py -e rq1
 # Example: run evaluation on a specific dataset
-$ python exp/python/main.py -d clia -t 60
+$ python3 exp/python/main.py -d clia -t 60
 ```
 
 1. `-exp`: the name of the experiment. `rq1`, `rq2`, and `rq3` correspond to Tables 7, 8, and 9 in our paper, respectively, and `all` donates all of them. When this argument is set, other arguments (except `-t` and `-m`) will be ignored.
