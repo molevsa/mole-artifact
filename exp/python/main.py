@@ -12,7 +12,7 @@ class Solver:
         self.method = method
         self.merge_all = merge_all
         if name is None:
-            self.name = method
+            self.name = ("Mole" if (self.method == "fold3") else method)
             if merge_all is not None:
                 self.name = self.name + ("-merge_all" if merge_all == "true" else "")
         else:

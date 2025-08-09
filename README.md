@@ -128,6 +128,21 @@ $ python3 exp/python/main.py -d clia -t 60
 
 The experiment result will be stored in `exp/result_cache/*.json`. View the **Evaluation Results** section for the detailed information.
 
+**Note**: The test script only runs tasks that do not have experiment results in `exp/result_cache`. So you need to backup and remove original experiment result first to run the test script.
+
+```bash
+# backup the original experiment result first
+$ cp -r exp/result_cache exp/result_cache_bak
+# remove the result files
+$ rm exp/result_cache/*
+# now you can run the test script to reproduce the result
+$ python3 exp/python/main.py -e all
+
+# or you just want to rerun a specific dataset
+$ rm exp/result_cache/clia.json
+$ python3 exp/python/main.py -d clia
+```
+
 **Note**: It takes about a day to run the entire experiment due to the excessive number of tasks.
 
 ## Reusability Guide
