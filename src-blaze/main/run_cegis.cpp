@@ -100,11 +100,10 @@ int main(int argv, char **argc) {
     std::string task_path, res_path, exe_type;
     int start_size = 1;
     int init_num, shared_num;
-    bool merge_all;
     double alpha;
     if (argv != 5 && argv != 8) {
         std::cerr << "usage: run_cegis <task_path> <result_path> <exe_type> "
-                     "<merge_all>"
+                     "<start_size>"
                      "[<init_num> <shared_num> <alpha>]"
                   << std::endl;
         exit(1);
@@ -112,14 +111,8 @@ int main(int argv, char **argc) {
     task_path = std::string(argc[1]);
     res_path = std::string(argc[2]);
     exe_type = std::string(argc[3]);
-    if (std::string(argc[4]) != "true" && std::string(argc[4]) != "false") {
-        std::cerr << "The value of argument \"merge_all\" must be \"true\" or "
-                     "\"false\"!"
-                  << std::endl;
-        exit(1);
-    }
-    merge_all = (std::string(argc[4]) == "true");
-    if (argv == 7) {
+    start_size = std::stoi(argc[4]);
+    if (argv == 8) {
         init_num = std::stoi(argc[5]);
         shared_num = std::stoi(argc[6]);
         alpha = std::stof(argc[7]);
@@ -143,19 +136,20 @@ int main(int argv, char **argc) {
     PProgram program;
     if (exe_type == "forward") {
         program =
-            fta::synthesis::rawCEGIS(spec, fta::FORWARD, merge_all, start_size);
+            fta::synthesis::rawCEGIS(spec, fta::FORWARD, false, start_size);
+    } else if (exe_type == "blaze") {
+        program =
+            fta::synthesis::rawCEGIS(spec, fta::FORWARD, true, start_size);
     } else if (exe_type == "backward") {
-        program = fta::synthesis::rawCEGIS(spec, fta::BACKWARD, merge_all,
+        program = fta::synthesis::rawCEGIS(spec, fta::BACKWARD, false,
                                            start_size);
     } else if (exe_type.substr(0, 4) == "fold") {
         int fold_num = std::stoi(exe_type.substr(4));
-        // program = fta::synthesis::kFoldCEGIS(spec, fold_num, new
-        // fta::TimeAdaptiveScheduler(fold_num), start_size);
         program = fta::synthesis::kFoldCEGIS(
-            spec, fold_num, new fta::SizeExpectedScheduler(0, 2), merge_all);
+            spec, fold_num, new fta::SizeExpectedScheduler(0, 2), false, start_size);
     } else if (exe_type == "bid") {
         fta::synthesis::BidConfig config(init_num, shared_num, alpha);
-        program = fta::synthesis::bidCEGIS(spec, config, merge_all);
+        program = fta::synthesis::bidCEGIS(spec, config, false);
     } else {
         LOG(FATAL) << "Unknown synthesis type";
     }

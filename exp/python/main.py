@@ -8,13 +8,10 @@ from pathlib import Path
 import argparse
 
 class Solver:
-    def __init__(self, method, name=None, merge_all=None):
+    def __init__(self, method, name=None):
         self.method = method
-        self.merge_all = merge_all
         if name is None:
             self.name = ("Mole" if (self.method == "fold3") else method)
-            if merge_all is not None:
-                self.name = self.name + ("-merge_all" if merge_all == "true" else "")
         else:
             self.name = name
 
@@ -27,7 +24,6 @@ def parse_args():
     parser.add_argument('-d', '--dataset', type=str, default="string-blaze", choices=["circuit", "clia", "string", "string-blaze"])
     parser.add_argument('-t', '--time_out', type=int, default=600)
     parser.add_argument('-m', '--memory_limit', type=int, default=4)
-    parser.add_argument('-merge', '--merge_all', type=str, default="false", choices=["true", "false"])
     parser.add_argument('-s', '--solver', type=str, default="fold3", choices=(["forward", "backward"] + ["fold" + str(k) for k in range(2, 6)] + ["bfold" + str(k) for k in range(2, 6)]))
     parser.add_argument('-e', '--exp', type=str, choices=["rq1", "rq2", "rq3", "all"])
     return parser.parse_args()
@@ -35,20 +31,20 @@ def parse_args():
 def run_cegis_blaze(solver_list=None):
     dataset = "string-blaze"
     if solver_list is None:
-        solver_list = [Solver("fold3", "Mole")]
+        solver_list = [Solver("fold3", "Mole-Blaze")]
     benchmark_path = os.path.join(root_path, "benchmark", dataset)
     benchmark_list = get_all_benchmark(benchmark_path)
     runner = os.path.join(exe_path, "run_cegis")
     cache_file = os.path.join(runner_path, "result_cache", dataset + ".json")
     for solver in solver_list:
-        config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda _: [solver.method, solver.merge_all], name=solver.name, repeat_num=1)
+        config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda _: [solver.method, 1], name=solver.name, repeat_num=1)
         execute(config, benchmark_list, cache_file, thread_num=4)
     result = load_cache(cache_file)
     draw_trend(result, val_time, dataset + "-time.png")
 
 def run_cegis(solver_list=None, dataset=None):
     if solver_list is None:
-        solver_list = [Solver("fold3", "Mole-Blaze", "false")]
+        solver_list = [Solver("fold3", "Mole")]
     if dataset is None:
         dataset = args.dataset
     benchmark_path = os.path.join(root_path, "benchmark", dataset)
@@ -56,7 +52,7 @@ def run_cegis(solver_list=None, dataset=None):
     runner = os.path.join(exe_path, "run_cegis")
     cache_file = os.path.join(runner_path, "result_cache", dataset + ".json")
     for solver in solver_list:
-        config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda _: [solver.method], name=solver.name, repeat_num=1)
+        config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda _: [solver.method, 1], name=solver.name, repeat_num=1)
         execute(config, benchmark_list, cache_file, thread_num=4)
     result = load_cache(cache_file)
     draw_trend(result, val_time, dataset + "-time.png")
@@ -91,7 +87,7 @@ def run_rq1():
     run_cegis(solver_list, "string")
 
 def run_rq2():
-    solver_list = [Solver("fold3", "Mole-Blaze", "false"), Solver("fold3", "Blaze", "true")]
+    solver_list = [Solver("fold3", "Mole-Blaze"), Solver("Blaze", "Blaze")]
     run_cegis_blaze(solver_list)
 
 def run_rq3():
@@ -100,10 +96,11 @@ def run_rq3():
     run_cegis(solver_list, "circuit")
     run_cegis(solver_list, "string")
 
+# TODO: read start_size from an external file
+# TODO: add rq4
 if __name__ == "__main__":
     args = parse_args()
     time_limit = args.time_out
-    merge_all = args.merge_all
     memory_limit = args.memory_limit
     if args.exp is not None:
         if args.exp == 'rq1' or args.exp == 'all':
@@ -121,11 +118,11 @@ if __name__ == "__main__":
     elif args.dataset == "string-blaze":
         src_path = os.path.join(root_path, "src-blaze")
         exe_path = os.path.join(src_path, "main")
-        run_cegis_blaze([Solver(method=args.solver, merge_all=args.merge_all)])
+        run_cegis_blaze([Solver(method=args.solver)])
     elif args.dataset is not None:
         src_path = os.path.join(root_path, "src")
         exe_path = os.path.join(src_path, "main")
         run_cegis([Solver(method=args.solver)], dataset=args.dataset)
     else:
-        print("Usage: python main.py [-e {rq1,rq2,rq3}] [-t TIMEOUT] [-m MEMORY_LIMIT] [-merge MERGE_ALL] [-s SOLVER] [-d {clia,circuit,string,string-blaze}]")
+        print("Usage: python main.py [-e {rq1,rq2,rq3}] [-t TIMEOUT] [-m MEMORY_LIMIT] [-s SOLVER] [-d {clia,circuit,string,string-blaze}]")
         sys.exit(1)
