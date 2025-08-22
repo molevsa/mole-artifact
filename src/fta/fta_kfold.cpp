@@ -2,13 +2,12 @@
 // Created by pro on 2024/10/9.
 //
 
-#include <mutex>
-#include <optional>
-#include <queue>
-#include <thread>
-
-#include "istool/basic/config.h"
 #include "istool/fta/fta_multi.h"
+#include <mutex>
+#include <thread>
+#include <queue>
+#include "istool/basic/config.h"
+#include <optional>
 
 using namespace fta;
 
@@ -17,36 +16,30 @@ const double KSleepTime = 0.01;
 
 namespace {
     struct MergeTask {
-        FTA *fta = nullptr;
+        FTA* fta = nullptr;
         int index;
         IOExample example;
-        MergeTask(FTA *_fta, int _index, const IOExample &_example)
-            : fta(_fta), index(_index), example(_example) {}
+        MergeTask(FTA* _fta, int _index, const IOExample& _example): fta(_fta), index(_index), example(_example) {}
         MergeTask() = default;
     };
 
-    FTAList _finalizeFTAs(const std::vector<FoldInfo> &fold_list) {
+    FTAList _finalizeFTAs(const std::vector<FoldInfo>& fold_list) {
         FTAList fta_list(fold_list.size());
-        for (int i = 0; i < fold_list.size(); ++i)
-            fta_list[i] = fold_list[i].fta;
+        for (int i = 0; i < fold_list.size(); ++i) fta_list[i] = fold_list[i].fta;
         return fta_list;
     }
-} // namespace
+}
 
-FTAList kfold::variants::adaptiveKFold(Specification *spec, int fold_num,
-                                       MultiMergeScheduler *scheduler,
-                                       MergeType type, int size) {
+FTAList kfold::variants::adaptiveKFold(Specification *spec, int fold_num, MultiMergeScheduler *scheduler, MergeType type, int size) {
     assert(fold_num);
-    auto *grammar = spec->info_list[0]->grammar;
-    auto *env = spec->env.get();
+    auto* grammar = spec->info_list[0]->grammar;
+    auto* env = spec->env.get();
     auto init = grammar2FTA(grammar, size, true);
-    if (util::isEmpty(init.get()))
-        return {};
+    if (util::isEmpty(init.get())) return {};
 
     auto ref_size = size::getFTASize(init.get());
     std::vector<FoldInfo> fold_list(fold_num);
-    for (int i = 0; i < fold_num; ++i)
-        fold_list[i] = FoldInfo(init, ref_size, spec->env.get());
+    for (int i = 0; i < fold_num; ++i) fold_list[i] = FoldInfo(init, ref_size, spec->env.get());
 
     IOExample counter_example;
     IOExampleList used_examples;
@@ -54,14 +47,17 @@ FTAList kfold::variants::adaptiveKFold(Specification *spec, int fold_num,
     while (!scheduler->isTerminate(fold_list)) {
         int index = 0;
         for (int i = 0; i < fold_list.size(); ++i) {
-            if (fold_list[i].size < fold_list[index].size)
-                index = i;
+             if (fold_list[i].size < fold_list[index].size) index = i;
+            // if (fold_list[i].example_num < fold_list[index].example_num) index = i;
+            // if (fold_list[i].fta->nodeCount() < fold_list[index].fta->nodeCount()) index = i;
         }
 
-        auto &info = fold_list[index];
-        if (verify::verifyAfterExcludingExamples(info.candidate, spec,
-                                                 counter_example, used_examples)) {
-            LOG(WARNING) << "Unexpected fold";
+        auto& info = fold_list[index];
+        ProgramList candidate_list;
+        for(int i = 0; i < fold_list.size(); ++i) candidate_list.push_back(fold_list[i].candidate);
+        if (verify::verifyAfterExcludingExamples(info.candidate, spec, counter_example, used_examples)) {
+            LOG(WARNING) << "Unexpected fold " << info.candidate->toString();
+            //if (verify::verifyMultiAfterExcludingExamples(candidate_list, spec, counter_example, used_examples)) {
             break;
         }
 #ifdef DEBUG
@@ -69,28 +65,27 @@ FTAList kfold::variants::adaptiveKFold(Specification *spec, int fold_num,
 #endif
         used_examples.push_back(counter_example);
         ++global::example_num;
-        LOG(INFO) << "NEW EXAMPLE FOLD"
-                  << example::ioExample2String(counter_example);
+        //LOG(INFO) << "NEW EXAMPLE FOLD" << example::ioExample2String(counter_example);
         scheduler->startStage(fta::SINGLE_MERGE);
         auto status = info.addExample(env, counter_example, type);
         scheduler->endStage(fta::SINGLE_MERGE);
-        if (!status)
-            return {};
+        if (!status) return {};
         LOG(INFO) << "fold " << index << ": " << info.fta->getSizeInfo();
+        
     }
+    global::fold_point = 0;
+    for(auto& info: fold_list) global::fold_point += info.example_num;
     return _finalizeFTAs(fold_list);
 }
 
-FTAList kfold::variants::adaptiveKFoldMulti(Specification *spec, int fold_num,
-                                            MultiMergeScheduler *scheduler,
-                                            int size) {
+FTAList kfold::variants::adaptiveKFoldMulti(Specification *spec, int fold_num, MultiMergeScheduler *scheduler, int size) {
+    LOG(INFO) << "MULTI\n";
     assert(fold_num);
-    auto *grammar = spec->info_list[0]->grammar;
-    auto *env = spec->env.get();
-    IOExample counter_example;
-    IOExampleList used_examples;
+    auto* grammar = spec->info_list[0]->grammar;
+    auto* env = spec->env.get();
+    IOExample counter_example; IOExampleList used_examples;
 
-    auto *multi_guard = new MultiThreadTimeGuard();
+    auto* multi_guard = new MultiThreadTimeGuard();
     std::queue<MergeTask> task_queue;
     std::mutex queue_lock, verifier_lock;
     std::atomic<bool> is_no_solution(false);
@@ -98,17 +93,15 @@ FTAList kfold::variants::adaptiveKFoldMulti(Specification *spec, int fold_num,
     std::vector<FoldInfo> fold_list(fold_num);
     for (int i = 0; i < fold_num; ++i) {
         auto fta = grammar2FTA(grammar, size, true);
-        if (util::isEmpty(fta.get()))
-            return {};
+        if (util::isEmpty(fta.get())) return {};
         auto ref_size = fta::size::getFTASize(fta.get());
         fold_list[i] = FoldInfo(fta, ref_size, spec->env.get());
     }
 
     auto build_task = [&](int index) -> std::optional<MergeTask> {
-        auto &info = fold_list[index];
-        if (verify::verifyAfterExcludingExamples(info.candidate, spec,
-                                                 counter_example, used_examples)) {
-            LOG(WARNING) << "Unexpected fold";
+        auto& info = fold_list[index];
+        if (verify::verifyAfterExcludingExamples(info.candidate, spec, counter_example, used_examples)) {
+            LOG(WARNING) << "Unexpected fold " << info.candidate->toString();
             return {};
         }
         used_examples.push_back(counter_example);
@@ -120,8 +113,7 @@ FTAList kfold::variants::adaptiveKFoldMulti(Specification *spec, int fold_num,
             queue_lock.lock();
             LOG(INFO) << "thread#" << thread_index << " " << task_queue.size();
             if (task_queue.empty()) {
-                queue_lock.unlock();
-                return;
+                queue_lock.unlock(); return;
             }
             auto task = task_queue.front();
             task_queue.pop();
@@ -144,9 +136,8 @@ FTAList kfold::variants::adaptiveKFoldMulti(Specification *spec, int fold_num,
                 return;
             }
 
-            auto &info = fold_list[task.index];
-            info.fta = res;
-            info.updateInfo();
+            auto& info = fold_list[task.index];
+            info.fta = res; info.updateInfo();
 
             verifier_lock.lock();
             if (scheduler->isTerminate(fold_list)) {
@@ -178,23 +169,19 @@ FTAList kfold::variants::adaptiveKFoldMulti(Specification *spec, int fold_num,
     }
 
     std::vector<std::thread> thread_list;
-    for (int i = 0; i < KThreadNum; ++i)
-        thread_list.emplace_back(thread_func, i);
-    for (auto &thread : thread_list)
-        thread.join();
+    for (int i = 0; i < KThreadNum; ++i) thread_list.emplace_back(thread_func, i);
+    for (auto& thread: thread_list) thread.join();
 
 #ifdef DEBUG
-    for (auto &example : used_examples)
-        global::example_recorder.push_back(example);
+    for (auto& example: used_examples) global::example_recorder.push_back(example);
 #endif
 
-    if (is_no_solution)
-        return {};
+    if (is_no_solution) return {};
     return _finalizeFTAs(fold_list);
 }
 
-FTAList kfold::kFold(Specification *spec, int fold_num,
-                     MultiMergeScheduler *scheduler, MergeType type, int size) {
+FTAList kfold::kFold(Specification *spec, int fold_num, MultiMergeScheduler *scheduler, MergeType type, int size) {
+    LOG(INFO) << config::KIsMultiThread << "\n";
     if (config::KIsMultiThread) {
         return variants::adaptiveKFoldMulti(spec, fold_num, scheduler, size);
     } else {
@@ -202,63 +189,51 @@ FTAList kfold::kFold(Specification *spec, int fold_num,
     }
 }
 
-FTAList kfold::variants::prepareSharedUnits(Specification *spec,
-                                            const IOExampleList &examples,
-                                            int shared_num, int size) {
+FTAList kfold::variants::prepareSharedUnits(Specification *spec, const IOExampleList &examples, int shared_num,
+                                            int size) {
 #ifdef DEBUG
     assert(shared_num && shared_num < examples.size());
 #endif
-    auto *grammar = spec->info_list[0]->grammar;
+    auto* grammar = spec->info_list[0]->grammar;
     auto shared = buildFTA(grammar, spec->env.get(), examples[0], size, true);
-    if (util::isEmpty(shared.get()))
-        return {};
+    if (util::isEmpty(shared.get())) return {};
     for (int i = 0; i < shared_num; ++i) {
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size, true);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         shared = mergeFTA(shared.get(), current.get(), FORWARD, true);
-        if (util::isEmpty(shared.get()))
-            return {};
+        if (util::isEmpty(shared.get())) return {};
     }
 
     FTAList unit_list;
     for (int i = shared_num; i < examples.size(); ++i) {
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size, true);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         auto unit = mergeFTA(shared.get(), current.get(), FORWARD, true);
-        if (util::isEmpty(unit.get()))
-            return {};
+        if (util::isEmpty(unit.get())) return {};
         unit_list.push_back(unit);
     }
     return unit_list;
 }
 
-FTAList kfold::variants::prepareSharedUnitsMulti(Specification *spec,
-                                                 const IOExampleList &examples,
-                                                 int shared_num, int size) {
+FTAList kfold::variants::prepareSharedUnitsMulti(Specification *spec, const IOExampleList &examples, int shared_num, int size) {
 #ifdef DEBUG
     assert(shared_num && shared_num < examples.size());
 #endif
     LOG(INFO) << "Start multi for " << size;
-    auto *grammar = spec->info_list[0]->grammar;
+    auto* grammar = spec->info_list[0]->grammar;
     auto shared = buildFTA(grammar, spec->env.get(), examples[0], size, true);
-    if (util::isEmpty(shared.get()))
-        return {};
+    if (util::isEmpty(shared.get())) return {};
     for (int i = 0; i < shared_num; ++i) {
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size, true);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         shared = mergeFTA(shared.get(), current.get(), FORWARD, true);
-        if (util::isEmpty(shared.get()))
-            return {};
+        if (util::isEmpty(shared.get())) return {};
     }
 
     FTAList base_list;
     for (int i = shared_num; i < examples.size(); ++i) {
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size, true);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         base_list.push_back(current);
     }
     FTAList unit_list(base_list.size(), nullptr);
@@ -273,19 +248,14 @@ FTAList kfold::variants::prepareSharedUnitsMulti(Specification *spec,
             int index = -1;
             for (int i = 0; i < base_list.size(); ++i) {
                 if (is_free[i]) {
-                    is_free[i] = false;
-                    index = i;
-                    break;
+                    is_free[i] = false; index = i; break;
                 }
             }
             lock.unlock();
-            if (index == -1)
-                return;
-            auto current = fta::mergeFTA(local_shared.get(), base_list[index].get(),
-                                         FORWARD, true);
+            if (index == -1) return;
+            auto current = fta::mergeFTA(local_shared.get(), base_list[index].get(), FORWARD, true);
             if (util::isEmpty(current.get())) {
-                is_empty = true;
-                break;
+                is_empty = true; break;
             }
             lock.lock();
             unit_list[index] = current;
@@ -296,16 +266,12 @@ FTAList kfold::variants::prepareSharedUnitsMulti(Specification *spec,
     for (int i = 0; i < KThreadNum; ++i) {
         thread_list.emplace_back(thread);
     }
-    for (int i = 0; i < KThreadNum; ++i)
-        thread_list[i].join();
-    if (is_empty)
-        return {};
+    for (int i = 0; i < KThreadNum; ++i) thread_list[i].join();
+    if (is_empty) return {};
     return unit_list;
 }
 
-FTAList fta::kfold::prepareUnits(Specification *spec,
-                                 const IOExampleList &examples, int shared_num,
-                                 int size) {
+FTAList fta::kfold::prepareUnits(Specification *spec, const IOExampleList &examples, int shared_num, int size) {
     if (config::KIsMultiThread) {
         return variants::prepareSharedUnitsMulti(spec, examples, shared_num, size);
     } else {

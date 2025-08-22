@@ -5,14 +5,16 @@
 #ifndef ISTOOL_TIME_GUARD_H
 #define ISTOOL_TIME_GUARD_H
 
+#include <atomic>
 #include <ctime>
 #include <exception>
-#include <unordered_map>
 #include <string>
-#include <atomic>
+#include <unordered_map>
+
+struct TimeOutError : public std::exception {};
 
 class TimeGuard {
-public:
+   public:
     timeval start_time;
     double time_limit;
     TimeGuard(double _time_limit);
@@ -23,7 +25,7 @@ public:
 };
 
 class TimeRecorder {
-public:
+   public:
     std::unordered_map<std::string, double> value_map;
     std::unordered_map<std::string, timeval> start_time_map;
     TimeRecorder() = default;
@@ -33,8 +35,8 @@ public:
     void printAll();
 };
 
-class MultiThreadTimeGuard: public TimeGuard {
-public:
+class MultiThreadTimeGuard : public TimeGuard {
+   public:
     std::atomic<bool> is_finished;
     void finish();
     virtual bool isTimeout() const;
@@ -42,5 +44,4 @@ public:
     ~MultiThreadTimeGuard() = default;
 };
 
-
-#endif //ISTOOL_TIME_GUARD_H
+#endif  // ISTOOL_TIME_GUARD_H

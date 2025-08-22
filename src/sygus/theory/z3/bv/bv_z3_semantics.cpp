@@ -26,6 +26,21 @@ Z3EncodeRes Z3BVAddSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_l
 Z3EncodeRes Z3BVSubSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
     return {inp_list[0].res - inp_list[1].res, _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
 }
+Z3EncodeRes Z3BVMulSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
+    return {inp_list[0].res * inp_list[1].res, _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
+}
+Z3EncodeRes Z3BVUDivSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
+    return {inp_list[1].res == inp_list[1].res.ctx().bv_val(0, inp_list[1].res.get_sort().bv_size()) ? inp_list[0].res.ctx().bv_val(1, inp_list[0].res.get_sort().bv_size()) : udiv(inp_list[0].res, inp_list[1].res) , _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
+}
+Z3EncodeRes Z3BVURemSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
+    return {inp_list[1].res == inp_list[1].res.ctx().bv_val(0, inp_list[1].res.get_sort().bv_size()) ? inp_list[0].res.ctx().bv_val(0, inp_list[0].res.get_sort().bv_size()) : urem(inp_list[0].res, inp_list[1].res) , _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
+}
+Z3EncodeRes Z3BVSDivSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
+    return {inp_list[1].res == inp_list[1].res.ctx().bv_val(0, inp_list[1].res.get_sort().bv_size()) ? inp_list[0].res.ctx().bv_val(1, inp_list[0].res.get_sort().bv_size()) : inp_list[0].res / inp_list[1].res, _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
+}
+Z3EncodeRes Z3BVSRemSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
+    return {inp_list[1].res == inp_list[1].res.ctx().bv_val(0, inp_list[1].res.get_sort().bv_size()) ? inp_list[0].res.ctx().bv_val(0, inp_list[0].res.get_sort().bv_size()) : srem(inp_list[0].res, inp_list[1].res) , _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
+}
 Z3EncodeRes Z3BVAndSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
     return {inp_list[0].res & inp_list[1].res, _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
 }
@@ -33,6 +48,7 @@ Z3EncodeRes Z3BVOrSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_li
     return {inp_list[0].res | inp_list[1].res, _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
 }
 Z3EncodeRes Z3BVLShrSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
+    // std::cerr<<inp_list[0].toString()<<" " <<inp_list[0].res.get_sort().bv_size()<<std::endl;
     return {z3::lshr(inp_list[0].res, inp_list[1].res), _mergeConsList(inp_list[0].cons_list, inp_list[1].cons_list)};
 }
 Z3EncodeRes Z3BVShlSemantics::encodeZ3Expr(const std::vector<Z3EncodeRes> &inp_list) {
@@ -48,6 +64,9 @@ void theory::bv::loadZ3Semantics(Env *env) {
     auto* z3_env = ext::z3::getExtension(env);
     LoadZ3Semantics(z3_env, "bvneg", BVNeg); LoadZ3Semantics(z3_env, "bvnot", BVNot);
     LoadZ3Semantics(z3_env, "bvadd", BVAdd); LoadZ3Semantics(z3_env, "bvsub", BVSub);
+    LoadZ3Semantics(z3_env, "bvmul", BVMul); 
+    LoadZ3Semantics(z3_env, "bvudiv", BVUDiv); LoadZ3Semantics(z3_env, "bvurem", BVURem); 
+    LoadZ3Semantics(z3_env, "bvsdiv", BVSDiv); LoadZ3Semantics(z3_env, "bvsrem", BVSRem); 
     LoadZ3Semantics(z3_env, "bvand", BVAnd); LoadZ3Semantics(z3_env, "bvor", BVOr);
     LoadZ3Semantics(z3_env, "bvlshr", BVLShr); LoadZ3Semantics(z3_env, "bvshl", BVShl);
     LoadZ3Semantics(z3_env, "ite", Ite); LoadZ3Semantics(z3_env, "=", Eq);

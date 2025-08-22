@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13)
+project(ISToolExecutor)
+cmake_policy(SET CMP0079 NEW)
+aux_source_directory(invoker INVOKER_SRC)
+add_library(invoker_lib STATIC ${INVOKER_SRC} invoker.cpp obe_invoker.cpp)
+target_link_libraries(invoker_lib glog::glog)

@@ -362,6 +362,7 @@ namespace {
 };
 
 PProgram util::extractMinimalProgram(FTA *x) {
+    if(!x || x->isEmpty()) return nullptr;
     FTANode* start = nullptr;
     int best_size = 1e9;
     for (auto* node: x->root_list) {

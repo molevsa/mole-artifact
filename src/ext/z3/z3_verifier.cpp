@@ -23,6 +23,18 @@ void Z3Verifier::prepareZ3Solver(z3::solver &solver, const FunctionContext &info
     solver.add(!encode_res.res || !z3::mk_and(encode_res.cons_list));
 }
 
+void Z3Verifier::prepareZ3SolverMulti(z3::solver &solver, const std::vector<FunctionContext> &infos) {
+    auto param_list = getParamVector();
+    auto encode_res = ext->encodeZ3ExprForConsProgram(example_space->cons_program.get(), infos[0], ext::z3::z3Vector2EncodeList(param_list));
+    auto cur_expr = !encode_res.res || !z3::mk_and(encode_res.cons_list);
+    for(int i = 1; i < infos.size(); ++i){
+        auto encode_res = ext->encodeZ3ExprForConsProgram(example_space->cons_program.get(), infos[i], ext::z3::z3Vector2EncodeList(param_list));
+        cur_expr = cur_expr && (!encode_res.res || !z3::mk_and(encode_res.cons_list));
+    }
+   
+    solver.add(cur_expr);
+}
+
 void Z3Verifier::getExample(const z3::model &model, Example *counter_example) {
     if (!counter_example) return;
     z3::expr_vector param_list(ext->ctx);

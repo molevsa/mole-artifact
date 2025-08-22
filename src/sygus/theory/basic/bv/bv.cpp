@@ -37,6 +37,11 @@ void theory::loadBVTheory(Env *env) {
     LoadBVSemantics("bvand", BVAnd);
     LoadBVSemantics("bvor", BVOr);
     LoadBVSemantics("bvadd", BVAdd);
+    LoadBVSemantics("bvmul", BVMul); 
+    LoadBVSemantics("bvudiv", BVUDiv);
+    LoadBVSemantics("bvurem", BVURem); 
+    LoadBVSemantics("bvsdiv", BVSDiv);
+    LoadBVSemantics("bvsrem", BVSRem); 
     LoadBVSemantics("bvsub", BVSub);
     LoadBVSemantics("bvlshr", BVLShr);
     LoadBVSemantics("bvshl", BVShl);

@@ -59,6 +59,40 @@ Data BVSubSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
     return BuildData(BitVector, _ull2bv(x - y, size));
 }
 
+BVMulSemantics::BVMulSemantics(int _size): size(_size), NormalSemantics("bvmul", TBV(_size), {TBV(_size), TBV(_size)}) {}
+Data BVMulSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
+    auto x = _bv2ull(getBitVectorValue(inp_list[0])), y = _bv2ull(getBitVectorValue(inp_list[1]));
+    return BuildData(BitVector, _ull2bv(x * y, size));
+}
+
+BVUDivSemantics::BVUDivSemantics(int _size): size(_size), NormalSemantics("bvudiv", TBV(_size), {TBV(_size), TBV(_size)}) {}
+Data BVUDivSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
+    unsigned long long x = _bv2ull(getBitVectorValue(inp_list[0])), y = _bv2ull(getBitVectorValue(inp_list[1]));
+    return y ? BuildData(BitVector, _ull2bv(x / y, size)) : BuildData(BitVector, _ull2bv(1, size));
+}
+
+BVURemSemantics::BVURemSemantics(int _size): size(_size), NormalSemantics("bvurem", TBV(_size), {TBV(_size), TBV(_size)}) {}
+Data BVURemSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
+    unsigned long long x = _bv2ull(getBitVectorValue(inp_list[0])), y = _bv2ull(getBitVectorValue(inp_list[1]));
+    return y ? BuildData(BitVector, _ull2bv(x % y, size)) : BuildData(BitVector, _ull2bv(0, size));
+}
+
+BVSDivSemantics::BVSDivSemantics(int _size): size(_size), NormalSemantics("bvsdiv", TBV(_size), {TBV(_size), TBV(_size)}) {}
+Data BVSDivSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
+    
+    long long x = _bv2ull(getBitVectorValue(inp_list[0])), y = _bv2ull(getBitVectorValue(inp_list[1]));
+    if(x == -9223372036854775807 - 1 && y == -1) return  BuildData(BitVector, _ull2bv(x, size));
+    return y ? BuildData(BitVector, _ull2bv(x / y, size)) : BuildData(BitVector, _ull2bv(1, size));
+}
+
+BVSRemSemantics::BVSRemSemantics(int _size): size(_size), NormalSemantics("bvsrem", TBV(_size), {TBV(_size), TBV(_size)}) {}
+Data BVSRemSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
+    long long x = _bv2ull(getBitVectorValue(inp_list[0])), y = _bv2ull(getBitVectorValue(inp_list[1]));
+    if(x == -9223372036854775807 - 1 && y == -1) return  BuildData(BitVector, _ull2bv(0, size));
+    //std::cerr<<x<<' '<<x - 1<<' '<<y<<'\n';
+    return y ? BuildData(BitVector, _ull2bv(x % y, size)) : BuildData(BitVector, _ull2bv(0, size));
+}
+
 BVAndSemantics::BVAndSemantics(int _size): size(_size), NormalSemantics("bvand", TBV(_size), {TBV(_size), TBV(_size)}) {}
 Data BVAndSemantics::run(DataList &&inp_list, ExecuteInfo *info) {
     auto x = getBitVectorValue(inp_list[0]), y = getBitVectorValue(inp_list[1]);

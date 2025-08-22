@@ -34,17 +34,20 @@ bool FoldInfo::addExample(Env *env, const IOExample &example, MergeType type) {
     return true;
 }
 
-const int KMinSizeLimit = 1e5;
+const int KMinSizeLimit = 0;
 
 void SizeExpectedScheduler::start(FTA *base) {
     ref_size = size::getFTASize(base);
     expected_size = std::pow(ref_size, alpha);
+    LOG(INFO) <<"EXPECT " << expected_size;
+    LOG(INFO) << "EXAMPLE LIM" << example_limit;
     if (expected_size < KMinSizeLimit) expected_size = KMinSizeLimit;
 }
 
 bool SizeExpectedScheduler::isTerminate(const std::vector<FoldInfo> &info_list) {
     auto current = ref_size;
     for (auto& info: info_list) current *= info.compress_rate;
+    LOG(INFO) <<"CUR SIZE " << current;
     if (current <= expected_size) return true;
     for (auto& fold: info_list) if (fold.example_num < example_limit) return false;
     return true;
@@ -104,4 +107,17 @@ void TimeLimitScheduler::endStage(MultiFoldStage stage) {
 
 bool TimeLimitScheduler::isTerminate(const std::vector<FoldInfo> &info) {
     return is_exceed;
+}
+
+void SimpleScheduler::startStage(MultiFoldStage stage) {
+}
+
+void SimpleScheduler::endStage(MultiFoldStage stage) {
+}
+
+bool SimpleScheduler::isTerminate(const std::vector<FoldInfo> &info_list) {
+    int cur_cnt = 0;
+    for(auto info: info_list) cur_cnt += info.example_num;
+    if(cur_cnt >= merge_count) return true;
+    return false;
 }

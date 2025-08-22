@@ -60,7 +60,10 @@ add_subdirectory(basic)
 add_subdirectory(sygus)
 add_subdirectory(ext)
 add_subdirectory(fta)
+add_subdirectory(invoker)
+add_subdirectory(obe)
+add_subdirectory(solver)
 
-set(ALL_LIBS ${SyGuS_LIBS} basic_lib ext_lib fta_lib)
+set(ALL_LIBS ${SyGuS_LIBS} basic_lib ext_lib fta_lib invoker_lib obe_lib solver_lib)
 
 add_subdirectory(main)
