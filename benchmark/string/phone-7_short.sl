@@ -1,4 +1,4 @@
-(set-logic SLIA)((((
+(set-logic SLIA)
 
  
 
