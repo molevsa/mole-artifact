@@ -106,13 +106,13 @@ $ src-blaze/main/solver /root/mole/benchmark/string-blaze/bikes.sl result.txt fo
 
 The relationship between the `exe_type` argument when invoking our program and the name of solvers in our paper is shown in the following table:
 
-|         invoker         | `exe_type` |        Solvers in our paper        |
+|         Invoker         | `exe_type` |        Solvers in our paper        |
 | :---------------------: | :--------: | :--------------------------------: |
 |    `src/main/solver`    |  `fold3`   |    $\mathrm{Mole}_\mathrm{FTA}$    |
 |    `src/main/solver`    | `backward` |         $\mathrm{RawVSA}$          |
 |    `src/main/solver`    |   `obe`    |           $\mathrm{OE}$            |
 |    `src/main/solver`    |  `bfold3`  | $\mathrm{Mole}_\mathrm{Top-Down}$  |
-|    `src/main/solver`    | `forward`  |   $\mathrm{Mole}_\mathrm{iter}$    |
+|    `src/main/solver`    | `forward`  |   $\mathrm{Mole}_\mathrm{Iter}$    |
 |    `src/main/solver`    |  `cfold3`  |   $\mathrm{Mole}_\mathrm{Cart}$    |
 |    `src/main/solver`    | `foldall`  | $\mathrm{Mole}_\mathrm{All-Once}$  |
 |    `src/main/solver`    |  `ffld3`   | $\mathrm{Mole}_\mathrm{All-Group}$ |
@@ -144,7 +144,7 @@ $ python3 exp/python/main.py -d clia -t 60
 
 The experiment result will be stored in `exp/result_cache/*.json`. View the **Evaluation Results** section for the detailed information.
 
-**Note**: The test script only runs tasks that do not have experiment results in `exp/result_cache`. So you need to backup and remove original experiment result first to run the test script.
+**Note**: The test script only runs tasks that do not have experiment results in `exp/result_cache`. So you need to backup and remove original experiment results first to run the test script.
 
 ```bash
 # backup the original experiment result first
@@ -159,6 +159,8 @@ $ rm exp/result_cache/clia.json
 $ python3 exp/python/main.py -d clia
 ```
 
+**Note**: It takes about a day to run the entire experiment due to the excessive number of tasks.
+
 After running the test script, you can export the summarized result tables by running the script `exp/python/result_table_gen.py`. The tables are organized in the same way as our papers, and they will be stored in `exp/result_table` directory.
 
 ```bash
@@ -167,8 +169,6 @@ $ python3 exp/python/result_table_gen.py
 # or a specific one
 $ python3 exp/python/result_table_gen.py -e rq1
 ```
-
-**Note**: It takes about a day to run the entire experiment due to the excessive number of tasks.
 
 ## Reusability Guide
 
