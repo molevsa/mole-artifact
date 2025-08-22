@@ -63,8 +63,7 @@ IOExampleList generateExamples(Z3ExampleSpace *example_space, int example_num,
             for (int i = 0; i < n; ++i)
                 example[i] = gen(example_space->type_list[i].get());
             auto feature = data::dataList2String(example);
-            if (known_examples.find(feature) != known_examples.end())
-                continue;
+            if (known_examples.find(feature) != known_examples.end()) continue;
             known_examples.insert(feature);
             raw_examples.push_back(example);
         }
@@ -80,43 +79,40 @@ IOExampleList generateExamples(Z3ExampleSpace *example_space, int example_num,
 }
 
 const int KExampleNum = 1000;
-const int config::KIntRange = 10;
+const int KIntRange = 10;
 
 void printResult(const std::vector<std::string> &info_list,
                  const std::string &path) {
-    for (auto &info : info_list)
-        std::cout << info << std::endl;
+    for (auto &info : info_list) std::cout << info << std::endl;
     if (!path.empty()) {
         auto f = std::fopen(path.c_str(), "w");
         for (auto &info : info_list) {
             fprintf(f, "%s\n", info.c_str());
         }
-        fprintf(f, "%.5f\n", global::recorder.query("total"));
         fclose(f);
     }
 }
 
 int main(int argv, char **argc) {
     std::string task_path, res_path, exe_type;
-    int start_size = 1;
+    int prog_size = 1;
     int init_num, shared_num;
     double alpha;
-    if (argv > 1) {
-        task_path = std::string(argc[1]);
-        res_path = std::string(argc[2]);
-        exe_type = std::string(argc[3]);
-        if (argv == 7) {
-            init_num = std::stoi(argc[4]);
-            shared_num = std::stoi(argc[5]);
-            alpha = std::stof(argc[6]);
-        }
-    } else {
-        task_path =
-            "/path/to/mole/benchmark/circuit/hd05.eqn_sygus_iter_120_0.sl";
-        exe_type = "fold4";
-        init_num = 15;
-        shared_num = 1;
-        alpha = 0.7;
+    if (argv != 5 && argv != 8) {
+        std::cerr << "usage: run_cegis <task_path> <result_path> <exe_type> "
+                     "<prog_size> "
+                     "[<init_num> <shared_num> <alpha>]"
+                  << std::endl;
+        exit(1);
+    }
+    task_path = std::string(argc[1]);
+    res_path = std::string(argc[2]);
+    exe_type = std::string(argc[3]);
+    prog_size = std::stoi(argc[4]);
+    if (argv == 8) {
+        init_num = std::stoi(argc[5]);
+        shared_num = std::stoi(argc[6]);
+        alpha = std::stof(argc[7]);
     }
     config::KIsMultiThread = false;
     auto *spec = parser::getSyGuSSpecFromFile(task_path);
@@ -126,35 +122,35 @@ int main(int argv, char **argc) {
     auto name = spec->info_list[0]->name;
 
     auto *z3_space = dynamic_cast<Z3ExampleSpace *>(spec->example_space.get());
-    /*if (z3_space) {
-        auto examples = generateExamples(z3_space, KExampleNum,
-    config::KIntRange, spec->env.get()); spec->example_space =
-    example::buildFiniteIOExampleSpace(examples, name, spec->env.get());
-    }*/
+    if (z3_space) {
+        auto examples =
+            generateExamples(z3_space, KExampleNum, KIntRange, spec->env.get());
+        spec->example_space =
+            example::buildFiniteIOExampleSpace(examples, name, spec->env.get());
+    }
+    assert(dynamic_cast<FiniteExampleSpace *>(spec->example_space.get()));
+    global::example_num =
+        dynamic_cast<FiniteExampleSpace *>(spec->example_space.get())
+            ->example_space.size();
 
     global::recorder.start("total");
     PProgram program;
     if (exe_type == "forward") {
-        program = fta::synthesis::rawCEGIS(spec, fta::FORWARD, start_size);
+        program =
+            fta::synthesis::rawCEGIS(spec, fta::FORWARD, false, prog_size);
+    } else if (exe_type == "blaze") {
+        program = fta::synthesis::rawCEGIS(spec, fta::FORWARD, true, prog_size);
     } else if (exe_type == "backward") {
-        program = fta::synthesis::rawCEGIS(spec, fta::BACKWARD, start_size);
+        program =
+            fta::synthesis::rawCEGIS(spec, fta::BACKWARD, false, prog_size);
     } else if (exe_type.substr(0, 4) == "fold") {
         int fold_num = std::stoi(exe_type.substr(4));
-        // program = fta::synthesis::kFoldCEGIS(spec, fold_num, new
-        // fta::TimeAdaptiveScheduler(fold_num), start_size);
         program = fta::synthesis::kFoldCEGIS(
-            spec, fold_num, new fta::SizeExpectedScheduler(0.7, 2),
-            fta::FORWARD);
-    } else if (exe_type.substr(0, 5) == "bfold") {
-        int fold_num = std::stoi(exe_type.substr(5));
-        // program = fta::synthesis::kFoldCEGIS(spec, fold_num, new
-        // fta::TimeAdaptiveScheduler(fold_num), start_size);
-        program = fta::synthesis::kFoldCEGIS(
-            spec, fold_num, new fta::SizeExpectedScheduler(0.7, 2),
-            fta::BACKWARD);
+            spec, fold_num, new fta::SizeExpectedScheduler(0, 2), false,
+            prog_size);
     } else if (exe_type == "bid") {
         fta::synthesis::BidConfig config(init_num, shared_num, alpha);
-        program = fta::synthesis::bidCEGIS(spec, config);
+        program = fta::synthesis::bidCEGIS(spec, config, false);
     } else {
         LOG(FATAL) << "Unknown synthesis type";
     }
@@ -163,8 +159,8 @@ int main(int argv, char **argc) {
     if (program) {
         if (full_verifier->verify(semantics::buildSingleContext(name, program),
                                   nullptr)) {
-            // TODO: use the same method to count total node and total edge
-            printResult({program->toString(), std::to_string(program->size()),
+            printResult({program->toString(),
+                         std::to_string(global::recorder.query("total")),
                          std::to_string(global::node_count),
                          std::to_string(global::edge_count),
                          std::to_string(global::example_num)},
@@ -175,10 +171,12 @@ int main(int argv, char **argc) {
                 res_path);
         }
     } else {
-        printResult({"No solution", std::to_string(global::node_count),
-                     std::to_string(global::edge_count),
-                     std::to_string(global::example_num)},
-                    res_path);
+        printResult(
+            {"No solution", std::to_string(global::recorder.query("total")),
+             std::to_string(global::node_count),
+             std::to_string(global::edge_count),
+             std::to_string(global::example_num)},
+            res_path);
     }
     global::recorder.printAll();
 }
