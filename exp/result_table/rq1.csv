@@ -1,0 +1,10 @@
+dataset,solver,num_solved,time_base,time_our,time_ratio_all,time_ratio_hard,node_base,node_our,node_ratio_all
+clia,Mole-FTA,41,0.77,0.77,1.00,1.00,3952,3952,1.00
+clia,RawVSA,24,0.20,0.10,2.09,5.51,8393,1028,8.17
+clia,OE,21,0.98,0.10,9.60,72.07,nan,1093,nan
+circuit,Mole-FTA,579,0.09,0.09,1.00,1.00,4074,4074,1.00
+circuit,RawVSA,505,0.39,0.05,7.36,34.00,39749,2784,14.28
+circuit,OE,482,0.61,0.11,5.72,34.27,nan,4066,nan
+string,Mole-FTA,146,0.34,0.34,1.00,1.00,178,178,1.00
+string,RawVSA,140,0.30,0.30,1.00,1.01,566,150,3.78
+string,OE,152,0.32,0.34,0.93,1.09,nan,178,nan

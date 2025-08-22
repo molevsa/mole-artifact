@@ -1,0 +1,3 @@
+dataset,solver,num_solved,time_base,time_our,time_ratio_all,time_ratio_hard,node_base,node_our,node_ratio_all
+string-blaze,Mole-Blaze,88,0.03,0.03,1.00,1.00,1466,1466,1.00
+string-blaze,Blaze,86,0.06,0.03,2.48,1.80,3068,1207,2.54

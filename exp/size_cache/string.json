@@ -1,0 +1,1704 @@
+{
+    "size_cache": {
+        "2171308": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"John Doe\"]=>\"J Doe\""
+                ]
+            }
+        ],
+        "11440431": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Mining US\"]=>\"Mining\"",
+                    "[\"Soybean Farming CAN\"]=>\"Soybean Farming\""
+                ]
+            }
+        ],
+        "phone-7_short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"858\"",
+                    "[\"+83 973-757-831\"]=>\"757\""
+                ]
+            }
+        ],
+        "phone-5-short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"106\"",
+                    "[\"+83 973-757-831\"]=>\"83\"",
+                    "[\"+6 775-969-238\"]=>\"6\""
+                ]
+            }
+        ],
+        "stackoverflow1": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Trucking Inc.\"]=>\"Trucking\"",
+                    "[\"New Truck Inc\"]=>\"New Truck\"",
+                    "[\"ABV Trucking Inc, LLC\"]=>\"ABV Trucking\""
+                ]
+            }
+        ],
+        "name-combine-3": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"L. Withers\""
+                ]
+            }
+        ],
+        "stackoverflow2": [
+            {
+                "status": true,
+                "prog_size": 12,
+                "examples": [
+                    "[\"india china japan\"]=>\"india china\"",
+                    "[\"indonesia korea\"]=>\"indonesia\""
+                ]
+            }
+        ],
+        "exceljet3": [
+            {
+                "status": true,
+                "prog_size": 12,
+                "examples": [
+                    "[\"year= 2016\"]=>\"2016\"",
+                    "[\"fuel economy= 25/33\"]=>\"25/33\""
+                ]
+            }
+        ],
+        "name-combine-4_short": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers, L.\""
+                ]
+            }
+        ],
+        "phone-4-long": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938.242.504\""
+                ]
+            }
+        ],
+        "initials-long": [
+            {
+                "status": false
+            }
+        ],
+        "43120683": [
+            {
+                "status": false
+            }
+        ],
+        "phone-5": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"106\"",
+                    "[\"+83 973-757-831\"]=>\"83\"",
+                    "[\"+6 775-969-238\"]=>\"6\""
+                ]
+            }
+        ],
+        "phone-3": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"938-242-504\"]=>\"(938) 242-504\""
+                ]
+            }
+        ],
+        "phone-7-short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"858\"",
+                    "[\"+83 973-757-831\"]=>\"757\""
+                ]
+            }
+        ],
+        "join-first-and-last-name": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"susan\",\"chang\"]=>\"susan chang\""
+                ]
+            }
+        ],
+        "initials": [
+            {
+                "status": false
+            }
+        ],
+        "remove-text-by-matching": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"801-345-1987\"]=>\"8013451987\""
+                ]
+            }
+        ],
+        "dr-name-long": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Launa Withers\"]=>\"Dr. Launa\"",
+                    "[\"Lakenya Edison\"]=>\"Dr. Lakenya\""
+                ]
+            }
+        ],
+        "exceljet2": [
+            {
+                "status": true,
+                "prog_size": 14,
+                "examples": [
+                    "[\"www.domain.com\"]=>\"com\"",
+                    "[\"mail.net\"]=>\"net\"",
+                    "[\"www.amaon.co.uk\"]=>\"uk\""
+                ]
+            }
+        ],
+        "lastname-long": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"FreeHafer\""
+                ]
+            }
+        ],
+        "41503046": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Juncus bulbosus ssp. bulbosus\"]=>\"Juncus bulbosus\"",
+                    "[\"Hippuris vulgaris\"]=>\"Hippuris\""
+                ]
+            }
+        ],
+        "univ_2-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "reverse-name-long": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers Launa\""
+                ]
+            }
+        ],
+        "univ_6_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_2_short": [
+            {
+                "status": false
+            }
+        ],
+        "count-total-characters-in-a-cell": [
+            {
+                "status": true,
+                "prog_size": 2,
+                "examples": []
+            }
+        ],
+        "univ_2": [
+            {
+                "status": false
+            }
+        ],
+        "get-first-word": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"The quick brown fox.\"]=>\"The\""
+                ]
+            }
+        ],
+        "name-combine-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Nancy\",\"FreeHafer\"]=>\"Nancy FreeHafer\""
+                ]
+            }
+        ],
+        "31753108": [
+            {
+                "status": false
+            }
+        ],
+        "univ_4_short": [
+            {
+                "status": false
+            }
+        ],
+        "strip-non-numeric-characters": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2_short": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"938-242-504\"]=>\"504\""
+                ]
+            }
+        ],
+        "lastname": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"FreeHafer\""
+                ]
+            }
+        ],
+        "phone-6_short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"769\"",
+                    "[\"+83 973-757-831\"]=>\"973\""
+                ]
+            }
+        ],
+        "phone-8_short": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"438\""
+                ]
+            }
+        ],
+        "count-total-words-in-a-cell": [
+            {
+                "status": false
+            }
+        ],
+        "count-line-breaks-in-cell": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"one\"]=>1",
+                    "[\"one/ntwo\"]=>2",
+                    "[\"one/ntwo/nthree\"]=>3"
+                ]
+            }
+        ],
+        "35016216": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"C0abc\",\"def\"]=>\"C0abc\"",
+                    "[\"aabc\",\"def\"]=>\"def\""
+                ]
+            }
+        ],
+        "name-combine": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Launa Withers\""
+                ]
+            }
+        ],
+        "37281007": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"ABC\",\"D\"]=>false",
+                    "[\"ABC\",\"BC\"]=>true"
+                ]
+            }
+        ],
+        "dr-name": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"Dr. Nancy\"",
+                    "[\"Andrew Cencici\"]=>\"Dr. Andrew\""
+                ]
+            }
+        ],
+        "dr-name_small": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"Dr. Nancy\"",
+                    "[\"Andrew Cencici\"]=>\"Dr. Andrew\""
+                ]
+            }
+        ],
+        "35744094": [
+            {
+                "status": false
+            }
+        ],
+        "stackoverflow7": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Item 1 AQ-S810W-2AVDF\",\"AQ-S810W-2AVDF\"]=>\"Item 1\"",
+                    "[\"Item 2 AQ-230A-1DUQ\",\"AQ-230A\"]=>\"Item 2 -1DUQ\""
+                ]
+            }
+        ],
+        "stackoverflow5": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"valentine day=1915=50==7.1=45\"]=>\"valentine day\"",
+                    "[\"movie blah=2blahblah, The=1914=54==7.9=17\"]=>\"movie blah=2blahblah, The\""
+                ]
+            }
+        ],
+        "28627624_1": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Dec 2, 2014, 11=23 PM - +91 90000 80000= loren ipsum\"]=>\"Dec 2, 2014, 11=23 PM\""
+                ]
+            }
+        ],
+        "phone-8-long": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"438\""
+                ]
+            }
+        ],
+        "univ_4": [
+            {
+                "status": false
+            }
+        ],
+        "cell-contains-some-words-but-not-others": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"pink ball, green sweater\",\"red\",\"green\",\"pink\"]=>false",
+                    "[\"red ball, green sweater\",\"red\",\"green\",\"pink\"]=>true"
+                ]
+            }
+        ],
+        "40498040": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"some project,other project\"]=>true",
+                    "[\"overhead\"]=>false",
+                    "[\"some project, overhead\"]=>false"
+                ]
+            }
+        ],
+        "name-combine-2-long": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Nancy\",\"FreeHafer\"]=>\"Nancy F.\""
+                ]
+            }
+        ],
+        "firstname-long": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"Nancy\""
+                ]
+            }
+        ],
+        "remove-unwanted-characters": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"zx66448\",\"z\"]=>\"x66448\"",
+                    "[\"zx66448\",\"6\"]=>\"zx448\""
+                ]
+            }
+        ],
+        "phone-9-long": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-2": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Nancy\",\"FreeHafer\"]=>\"Nancy F.\""
+                ]
+            }
+        ],
+        "univ_5-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"938-242-504\"]=>\"504\""
+                ]
+            }
+        ],
+        "phone-1-long": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"242\""
+                ]
+            }
+        ],
+        "join-cells-with-comma": [
+            {
+                "status": false
+            }
+        ],
+        "bikes-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Ducati100\"]=>\"Ducati\"",
+                    "[\"Honda125\"]=>\"Honda\""
+                ]
+            }
+        ],
+        "get-middle-name-from-full-name": [
+            {
+                "status": false
+            }
+        ],
+        "extract-text-between-parentheses": [
+            {
+                "status": true,
+                "prog_size": 12,
+                "examples": [
+                    "[\"Jones <60>\"]=>60",
+                    "[\"Jones <57>\"]=>57"
+                ]
+            }
+        ],
+        "remove-text-by-position": [
+            {
+                "status": false
+            }
+        ],
+        "exceljet4": [
+            {
+                "status": true,
+                "prog_size": 12,
+                "examples": [
+                    "[\"https=//exceljet.net/catalog\"]=>\"exceljet.net/catalog\"",
+                    "[\"https=//microsoft.com\"]=>\"microsoft.com\""
+                ]
+            }
+        ],
+        "stackoverflow11": [
+            {
+                "status": false
+            }
+        ],
+        "stackoverflow6": [
+            {
+                "status": false
+            }
+        ],
+        "stackoverflow9": [
+            {
+                "status": true,
+                "prog_size": 13,
+                "examples": [
+                    "[\"Sarah Jane Jones\"]=>\"Jones\"",
+                    "[\"Bob Jane Smithfield\"]=>\"Smithfield\""
+                ]
+            }
+        ],
+        "name-combine-4-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers, L.\""
+                ]
+            }
+        ],
+        "phone-1-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"242\""
+                ]
+            }
+        ],
+        "univ_5": [
+            {
+                "status": false
+            }
+        ],
+        "phone-1_short": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"242\""
+                ]
+            }
+        ],
+        "39060015": [
+            {
+                "status": false
+            }
+        ],
+        "dr-name-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Launa Withers\"]=>\"Dr. Launa\"",
+                    "[\"Lakenya Edison\"]=>\"Dr. Lakenya\""
+                ]
+            }
+        ],
+        "count-specific-words-in-a-cell": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"The fox jumped over the fox\",\"fox\"]=>2",
+                    "[\"The fox jumped over the fox\",\"ox\"]=>2",
+                    "[\"The fox jumped over the fox\",\"Fox\"]=>0"
+                ]
+            }
+        ],
+        "add-a-line-break-with-a-formula": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Traci Brown\",\"1301 Robinson Court\",\"Saginaw, MI 48607\"]=>\"Traci Brown/n1301 Robinson Court/nSaginaw, MI 48607\""
+                ]
+            }
+        ],
+        "univ_6-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-2-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Nancy\",\"FreeHafer\"]=>\"Nancy F.\""
+                ]
+            }
+        ],
+        "lastname-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"FreeHafer\""
+                ]
+            }
+        ],
+        "lastname_small": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"FreeHafer\""
+                ]
+            }
+        ],
+        "19274448": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"ddsss999dfdfsfd\"]=>false",
+                    "[\"dhfjd9999999dfda\"]=>true"
+                ]
+            }
+        ],
+        "firstname_small": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"Nancy\""
+                ]
+            }
+        ],
+        "phone-5_short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"106\"",
+                    "[\"+83 973-757-831\"]=>\"83\"",
+                    "[\"+6 775-969-238\"]=>\"6\""
+                ]
+            }
+        ],
+        "phone-8-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"438\""
+                ]
+            }
+        ],
+        "cell-contains-number": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"A bird in the hand is worth 2 in the bush.\"]=>true",
+                    "[\"A bird in the hand is worth two in the bush.\"]=>false",
+                    "[\"The 15 shortcuts you simply must know\"]=>true"
+                ]
+            }
+        ],
+        "reverse-name": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers Launa\""
+                ]
+            }
+        ],
+        "phone-5-long": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+158 674-736-891\"]=>\"158\"",
+                    "[\"+180 029-457-654\"]=>\"180\"",
+                    "[\"+9 507-092-535\"]=>\"9\""
+                ]
+            }
+        ],
+        "name-combine-2_short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Nancy\",\"FreeHafer\"]=>\"Nancy F.\""
+                ]
+            }
+        ],
+        "replace-one-character-with-another": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"801 456 8756\"]=>\"801-456-8756\""
+                ]
+            }
+        ],
+        "36462127": [
+            {
+                "status": false
+            }
+        ],
+        "bikes-long": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Ducati100\"]=>\"Ducati\"",
+                    "[\"Honda125\"]=>\"Honda\""
+                ]
+            }
+        ],
+        "get-domain-name-from-url": [
+            {
+                "status": false
+            }
+        ],
+        "change-negative-numbers-to-positive": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"-%134\"]=>\"%134\""
+                ]
+            }
+        ],
+        "phone-1": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"242\""
+                ]
+            }
+        ],
+        "30732554": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"TL-18273982| 10MM\"]=>\"TL-18273982\"",
+                    "[\"CT-576\"]=>\"CT-576\""
+                ]
+            }
+        ],
+        "firstname-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"Nancy\""
+                ]
+            }
+        ],
+        "cell-contains-specific-text": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"An apple a day keeps the doctor away\",\"orange\"]=>false",
+                    "[\"Better the devil you know\",\"you know\"]=>true",
+                    "[\"An apple a day keeps the doctor away\",\"apple\"]=>true"
+                ]
+            }
+        ],
+        "phone-long": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938\""
+                ]
+            }
+        ],
+        "12948338": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"An example string with _username in it RT _AwesomeUser says _username is awesome\",\"username\"]=>2",
+                    "[\"An example string with _username in it RT _AwesomeUser says _username is awesome\",\"AwesomeUser\"]=>1",
+                    "[\"An _example string with _example in it is awesome _example\",\"example\"]=>3"
+                ]
+            }
+        ],
+        "univ_2-long": [
+            {
+                "status": false
+            }
+        ],
+        "cell-contains-all-of-many-things": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"A yellow sun in a green field\",\"yellow\",\"green\",\"dog\"]=>false",
+                    "[\"yellow dog on green grass\",\"yellow\",\"green\",\"dog\"]=>true",
+                    "[\"Lone dog with a green frisbie on yellow sand\",\"yellow\",\"green\",\"dog\"]=>true"
+                ]
+            }
+        ],
+        "stackoverflow4": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-7": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"858\"",
+                    "[\"+83 973-757-831\"]=>\"757\""
+                ]
+            }
+        ],
+        "strip-numeric-characters-from-cell": [
+            {
+                "status": false
+            }
+        ],
+        "split-numbers-from-units-of-measure_2": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"80v\",3]=>\"v\"",
+                    "[\"7h\",2]=>\"h\"",
+                    "[\"10hrs\",3]=>\"hrs\""
+                ]
+            }
+        ],
+        "reverse-name_short": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers Launa\""
+                ]
+            }
+        ],
+        "phone-7-long": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+197 700-858-976\"]=>\"858\"",
+                    "[\"+29 773-545-520\"]=>\"545\""
+                ]
+            }
+        ],
+        "strip-html-from-text-or-numbers": [
+            {
+                "status": false
+            }
+        ],
+        "phone_short": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938\""
+                ]
+            }
+        ],
+        "phone-3-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"938-242-504\"]=>\"(938) 242-504\""
+                ]
+            }
+        ],
+        "phone-6": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"769\"",
+                    "[\"+83 973-757-831\"]=>\"973\""
+                ]
+            }
+        ],
+        "count-consecutive-monthly-orders": [
+            {
+                "status": false
+            }
+        ],
+        "33619752": [
+            {
+                "status": false
+            }
+        ],
+        "11604909": [
+            {
+                "status": true,
+                "prog_size": 13,
+                "examples": [
+                    "[\"AIX 5.1\"]=>\"5.1\"",
+                    "[\"VMware ESX Server 3.5.0 build-110268\"]=>\"3.5\""
+                ]
+            }
+        ],
+        "stackoverflow3": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"geb. 14 oct 1956 Westerkerk HRL\"]=>\"Westerkerk HRL\""
+                ]
+            }
+        ],
+        "38664547": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"thatensures\"]=>\"ensures\"",
+                    "[\"that\"]=>\"that\""
+                ]
+            }
+        ],
+        "phone-9_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-3-long": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"938-242-504\"]=>\"(938) 242-504\""
+                ]
+            }
+        ],
+        "cell-contains-one-of-many-things": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"warm gray sweater\",\"yellow\",\"green\",\"dog\"]=>false",
+                    "[\"yellow dog on green grass\",\"yellow\",\"green\",\"dog\"]=>true",
+                    "[\"A yellow sun in a green field\",\"yellow\",\"green\",\"dog\"]=>true"
+                ]
+            }
+        ],
+        "phone-6-short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"769\"",
+                    "[\"+83 973-757-831\"]=>\"973\""
+                ]
+            }
+        ],
+        "split-text-and-numbers": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"apples30\",7]=>\"apples\""
+                ]
+            }
+        ],
+        "most-frequently-occurring-text": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"cat\",\"dog\",\"cat\"]=>\"cat\"",
+                    "[\"blue\",\"red\",\"red\"]=>\"red\"",
+                    "[\"firm\",\"firm\",\"soft\"]=>\"firm\""
+                ]
+            }
+        ],
+        "name-combine_short": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Launa Withers\""
+                ]
+            }
+        ],
+        "phone-6-long": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+199 936-162-415\"]=>\"936\"",
+                    "[\"+2 604-746-137\"]=>\"604\""
+                ]
+            }
+        ],
+        "phone-4": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938.242.504\""
+                ]
+            }
+        ],
+        "univ_3-long": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-3-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"L. Withers\""
+                ]
+            }
+        ],
+        "univ_5-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "17212077": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-4-long": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers, L.\""
+                ]
+            }
+        ],
+        "phone-10_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_6": [
+            {
+                "status": false
+            }
+        ],
+        "get-first-name-from-name": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Susan Ann Chang\"]=>\"Susan\""
+                ]
+            }
+        ],
+        "initials_small": [
+            {
+                "status": false
+            }
+        ],
+        "count-specific-characters-in-a-cell": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Hannah\",\"x\"]=>0",
+                    "[\"Hannah\",\"n\"]=>2",
+                    "[\"Hannah\",\"h\"]=>1"
+                ]
+            }
+        ],
+        "19558979": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"spreadsheet\",1]=>\"s\"",
+                    "[\"spreadsheet\",2]=>\"p\""
+                ]
+            }
+        ],
+        "get-last-name-from-name-with-comma": [
+            {
+                "status": true,
+                "prog_size": 14,
+                "examples": [
+                    "[\"chang,amy\"]=>\"amy,chang\""
+                ]
+            }
+        ],
+        "create-email-address-from-name": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"brown\",\"traci\"]=>\"tbrown_acme.com\""
+                ]
+            }
+        ],
+        "exceljet1": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"ann chang\",\"achang_maaker.com\"]=>\"maaker.com\""
+                ]
+            }
+        ],
+        "univ_1-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"UC Berkeley\",\"Berkeley, CA\"]=>\"UC Berkeley, Berkeley, CA\""
+                ]
+            }
+        ],
+        "extract-nth-word-from-text-string": [
+            {
+                "status": false
+            }
+        ],
+        "phone-10": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"+95 310-537-401\"]=>\"+95 (310) 537-401\""
+                ]
+            }
+        ],
+        "phone-2-long": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"938-242-504\"]=>\"504\""
+                ]
+            }
+        ],
+        "compare-two-strings": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"orange\",\"Orange\"]=>false",
+                    "[\"apple\",\"apple\"]=>true"
+                ]
+            }
+        ],
+        "bikes": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Ducati100\"]=>\"Ducati\"",
+                    "[\"Honda125\"]=>\"Honda\""
+                ]
+            }
+        ],
+        "univ_3-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-3_short": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"938-242-504\"]=>\"(938) 242-504\""
+                ]
+            }
+        ],
+        "phone-7-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+197 700-858-976\"]=>\"858\"",
+                    "[\"+29 773-545-520\"]=>\"545\""
+                ]
+            }
+        ],
+        "extract-word-containing-specific-text": [
+            {
+                "status": false
+            }
+        ],
+        "phone": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938\""
+                ]
+            }
+        ],
+        "37534494": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"I love apples\",\"I hate bananas\",\"banana\"]=>\"I hate bananas\"",
+                    "[\"I love apples\",\"I hate bananas\",\"apple\"]=>\"I love apples\""
+                ]
+            }
+        ],
+        "phone-4-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938.242.504\""
+                ]
+            }
+        ],
+        "split-numbers-from-units-of-measure_1": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"80v\",3]=>\"80\"",
+                    "[\"7h\",2]=>\"7\""
+                ]
+            }
+        ],
+        "get-domain-from-email-address_2": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"ann chang\",\"achang_maaker.com\"]=>\"achang\""
+                ]
+            }
+        ],
+        "get-first-name-from-name-with-comma": [
+            {
+                "status": false
+            }
+        ],
+        "get-last-line-in-cell": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1-long": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"University of Pennsylvania\",\"Phialdelphia, PA, USA\"]=>\"University of Pennsylvania, Phialdelphia, PA, USA\""
+                ]
+            }
+        ],
+        "phone-9-short": [
+            {
+                "status": false
+            }
+        ],
+        "extract-word-that-begins-with-specific-character": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1_short": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"University of Pennsylvania\",\"Phialdelphia, PA, USA\"]=>\"University of Pennsylvania, Phialdelphia, PA, USA\""
+                ]
+            }
+        ],
+        "remove-file-extension-from-filename": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"happy.jpg\"]=>\"happy\""
+                ]
+            }
+        ],
+        "remove-characters-from-right": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"736 miles\"]=>736",
+                    "[\"1255 miles\"]=>1255"
+                ]
+            }
+        ],
+        "phone-4_short": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938.242.504\""
+                ]
+            }
+        ],
+        "43606446": [
+            {
+                "status": false
+            }
+        ],
+        "phone-8": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"+106 769-858-438\"]=>\"438\""
+                ]
+            }
+        ],
+        "cell-contains-one-of-many-with-exclusions": [
+            {
+                "status": true,
+                "prog_size": 3,
+                "examples": [
+                    "[\"warm gray sweater\",\"yellow\",\"green\",\"cat\"]=>false",
+                    "[\"yellow dog on green grass\",\"yellow\",\"green\",\"cat\"]=>true",
+                    "[\"blue neon signs\",\"blue\",\"green\",\"neon\"]=>false"
+                ]
+            }
+        ],
+        "phone-10-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "convert-numbers-to-text": [
+            {
+                "status": true,
+                "prog_size": 2,
+                "examples": []
+            }
+        ],
+        "phone-10-long": [
+            {
+                "status": false
+            }
+        ],
+        "38871714": [
+            {
+                "status": false
+            }
+        ],
+        "23435880": [
+            {
+                "status": true,
+                "prog_size": 8,
+                "examples": [
+                    "[\"apple apples\",\"apple\"]=>2",
+                    "[\"an orange among the oranges is a spoiled orange\",\"orange\"]=>3"
+                ]
+            }
+        ],
+        "stackoverflow8": [
+            {
+                "status": true,
+                "prog_size": 12,
+                "examples": [
+                    "[\"home/Excel/Sheet1.xls\"]=>\"Sheet1.xls\"",
+                    "[\"home/user/Sheet1.xls\"]=>\"Sheet1.xls\""
+                ]
+            }
+        ],
+        "univ_4-long": [
+            {
+                "status": false
+            }
+        ],
+        "get-last-name-from-name": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Park Kim\"]=>\"Kim\""
+                ]
+            }
+        ],
+        "remove-characters-from-left": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"343DMX\",3]=>\"DMX\""
+                ]
+            }
+        ],
+        "name-combine-long": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Launa Withers\""
+                ]
+            }
+        ],
+        "univ_3": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2": [
+            {
+                "status": true,
+                "prog_size": 6,
+                "examples": [
+                    "[\"938-242-504\"]=>\"504\""
+                ]
+            }
+        ],
+        "initials-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "position-of-2nd-3rd-etc-instance-of-character": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"100x15x50\",\"x\",2]=>7"
+                ]
+            }
+        ],
+        "name-combine-4": [
+            {
+                "status": true,
+                "prog_size": 11,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers, L.\""
+                ]
+            }
+        ],
+        "univ_5_short": [
+            {
+                "status": false
+            }
+        ],
+        "reverse-name-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 5,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"Withers Launa\""
+                ]
+            }
+        ],
+        "phone-9": [
+            {
+                "status": false
+            }
+        ],
+        "univ_1": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"University of Pennsylvania\",\"Phialdelphia, PA, USA\"]=>\"University of Pennsylvania, Phialdelphia, PA, USA\""
+                ]
+            }
+        ],
+        "bikes_small": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Ducati100\"]=>\"Ducati\"",
+                    "[\"Honda125\"]=>\"Honda\""
+                ]
+            }
+        ],
+        "name-combine-3-long": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"L. Withers\""
+                ]
+            }
+        ],
+        "phone-6-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+199 936-162-415\"]=>\"936\"",
+                    "[\"+2 604-746-137\"]=>\"604\""
+                ]
+            }
+        ],
+        "cell-equals-one-of-many-things": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"yellow\"]=>true",
+                    "[\"gray\"]=>false",
+                    "[\"blue\"]=>true",
+                    "[\"pink\"]=>true",
+                    "[\"black\"]=>false",
+                    "[\"orange\"]=>true",
+                    "[\"turkey\"]=>false"
+                ]
+            }
+        ],
+        "name-combine-3_short": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"Launa\",\"Withers\"]=>\"L. Withers\""
+                ]
+            }
+        ],
+        "firstname": [
+            {
+                "status": true,
+                "prog_size": 7,
+                "examples": [
+                    "[\"Nancy FreeHafer\"]=>\"Nancy\""
+                ]
+            }
+        ],
+        "find-nth-occurrence-of-character": [
+            {
+                "status": true,
+                "prog_size": 13,
+                "examples": [
+                    "[\"replies to _aya, _tasisuke, and _chan\",1]=>12",
+                    "[\"replies to _aya, _tasisuke, and _chan\",2]=>18",
+                    "[\"replies to _aya, _tasisuke, and _chan\",3]=>33"
+                ]
+            }
+        ],
+        "phone-5-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"+196 728-585-376\"]=>\"196\"",
+                    "[\"+33 117-430-125\"]=>\"33\"",
+                    "[\"+6 775-969-238\"]=>\"6\""
+                ]
+            }
+        ],
+        "univ_6-long": [
+            {
+                "status": false
+            }
+        ],
+        "convert-text-to-numbers": [
+            {
+                "status": true,
+                "prog_size": 2,
+                "examples": [
+                    "[\"101\"]=>101"
+                ]
+            }
+        ],
+        "create-email-address-with-name-and-domain": [
+            {
+                "status": true,
+                "prog_size": 9,
+                "examples": [
+                    "[\"ayako\",\"ogawa\",\"acme.com\"]=>\"aogawa_acme.com\""
+                ]
+            }
+        ],
+        "get-last-word": [
+            {
+                "status": true,
+                "prog_size": 14,
+                "examples": [
+                    "[\"focus on one thing at a time\"]=>\"time\"",
+                    "[\"premature opt is the root of all evil\"]=>\"evil\""
+                ]
+            }
+        ],
+        "phone-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 4,
+                "examples": [
+                    "[\"938-242-504\"]=>\"938\""
+                ]
+            }
+        ],
+        "univ_4-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "25239569": [
+            {
+                "status": true,
+                "prog_size": 10,
+                "examples": [
+                    "[\"Adf_ROCLeader_BAN_728x90_CPM_STD _BRD _NRT_DCK\"]=>\"Adf_ROCLeader_BAN_728x90_CPM_STD _Branding _NRT_DCK\"",
+                    "[\"MMC_ContextualLarRec_BAN_336x280_CPM_STD _LDS _RTG_DCK\"]=>\"MMC_ContextualLarRec_BAN_336x280_CPM_STD _Leads _RTG_DCK\"",
+                    "[\"Adf_ROC_DLBD_728x90_CPM_STD_DRS_NRT_NOR_DCK\"]=>\"Adf_ROC_DLBD_728x90_CPM_STD_Direct Response_NRT_NOR_DCK\""
+                ]
+            }
+        ],
+        "stackoverflow10": [
+            {
+                "status": true,
+                "prog_size": 12,
+                "examples": [
+                    "[\"April 1 1799\"]=>\"1799\"",
+                    "[\"April 11 1867\"]=>\"1867\"",
+                    "[\"February 28 1844 as Delaware Township\"]=>\"1844\"",
+                    "[\"February 12 1806\"]=>\"1806\"",
+                    "[\"April 28th 1828\"]=>\"1828\""
+                ]
+            }
+        ],
+        "remove-leading-and-trailing-spaces-from-text": [
+            {
+                "status": false
+            }
+        ]
+    }
+}

@@ -2,6 +2,10 @@ from enum import Enum
 import math
 import matplotlib.pyplot as plt
 
+from cache import load_cache
+from pathlib import Path
+import argparse
+import os
 
 class MergeType(Enum):
     LEN = 1
@@ -210,3 +214,19 @@ def draw_trend(result_map, val: CaredValue, fig_path, x_size=4, y_size=3, is_x_n
     plt.legend(name_list)
     plt.tight_layout()
     plt.savefig(fig_path)
+
+val_time = CaredValue(lambda x: x["time"], "time")
+root_path = Path.cwd()
+runner_path = os.path.join(root_path, "exp")
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--dataset', type=str)
+    return parser.parse_args()
+
+if __name__ == "__main__":
+    args = parse_args()
+    dataset = args.dataset
+    cache_file = os.path.join(runner_path, "result_cache", dataset + ".json")
+    result = load_cache(cache_file)
+    draw_trend(result, val_time, dataset + "-time.png")

@@ -8,10 +8,10 @@ from pathlib import Path
 import argparse
 
 class Solver:
-    def __init__(self, method, name=None):
+    def __init__(self, method, name=None, merge_all=None):
         self.method = method
         if name is None:
-            self.name = ("Mole" if (self.method == "fold3") else method)
+            self.name = method
         else:
             self.name = name
 
@@ -21,83 +21,53 @@ runner_path = os.path.join(root_path, "exp")
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--dataset', type=str, default="string-blaze", choices=["circuit", "clia", "string", "string-blaze"])
+    parser.add_argument('-d', '--dataset', type=str, default="circuit", choices=["circuit", "clia", "string", "string-blaze"])
     parser.add_argument('-t', '--time_out', type=int, default=600)
     parser.add_argument('-m', '--memory_limit', type=int, default=4)
-    parser.add_argument('-s', '--solver', type=str, default="fold3", choices=(["forward", "backward"] + ["fold" + str(k) for k in range(2, 6)] + ["bfold" + str(k) for k in range(2, 6)]))
+    parser.add_argument('-s', '--solver', type=str, default="fold3")
     parser.add_argument('-e', '--exp', type=str, choices=["rq1", "rq2", "rq3", "all"])
     return parser.parse_args()
-
-def run_cegis_blaze(solver_list=None):
-    dataset = "string-blaze"
-    if solver_list is None:
-        solver_list = [Solver("fold3", "Mole-Blaze")]
-    benchmark_path = os.path.join(root_path, "benchmark", dataset)
-    benchmark_list = get_all_benchmark(benchmark_path)
-    runner = os.path.join(exe_path, "run_cegis")
-    cache_file = os.path.join(runner_path, "result_cache", dataset + ".json")
-    for solver in solver_list:
-        config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda _: [solver.method, 1], name=solver.name, repeat_num=1)
-        execute(config, benchmark_list, cache_file, thread_num=4)
-    result = load_cache(cache_file)
-    draw_trend(result, val_time, dataset + "-time.png")
 
 def run_cegis(solver_list=None, dataset=None):
     if solver_list is None:
         solver_list = [Solver("fold3", "Mole")]
     if dataset is None:
         dataset = args.dataset
+    size_cache_file = os.path.join(runner_path, "size_cache", dataset + ".json")
+    size_cache = load_cache(size_cache_file)
     benchmark_path = os.path.join(root_path, "benchmark", dataset)
-    benchmark_list = get_all_benchmark(benchmark_path)
-    runner = os.path.join(exe_path, "run_cegis")
+    raw_benchmark_list = get_all_benchmark(benchmark_path)
+    benchmark_list = []
+    for bench in raw_benchmark_list:
+        if size_cache['size_cache'][bench.split('/')[-1][:-3]][0]['status']:
+            benchmark_list.append(bench)
+    runner = os.path.join(exe_path, "solver")
     cache_file = os.path.join(runner_path, "result_cache", dataset + ".json")
     for solver in solver_list:
-        config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda _: [solver.method, 1], name=solver.name, repeat_num=1)
-        execute(config, benchmark_list, cache_file, thread_num=4)
+        if solver.method == "obe":
+            # run all tasks, prog_size ignored
+            config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda task_file: [solver.method, 1], name=solver.name, repeat_num=1)
+            execute(config, raw_benchmark_list, cache_file, thread_num=4)
+        else:
+            config = RunnerConfig(runner, time_limit, memory_limit, flags=lambda task_file: [solver.method, size_cache['size_cache'][task_file.split('/')[-1][:-3]][0]['prog_size']], name=solver.name, repeat_num=1)
+            execute(config, benchmark_list, cache_file, thread_num=4)
     result = load_cache(cache_file)
     draw_trend(result, val_time, dataset + "-time.png")
 
-def run_merge(example_num):
-    if solver_list is None:
-        solver_list = [Solver("fold3", "Mole")]
-
-    raw_benchmarks = get_all_benchmark(benchmark_path)
-    raw_size_map = load_cache(os.path.join(runner_path, "resource", "size.json"))
-    size_map, benchmarks = {}, []
-    for task in raw_benchmarks:
-        task_name = os.path.basename(task)
-        task_name = os.path.splitext(task_name)[0]
-        if task_name in raw_size_map:
-            benchmarks.append(task)
-            size_map[task] = raw_size_map[task_name]
-
-    runner = os.path.join(exe_path, "run_merge")
-    cache_file = os.path.join(runner_path, "result_cache", "merge.json")
-    for solver in solver_list:
-        flag = lambda task: [solver.method, size_map[task], example_num]
-        config = RunnerConfig(runner, time_limit, memory_limit, flags=flag, name=solver.name, repeat_num=1)
-        execute(config, benchmarks, cache_file, thread_num=4)
-    result = load_cache(cache_file)
-    draw_trend(result, val_time, "merge-time.png")
-
 def run_rq1():
-    solver_list = [Solver("fold3", "Mole"), Solver("backward", "RawVSA")]
+    solver_list = [Solver("fold3", "Mole-FTA"), Solver("backward", "RawVSA"), Solver("obe", "OE")]
     run_cegis(solver_list, "clia")
     run_cegis(solver_list, "circuit")
     run_cegis(solver_list, "string")
 
 def run_rq2():
-    solver_list = [Solver("fold3", "Mole-Blaze"), Solver("Blaze", "Blaze")]
-    run_cegis_blaze(solver_list)
+    solver_list = [Solver("fold3", "Mole-Blaze"), Solver("blaze", "Blaze")]
+    run_cegis(solver_list, "string-blaze")
 
 def run_rq3():
-    solver_list = [Solver("fold3", "Mole"), Solver("bfold3", "Mole-TopDown")]
-    run_cegis(solver_list, "clia")
+    solver_list = [Solver("fold3", "Mole-FTA"), Solver("bfold3", "Mole-TopDown"), Solver("forward", "Mole-Iter"), Solver("cfold3", "Mole-Cart"), Solver("foldall", "Mole-AllOnce"), Solver("ffld3", "Mole-AllGroup"), Solver("fold2", "Mole-2"), Solver("fold4", "Mole-4")]
     run_cegis(solver_list, "circuit")
-    run_cegis(solver_list, "string")
 
-# TODO: read start_size from an external file
-# TODO: add rq4
 if __name__ == "__main__":
     args = parse_args()
     time_limit = args.time_out
@@ -115,10 +85,6 @@ if __name__ == "__main__":
             src_path = os.path.join(root_path, "src")
             exe_path = os.path.join(src_path, "main")
             run_rq3()
-    elif args.dataset == "string-blaze":
-        src_path = os.path.join(root_path, "src-blaze")
-        exe_path = os.path.join(src_path, "main")
-        run_cegis_blaze([Solver(method=args.solver)])
     elif args.dataset is not None:
         src_path = os.path.join(root_path, "src")
         exe_path = os.path.join(src_path, "main")

@@ -37,19 +37,12 @@ def _deal_thread(thread_pool, pos, cache):
         if name not in cache: cache[name] = []
         if len(result) == 0:
             cache[name].append({"status": False})
-        elif result[0] == "No solution":
-            prog = result[0]
-            node_cnt = int(result[1])
-            edge_cnt = int(result[2])
-            example_cnt = int(result[3])
-            time_cost = float(result[-1])
-            cache[name].append({"status": True, "result": prog, "time": time_cost, "node_cnt": node_cnt, "edge_cnt": edge_cnt, "example_cnt": example_cnt})
         else:
             prog = result[0]
+            time_cost = float(result[1])
             node_cnt = int(result[2])
             edge_cnt = int(result[3])
             example_cnt = int(result[4])
-            time_cost = float(result[-1])
             cache[name].append({"status": True, "result": prog, "time": time_cost, "node_cnt": node_cnt, "edge_cnt": edge_cnt, "example_cnt": example_cnt})
         os.system("rm %s" % output_file)
         thread_pool[pos] = None

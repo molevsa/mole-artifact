@@ -1,0 +1,636 @@
+{
+    "size_cache": {
+        "phone-7_short": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "initials-long": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "name-combine-3": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "initials": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-5": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-3": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "dr-name-long": [
+            {
+                "status": true,
+                "prog_size": 16
+            }
+        ],
+        "name-combine-4_short": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "lastname-long": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "phone-4-long": [
+            {
+                "status": true,
+                "prog_size": 30
+            }
+        ],
+        "univ_3_short": [
+            {
+                "status": true,
+                "prog_size": 22
+            }
+        ],
+        "reverse-name-long": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "univ_2_short": [
+            {
+                "status": true,
+                "prog_size": 38
+            }
+        ],
+        "univ_2": [
+            {
+                "status": true,
+                "prog_size": 38
+            }
+        ],
+        "name-combine-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "univ_6_short": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2_short": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "lastname": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "phone-6_short": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "univ_2-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-8_short": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "dr-name": [
+            {
+                "status": true,
+                "prog_size": 16
+            }
+        ],
+        "dr-name_small": [
+            {
+                "status": true,
+                "prog_size": 16
+            }
+        ],
+        "name-combine": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-8-long": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "name-combine-2-long": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "firstname-long": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "univ_4_short": [
+            {
+                "status": false
+            }
+        ],
+        "name-combine-2": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "univ_4": [
+            {
+                "status": false
+            }
+        ],
+        "phone-1-long": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "phone-2-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "bikes-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "name-combine-4-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "phone-1-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "phone-1_short": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "phone-9-long": [
+            {
+                "status": true,
+                "prog_size": 58
+            }
+        ],
+        "dr-name-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 16
+            }
+        ],
+        "name-combine-2-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "lastname-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "lastname_small": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "firstname_small": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-5_short": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-8-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "reverse-name": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-5-long": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "name-combine-2_short": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "bikes-long": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-1": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "firstname-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-long": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "univ_6-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-7": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "reverse-name_short": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-7-long": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "phone_short": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "phone-3-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-6": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "univ_5": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 58
+            }
+        ],
+        "univ_2-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-3-long": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "name-combine_short": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-6-long": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "phone-4": [
+            {
+                "status": true,
+                "prog_size": 30
+            }
+        ],
+        "initials_small": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "name-combine-3-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "name-combine-4-long": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "univ_3-long": [
+            {
+                "status": false
+            }
+        ],
+        "phone-9_short": [
+            {
+                "status": true,
+                "prog_size": 58
+            }
+        ],
+        "phone-10_short": [
+            {
+                "status": true,
+                "prog_size": 45
+            }
+        ],
+        "univ_1-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "univ_5-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2-long": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "bikes": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-3_short": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-7-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "phone": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "phone-4-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 30
+            }
+        ],
+        "univ_1-long": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "phone-10": [
+            {
+                "status": true,
+                "prog_size": 45
+            }
+        ],
+        "phone-10-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 45
+            }
+        ],
+        "univ_1_short": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "phone-4_short": [
+            {
+                "status": true,
+                "prog_size": 30
+            }
+        ],
+        "phone-8": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "initials-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "univ_6": [
+            {
+                "status": false
+            }
+        ],
+        "univ_3": [
+            {
+                "status": true,
+                "prog_size": 22
+            }
+        ],
+        "name-combine-long": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "univ_3-long-repeat": [
+            {
+                "status": false
+            }
+        ],
+        "phone-2": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-10-long": [
+            {
+                "status": true,
+                "prog_size": 45
+            }
+        ],
+        "name-combine-4": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "phone-9": [
+            {
+                "status": true,
+                "prog_size": 58
+            }
+        ],
+        "reverse-name-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "univ_1": [
+            {
+                "status": true,
+                "prog_size": 29
+            }
+        ],
+        "bikes_small": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "name-combine-3-long": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "phone-6-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 13
+            }
+        ],
+        "name-combine-3_short": [
+            {
+                "status": true,
+                "prog_size": 26
+            }
+        ],
+        "firstname": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-5-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 10
+            }
+        ],
+        "phone-long-repeat": [
+            {
+                "status": true,
+                "prog_size": 7
+            }
+        ],
+        "univ_4-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_5_short": [
+            {
+                "status": false
+            }
+        ],
+        "univ_6-long": [
+            {
+                "status": false
+            }
+        ],
+        "univ_4-long-repeat": [
+            {
+                "status": false
+            }
+        ]
+    }
+}

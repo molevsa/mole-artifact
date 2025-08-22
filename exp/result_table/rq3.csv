@@ -1,0 +1,9 @@
+dataset,solver,num_solved,time_base,time_our,time_ratio_all,time_ratio_hard,node_base,node_our,node_ratio_all
+circuit,Mole-FTA,579,0.09,0.09,1.00,1.00,4074,4074,1.00
+circuit,Mole-TopDown,241,0.03,0.01,2.92,63.24,3120,624,5.00
+circuit,Mole-Iter,579,0.19,0.09,2.13,3.28,6991,4074,1.72
+circuit,Mole-Cart,228,0.16,0.03,4.79,40.07,9971,1642,6.07
+circuit,Mole-AllOnce,574,0.38,0.09,4.39,12.29,11039,3942,2.80
+circuit,Mole-AllGroup,579,0.47,0.09,5.17,8.60,13227,4074,3.25
+circuit,Mole-2,579,0.09,0.09,1.02,1.20,4074,4074,1.00
+circuit,Mole-4,579,0.09,0.09,1.02,0.98,4624,4074,1.13
