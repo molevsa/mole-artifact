@@ -10,3 +10,7 @@ bool config::KIsMultiThread;
 const int config::KIntRange = 5;
 TimeRecorder global::recorder;
 IOExampleList global::example_recorder;
+
+int global::edge_count = 0;
+int global::node_count = 0;
+int global::example_num = 0;

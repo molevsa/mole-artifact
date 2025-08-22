@@ -15,22 +15,21 @@ const int KThreadNum = 4;
 const double KSleepTime = 0.01;
 
 namespace {
-    struct MergeTask {
-        FTA *fta = nullptr;
-        int index;
-        IOExample example;
-        MergeTask(FTA *_fta, int _index, const IOExample &_example)
-            : fta(_fta), index(_index), example(_example) {}
-        MergeTask() = default;
-    };
+struct MergeTask {
+    FTA *fta = nullptr;
+    int index;
+    IOExample example;
+    MergeTask(FTA *_fta, int _index, const IOExample &_example)
+        : fta(_fta), index(_index), example(_example) {}
+    MergeTask() = default;
+};
 
-    FTAList _finalizeFTAs(const std::vector<FoldInfo> &fold_list) {
-        FTAList fta_list(fold_list.size());
-        for (int i = 0; i < fold_list.size(); ++i)
-            fta_list[i] = fold_list[i].fta;
-        return fta_list;
-    }
-} // namespace
+FTAList _finalizeFTAs(const std::vector<FoldInfo> &fold_list) {
+    FTAList fta_list(fold_list.size());
+    for (int i = 0; i < fold_list.size(); ++i) fta_list[i] = fold_list[i].fta;
+    return fta_list;
+}
+}  // namespace
 
 FTAList kfold::variants::adaptiveKFold(
     Specification *spec, int fold_num, MultiMergeScheduler *scheduler, int size,
@@ -39,8 +38,7 @@ FTAList kfold::variants::adaptiveKFold(
     auto *grammar = spec->info_list[0]->grammar;
     auto *env = spec->env.get();
     auto init = grammar2FTA(grammar, size, true);
-    if (util::isEmpty(init.get()))
-        return {};
+    if (util::isEmpty(init.get())) return {};
 
     auto ref_size = size::getFTASize(init.get());
     std::vector<FoldInfo> fold_list(fold_num);
@@ -53,8 +51,7 @@ FTAList kfold::variants::adaptiveKFold(
     while (!scheduler->isTerminate(fold_list)) {
         int index = 0;
         for (int i = 0; i < fold_list.size(); ++i) {
-            if (fold_list[i].size < fold_list[index].size)
-                index = i;
+            if (fold_list[i].size < fold_list[index].size) index = i;
         }
 
         auto &info = fold_list[index];
@@ -71,8 +68,7 @@ FTAList kfold::variants::adaptiveKFold(
         scheduler->startStage(fta::SINGLE_MERGE);
         auto status = info.addExample(env, counter_example, fta_value_sets);
         scheduler->endStage(fta::SINGLE_MERGE);
-        if (!status)
-            return {};
+        if (!status) return {};
         LOG(INFO) << "fold " << index << ": " << info.fta->getSizeInfo();
     }
     return _finalizeFTAs(fold_list);
@@ -95,8 +91,7 @@ FTAList kfold::variants::adaptiveKFoldMulti(
     std::vector<FoldInfo> fold_list(fold_num);
     for (int i = 0; i < fold_num; ++i) {
         auto fta = grammar2FTA(grammar, size, true);
-        if (util::isEmpty(fta.get()))
-            return {};
+        if (util::isEmpty(fta.get())) return {};
         auto ref_size = fta::size::getFTASize(fta.get());
         fold_list[i] = FoldInfo(fta, ref_size, spec->env.get());
     }
@@ -179,16 +174,14 @@ FTAList kfold::variants::adaptiveKFoldMulti(
     std::vector<std::thread> thread_list;
     for (int i = 0; i < KThreadNum; ++i)
         thread_list.emplace_back(thread_func, i);
-    for (auto &thread : thread_list)
-        thread.join();
+    for (auto &thread : thread_list) thread.join();
 
 #ifdef DEBUG
     for (auto &example : used_examples)
         global::example_recorder.push_back(example);
 #endif
 
-    if (is_no_solution)
-        return {};
+    if (is_no_solution) return {};
     return _finalizeFTAs(fold_list);
 }
 
@@ -214,17 +207,14 @@ FTAList kfold::variants::prepareSharedUnits(
     fta_value_sets->initializeValueSet(examples[0]);
     auto shared = buildFTA(grammar, spec->env.get(), examples[0], size, true,
                            fta_value_sets);
-    if (util::isEmpty(shared.get()))
-        return {};
+    if (util::isEmpty(shared.get())) return {};
     for (int i = 0; i < shared_num; ++i) {
         fta_value_sets->initializeValueSet(examples[i]);
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size,
                                 true, fta_value_sets);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         shared = mergeFTA(shared.get(), current.get(), FORWARD, true);
-        if (util::isEmpty(shared.get()))
-            return {};
+        if (util::isEmpty(shared.get())) return {};
     }
 
     FTAList unit_list;
@@ -232,11 +222,9 @@ FTAList kfold::variants::prepareSharedUnits(
         fta_value_sets->initializeValueSet(examples[i]);
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size,
                                 true, fta_value_sets);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         auto unit = mergeFTA(shared.get(), current.get(), FORWARD, true);
-        if (util::isEmpty(unit.get()))
-            return {};
+        if (util::isEmpty(unit.get())) return {};
         unit_list.push_back(unit);
     }
     return unit_list;
@@ -253,17 +241,14 @@ FTAList kfold::variants::prepareSharedUnitsMulti(
     fta_value_sets->initializeValueSet(examples[0]);
     auto shared = buildFTA(grammar, spec->env.get(), examples[0], size, true,
                            fta_value_sets);
-    if (util::isEmpty(shared.get()))
-        return {};
+    if (util::isEmpty(shared.get())) return {};
     for (int i = 0; i < shared_num; ++i) {
         fta_value_sets->initializeValueSet(examples[i]);
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size,
                                 true, fta_value_sets);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         shared = mergeFTA(shared.get(), current.get(), FORWARD, true);
-        if (util::isEmpty(shared.get()))
-            return {};
+        if (util::isEmpty(shared.get())) return {};
     }
 
     FTAList base_list;
@@ -271,8 +256,7 @@ FTAList kfold::variants::prepareSharedUnitsMulti(
         fta_value_sets->initializeValueSet(examples[i]);
         auto current = buildFTA(grammar, spec->env.get(), examples[i], size,
                                 true, fta_value_sets);
-        if (util::isEmpty(current.get()))
-            return {};
+        if (util::isEmpty(current.get())) return {};
         base_list.push_back(current);
     }
     FTAList unit_list(base_list.size(), nullptr);
@@ -293,8 +277,7 @@ FTAList kfold::variants::prepareSharedUnitsMulti(
                 }
             }
             lock.unlock();
-            if (index == -1)
-                return;
+            if (index == -1) return;
             auto current = fta::mergeFTA(local_shared.get(),
                                          base_list[index].get(), FORWARD, true);
             if (util::isEmpty(current.get())) {
@@ -310,17 +293,14 @@ FTAList kfold::variants::prepareSharedUnitsMulti(
     for (int i = 0; i < KThreadNum; ++i) {
         thread_list.emplace_back(thread);
     }
-    for (int i = 0; i < KThreadNum; ++i)
-        thread_list[i].join();
-    if (is_empty)
-        return {};
+    for (int i = 0; i < KThreadNum; ++i) thread_list[i].join();
+    if (is_empty) return {};
     return unit_list;
 }
 
-FTAList
-fta::kfold::prepareUnits(Specification *spec, const IOExampleList &examples,
-                         int shared_num, int size,
-                         std::shared_ptr<value::FTAValueSets> fta_value_sets) {
+FTAList fta::kfold::prepareUnits(
+    Specification *spec, const IOExampleList &examples, int shared_num,
+    int size, std::shared_ptr<value::FTAValueSets> fta_value_sets) {
     if (config::KIsMultiThread) {
         return variants::prepareSharedUnitsMulti(spec, examples, shared_num,
                                                  size, fta_value_sets);

@@ -13,84 +13,89 @@
 using namespace fta;
 
 namespace {
-    IOExampleList used_examples;
-    void _addExampleUsed(IOExample example) {
-        for (auto used_example : used_examples) {
-            if (example == used_example)
-                return;
-        }
-        used_examples.push_back(example);
+IOExampleList used_examples;
+void _addExampleUsed(IOExample example) {
+    for (auto used_example : used_examples) {
+        if (example == used_example) return;
     }
-    int _countExampleUsed() { return used_examples.size(); }
-} // namespace
+    used_examples.push_back(example);
+}
+int _countExampleUsed() { return used_examples.size(); }
+}  // namespace
 
 namespace {
-    PProgram _rawCEGIS(Specification *spec, PFTA fta, MergeType type, int size,
-                       std::shared_ptr<value::FTAValueSets> fta_value_sets,
-                       bool merge_all) {
-        IOExampleList counter_examples;
+PProgram _rawCEGIS(Specification *spec, PFTA fta, MergeType type, int size,
+                   std::shared_ptr<value::FTAValueSets> fta_value_sets,
+                   bool merge_all) {
+    IOExampleList counter_examples;
+    IOExampleList used_examples;
+    IOExample counter_example;
+    auto *env = spec->env.get();
+    auto *grammar = spec->info_list[0]->grammar;
+    if (fta.get()) counter_examples = fta->examples;
+
+    if (merge_all) {
         IOExampleList used_examples;
-        IOExample counter_example;
-        auto *env = spec->env.get();
-        auto *grammar = spec->info_list[0]->grammar;
-        if (fta.get())
-            counter_examples = fta->examples;
-
-        if (merge_all) {
-            IOExampleList used_examples;
-            while (!fta::util::isEmpty(fta.get())) {
-                auto program = fta::util::extractMinimalProgram(fta.get());
-                if (verify::verifyAfterExcludingExamples(
-                        program, spec, counter_example, used_examples)) {
-                    break;
-                }
-                fta_value_sets->initializeValueSet(counter_example);
-                used_examples.push_back(counter_example);
-                auto new_fta = fta::buildFTA(grammar, env, counter_example,
-                                             size, true, fta_value_sets);
-                fta = fta::mergeFTA(fta.get(), new_fta.get(), type);
-            }
-        }
-
         while (!fta::util::isEmpty(fta.get())) {
             auto program = fta::util::extractMinimalProgram(fta.get());
-            // LOG(INFO) << "prog: " << program->toString();
-#ifdef DEBUG
-            for (auto &example : counter_examples) {
-                assert(example::satisfyIOExample(program.get(), example, env));
+            if (verify::verifyAfterExcludingExamples(
+                    program, spec, counter_example, used_examples)) {
+                break;
             }
-#endif
-            if (verify::verifyAfterExcludingExamples(program, spec,
-                                                     counter_example, {})) {
-                return program;
-            }
-            if (std::count(counter_examples.begin(), counter_examples.end(),
-                           counter_example)) {
-                // refine
-                fta::refineAbstractValue(fta.get(), env, counter_example,
-                                         fta_value_sets);
-                auto new_fta = fta::rebuildFTA(fta.get(), env, counter_example,
-                                               size, true, fta_value_sets);
-                fta = new_fta;
-            } else {
-                util::addExampleUsed(counter_example);
-                // add new fta
-                fta_value_sets->initializeValueSet(counter_example);
-                counter_examples.push_back(counter_example);
-                auto new_fta = fta::rebuildFTA(fta.get(), env, counter_example,
-                                               size, true, fta_value_sets);
-                fta = new_fta;
-            }
-#ifdef DEBUG
-            global::example_recorder.push_back(counter_example);
-#endif
-            LOG(INFO) << "mid size " << fta->getSizeInfo() << " "
-                      << size::getFTASize(fta.get());
-            util::getTotalSize(fta.get());
+            fta_value_sets->initializeValueSet(counter_example);
+            used_examples.push_back(counter_example);
+            auto new_fta = fta::buildFTA(grammar, env, counter_example, size,
+                                         true, fta_value_sets);
+            global::node_count += new_fta->nodeCount();
+            global::edge_count += new_fta->edgeCount();
+            fta = fta::mergeFTA(fta.get(), new_fta.get(), type);
+            global::node_count += fta->nodeCount();
+            global::edge_count += fta->edgeCount();
         }
-        return nullptr;
     }
-} // namespace
+
+    while (!fta::util::isEmpty(fta.get())) {
+        auto program = fta::util::extractMinimalProgram(fta.get());
+        // LOG(INFO) << "prog: " << program->toString();
+#ifdef DEBUG
+        for (auto &example : counter_examples) {
+            assert(example::satisfyIOExample(program.get(), example, env));
+        }
+#endif
+        if (verify::verifyAfterExcludingExamples(program, spec, counter_example,
+                                                 {})) {
+            return program;
+        }
+        if (std::count(counter_examples.begin(), counter_examples.end(),
+                       counter_example)) {
+            // refine
+            fta::refineAbstractValue(fta.get(), env, counter_example,
+                                     fta_value_sets);
+            auto new_fta = fta::rebuildFTA(fta.get(), env, counter_example,
+                                           size, true, fta_value_sets);
+            fta = new_fta;
+            global::node_count += fta->nodeCount();
+            global::edge_count += fta->edgeCount();
+        } else {
+            util::addExampleUsed(counter_example);
+            // add new fta
+            fta_value_sets->initializeValueSet(counter_example);
+            counter_examples.push_back(counter_example);
+            auto new_fta = fta::rebuildFTA(fta.get(), env, counter_example,
+                                           size, true, fta_value_sets);
+            fta = new_fta;
+            global::node_count += fta->nodeCount();
+            global::edge_count += fta->edgeCount();
+        }
+#ifdef DEBUG
+        global::example_recorder.push_back(counter_example);
+#endif
+        LOG(INFO) << "mid size " << fta->getSizeInfo() << " "
+                  << size::getFTASize(fta.get());
+    }
+    return nullptr;
+}
+}  // namespace
 
 PProgram fta::synthesis::rawCEGIS(Specification *spec, MergeType type,
                                   bool merge_all, int start_size) {
@@ -98,16 +103,14 @@ PProgram fta::synthesis::rawCEGIS(Specification *spec, MergeType type,
     auto *env = spec->env.get();
     auto fta_value_sets = std::make_shared<value::FTAValueSets>();
 
-    auto size_limit = grammar::getMaxSize(grammar);
+    auto size_limit = start_size;
 
     for (int size = start_size; size; ++size) {
         LOG(INFO) << "size " << size;
-        if (size_limit != -1 && size > size_limit)
-            return nullptr;
+        if (size_limit != -1 && size > size_limit) return nullptr;
         auto fta = fta::grammar2FTA(grammar, size, true);
         auto res = _rawCEGIS(spec, fta, type, size, fta_value_sets, merge_all);
-        if (res)
-            return res;
+        if (res) return res;
     }
     assert(0);
 }
@@ -115,124 +118,126 @@ PProgram fta::synthesis::rawCEGIS(Specification *spec, MergeType type,
 using fta::size::FTASize;
 
 namespace {
-    void _addEmptyLeft(const FTAList &fta_list) {
-        auto empty = std::make_shared<EmptyOutputInfo>();
-        for (auto &fta : fta_list) {
-            for (auto &[_, holder] : fta->node_map) {
-                for (auto &list : holder) {
-                    for (auto *node : list) {
-                        node->oup_info = std::make_shared<BinaryOutputInfo>(
-                            empty, node->oup_info);
-                    }
+void _addEmptyLeft(const FTAList &fta_list) {
+    auto empty = std::make_shared<EmptyOutputInfo>();
+    for (auto &fta : fta_list) {
+        for (auto &[_, holder] : fta->node_map) {
+            for (auto &list : holder) {
+                for (auto *node : list) {
+                    node->oup_info = std::make_shared<BinaryOutputInfo>(
+                        empty, node->oup_info);
                 }
             }
         }
     }
-} // namespace
+}
+}  // namespace
 
 namespace {
-    void _printCompressInfo(FTA *fta, const FTAList &base_list) {
-        auto ref = grammar2FTA(fta->grammar, fta->size_limit, true);
-        auto ref_size = size::getFTASize(ref.get());
-        auto expected_size = ref_size;
-        for (auto &base : base_list) {
-            auto size = size::getFTASize(base.get());
-            expected_size *= size / ref_size;
-        }
-        auto final_size = size::getFTASize(fta);
-        LOG(INFO) << "Final size: " << final_size << ", expected "
-                  << expected_size;
+void _printCompressInfo(FTA *fta, const FTAList &base_list) {
+    auto ref = grammar2FTA(fta->grammar, fta->size_limit, true);
+    auto ref_size = size::getFTASize(ref.get());
+    auto expected_size = ref_size;
+    for (auto &base : base_list) {
+        auto size = size::getFTASize(base.get());
+        expected_size *= size / ref_size;
     }
+    auto final_size = size::getFTASize(fta);
+    LOG(INFO) << "Final size: " << final_size << ", expected " << expected_size;
+}
 
-    PProgram _kFoldCEGIS(Specification *spec, int fold_num,
-                         MultiMergeScheduler *scheduler, int size,
-                         std::shared_ptr<value::FTAValueSets> fta_value_sets,
-                         bool merge_all) {
-        auto *grammar = spec->info_list[0]->grammar;
-        auto base = grammar2FTA(grammar, size, true);
-        scheduler->start(base.get());
+PProgram _kFoldCEGIS(Specification *spec, int fold_num,
+                     MultiMergeScheduler *scheduler, int size,
+                     std::shared_ptr<value::FTAValueSets> fta_value_sets,
+                     bool merge_all) {
+    auto *grammar = spec->info_list[0]->grammar;
+    auto base = grammar2FTA(grammar, size, true);
+    scheduler->start(base.get());
 
-        global::recorder.start("pre");
-        scheduler->startStage(fta::PRE);
-        auto base_list =
-            kfold::kFold(spec, fold_num, scheduler, size, fta_value_sets);
-        scheduler->endStage(fta::PRE);
-        global::recorder.end("pre");
-        if (base_list.empty())
-            return nullptr;
+    global::recorder.start("pre");
+    scheduler->startStage(fta::PRE);
+    auto base_list =
+        kfold::kFold(spec, fold_num, scheduler, size, fta_value_sets);
+    scheduler->endStage(fta::PRE);
+    global::recorder.end("pre");
+    if (base_list.empty()) return nullptr;
 
-        _addEmptyLeft(base_list);
-        scheduler->startStage(fta::MAIN);
-        global::recorder.start("multi");
-        auto fta = fta::merge::mergeFTAForwardMulti(base_list, false);
-        LOG(INFO) << "Raw " << fta->getSizeInfo();
-        LOG(INFO) << "  "
-                  << size::sizeInfo2String(size::getNodeCountVector(fta.get()));
-        fta->cutBackward();
-        global::recorder.end("multi");
-        LOG(INFO) << "Fin " << fta->getSizeInfo();
-        LOG(INFO) << "  "
-                  << size::sizeInfo2String(size::getNodeCountVector(fta.get()));
-        // _printCompressInfo(fta.get(), base_list);
+    _addEmptyLeft(base_list);
+    scheduler->startStage(fta::MAIN);
+    global::recorder.start("multi");
+    auto fta = fta::merge::mergeFTAForwardMulti(base_list, false);
+    LOG(INFO) << "Raw " << fta->getSizeInfo();
+    LOG(INFO) << "  "
+              << size::sizeInfo2String(size::getNodeCountVector(fta.get()));
+    global::node_count += fta->nodeCount();
+    global::edge_count += fta->edgeCount();
+    fta->cutBackward();
+    global::recorder.end("multi");
+    LOG(INFO) << "Fin " << fta->getSizeInfo();
+    LOG(INFO) << "  "
+              << size::sizeInfo2String(size::getNodeCountVector(fta.get()));
+    // _printCompressInfo(fta.get(), base_list);
 
-        global::recorder.start("after");
-        auto res =
-            _rawCEGIS(spec, fta, fta::FORWARD, size, fta_value_sets, merge_all);
-        global::recorder.end("after");
-        scheduler->endStage(fta::MAIN);
-        return res;
-    }
-} // namespace
+    global::recorder.start("after");
+    auto res =
+        _rawCEGIS(spec, fta, fta::FORWARD, size, fta_value_sets, merge_all);
+    global::recorder.end("after");
+    scheduler->endStage(fta::MAIN);
+    return res;
+}
+}  // namespace
 
 PProgram fta::synthesis::kFoldCEGIS(Specification *spec, int fold_num,
                                     MultiMergeScheduler *scheduler,
                                     bool merge_all, int start_size) {
     auto *grammar = spec->info_list[0]->grammar;
-    int max_size = grammar::getMaxSize(grammar);
+    int max_size = start_size;
     auto fta_value_sets = std::make_shared<value::FTAValueSets>();
 
     for (int size = start_size;; ++size) {
         LOG(INFO) << "Size " << size;
-        if (max_size != -1 && size > max_size)
-            return nullptr;
+        if (max_size != -1 && size > max_size) return nullptr;
         auto program = _kFoldCEGIS(spec, fold_num, scheduler, size,
                                    fta_value_sets, merge_all);
-        if (program)
-            return program;
+        if (program) return program;
     }
     assert(0);
 }
 
 namespace {
-    IOExampleList _collectUsedExamples(FTA *fta) {
-        assert(!fta->root_list.empty());
-        auto root = fta->root_list[0];
-        auto oup_list = root->oup_info->getFullOutput();
-        assert(oup_list.size() == fta->info_list.size());
-        IOExampleList examples;
-        for (int i = 0; i < oup_list.size(); ++i) {
-            examples.emplace_back(fta->info_list[i]->param_value, oup_list[i]);
-        }
-        return examples;
+IOExampleList _collectUsedExamples(FTA *fta) {
+    assert(!fta->root_list.empty());
+    auto root = fta->root_list[0];
+    auto oup_list = root->oup_info->getFullOutput();
+    assert(oup_list.size() == fta->info_list.size());
+    IOExampleList examples;
+    for (int i = 0; i < oup_list.size(); ++i) {
+        examples.emplace_back(fta->info_list[i]->param_value, oup_list[i]);
     }
+    return examples;
+}
 
-    PFTA _rawMerge(PFTA fta, const IOExampleList &example_list, Env *env,
-                   MergeType type) {
-        auto *grammar = fta->grammar;
-        auto fta_value_sets = std::make_shared<value::FTAValueSets>();
-        int size = fta->size_limit;
-        for (auto &example : example_list) {
-            fta_value_sets->initializeValueSet(example);
-            auto start =
-                buildFTA(grammar, env, example, size, true, fta_value_sets);
-            assert(!util::isEmpty(fta.get()) && !util::isEmpty(start.get()));
-            fta = mergeFTA(fta.get(), start.get(), type, false);
-            LOG(INFO) << "current " << fta->getSizeInfo();
-            fta->cutBackward();
-        }
-        return fta;
+PFTA _rawMerge(PFTA fta, const IOExampleList &example_list, Env *env,
+               MergeType type) {
+    auto *grammar = fta->grammar;
+    auto fta_value_sets = std::make_shared<value::FTAValueSets>();
+    int size = fta->size_limit;
+    for (auto &example : example_list) {
+        fta_value_sets->initializeValueSet(example);
+        auto start =
+            buildFTA(grammar, env, example, size, true, fta_value_sets);
+        global::node_count += start->nodeCount();
+        global::edge_count += start->edgeCount();
+        assert(!util::isEmpty(fta.get()) && !util::isEmpty(start.get()));
+        fta = mergeFTA(fta.get(), start.get(), type, false);
+        global::node_count += fta->nodeCount();
+        global::edge_count += fta->edgeCount();
+        LOG(INFO) << "current " << fta->getSizeInfo();
+        fta->cutBackward();
     }
-} // namespace
+    return fta;
+}
+}  // namespace
 
 PFTA fta::synthesis::rawMerge(Specification *spec,
                               const IOExampleList &example_list, MergeType type,
@@ -258,8 +263,7 @@ PFTA fta::synthesis::kFoldMerge(Specification *spec,
     scheduler->start(init.get());
     auto fta_list =
         kfold::kFold(new_spec.get(), fold_num, scheduler, size, fta_value_sets);
-    if (fta_list.empty())
-        return {};
+    if (fta_list.empty()) return {};
     for (auto &fold : fta_list) {
         LOG(INFO) << "Fold: " << fold->info_list.size() << " examples with "
                   << fold->getSizeInfo();
@@ -274,6 +278,10 @@ PFTA fta::synthesis::kFoldMerge(Specification *spec,
     LOG(INFO) << "Fin " << full->getSizeInfo();
     LOG(INFO) << "  "
               << size::sizeInfo2String(size::getNodeCountVector(full.get()));
+
+    global::node_count += full->nodeCount();
+    global::edge_count += full->edgeCount();
+    full->fullyCut();
 
     std::unordered_set<std::string> used_examples;
     for (auto &fta : fta_list) {
@@ -322,55 +330,53 @@ PFTA fta::synthesis::bidMerge(Specification *spec,
 }
 
 namespace {
-    IOExampleList _getRandomExample(ExampleSpace *example_space, Env *env,
-                                    int example_num) {
-        auto *fio = dynamic_cast<FiniteIOExampleSpace *>(example_space);
-        if (fio) {
-            IOExampleList example_list;
-            for (auto &example : fio->example_space) {
-                example_list.push_back(fio->getIOExample(example));
-            }
-            std::shuffle(example_list.begin(), example_list.end(),
-                         env->random_engine);
-            if (example_list.size() > example_num)
-                example_list.resize(example_num);
-            return example_list;
+IOExampleList _getRandomExample(ExampleSpace *example_space, Env *env,
+                                int example_num) {
+    auto *fio = dynamic_cast<FiniteIOExampleSpace *>(example_space);
+    if (fio) {
+        IOExampleList example_list;
+        for (auto &example : fio->example_space) {
+            example_list.push_back(fio->getIOExample(example));
         }
-        auto *zio = dynamic_cast<Z3IOExampleSpace *>(example_space);
-        if (zio) {
-            IOExampleList example_list;
-            std::unordered_set<std::string> known_examples;
-            auto gen = [&](Type *type) {
-                if (dynamic_cast<TInt *>(type)) {
-                    std::uniform_int_distribution<int> dist(-config::KIntRange,
-                                                            config::KIntRange);
-                    return BuildData(Int, dist(env->random_engine));
-                }
-                if (dynamic_cast<TBool *>(type)) {
-                    std::bernoulli_distribution dist(0.5);
-                    return BuildData(Bool, dist(env->random_engine));
-                }
-                LOG(FATAL) << "Unknown type " << type->getName();
-            };
-            for (int _ = 0;
-                 _ < (example_num << 2) && example_list.size() < example_num;
-                 ++_) {
-                Example example;
-                for (auto &type : zio->type_list) {
-                    example.push_back(gen(type.get()));
-                }
-                auto io_example = zio->getIOExample(example);
-                auto feature = example::ioExample2String(io_example);
-                if (known_examples.find(feature) == known_examples.end()) {
-                    known_examples.insert(feature);
-                    example_list.push_back(io_example);
-                }
-            }
-            return example_list;
-        }
-        LOG(FATAL) << "Unknown example space";
+        std::shuffle(example_list.begin(), example_list.end(),
+                     env->random_engine);
+        if (example_list.size() > example_num) example_list.resize(example_num);
+        return example_list;
     }
-} // namespace
+    auto *zio = dynamic_cast<Z3IOExampleSpace *>(example_space);
+    if (zio) {
+        IOExampleList example_list;
+        std::unordered_set<std::string> known_examples;
+        auto gen = [&](Type *type) {
+            if (dynamic_cast<TInt *>(type)) {
+                std::uniform_int_distribution<int> dist(-config::KIntRange,
+                                                        config::KIntRange);
+                return BuildData(Int, dist(env->random_engine));
+            }
+            if (dynamic_cast<TBool *>(type)) {
+                std::bernoulli_distribution dist(0.5);
+                return BuildData(Bool, dist(env->random_engine));
+            }
+            LOG(FATAL) << "Unknown type " << type->getName();
+        };
+        for (int _ = 0;
+             _ < (example_num << 2) && example_list.size() < example_num; ++_) {
+            Example example;
+            for (auto &type : zio->type_list) {
+                example.push_back(gen(type.get()));
+            }
+            auto io_example = zio->getIOExample(example);
+            auto feature = example::ioExample2String(io_example);
+            if (known_examples.find(feature) == known_examples.end()) {
+                known_examples.insert(feature);
+                example_list.push_back(io_example);
+            }
+        }
+        return example_list;
+    }
+    LOG(FATAL) << "Unknown example space";
+}
+}  // namespace
 
 PProgram fta::synthesis::bidCEGIS(Specification *spec, BidConfig config,
                                   bool merge_all) {
@@ -381,27 +387,23 @@ PProgram fta::synthesis::bidCEGIS(Specification *spec, BidConfig config,
     int size_limit = grammar::getMaxSize(grammar);
     for (int size = 1;; ++size) {
         LOG(INFO) << "Size " << size;
-        if (size_limit != -1 && size > size_limit)
-            return nullptr;
+        if (size_limit != -1 && size > size_limit) return nullptr;
         auto unit_list = fta::kfold::prepareUnits(
             spec, init_examples, config.shared_num, size, fta_value_sets);
         for (int i = 0; i < unit_list.size(); ++i) {
             LOG(INFO) << "Unit #" << i << ": " << unit_list[i]->getSizeInfo();
         }
-        if (unit_list.empty())
-            continue;
+        if (unit_list.empty()) continue;
 
         auto fta = fta::merge::mergeFTAStagedBidirectional(unit_list, false,
                                                            config.alpha);
         LOG(INFO) << "Raw merge " << fta->getSizeInfo();
         fta->fullyCut();
         LOG(INFO) << "Fin merge " << fta->getSizeInfo();
-        if (fta::util::isEmpty(fta.get()))
-            continue;
+        if (fta::util::isEmpty(fta.get())) continue;
         auto res =
             _rawCEGIS(spec, fta, FORWARD, size, fta_value_sets, merge_all);
-        if (res)
-            return res;
+        if (res) return res;
     }
 }
 

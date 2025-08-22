@@ -48,26 +48,24 @@ int util::assignFTAIndex(FTA *fta) {
 #include "glog/logging.h"
 
 namespace {
-    void _printNode(FTANode *node) {
-        auto oup_list = node->oup_info->getFullOutput();
-        LOG(INFO) << "Node#" << node->getInfo() << " " << node->symbol->name
-                  << "@" << node->size << " "
-                  << data::dataList2String(oup_list);
-        for (auto *edge : node->edge_list) {
-            auto edge_string = edge->semantics->getName();
-            for (auto *child : edge->node_list)
-                edge_string += " (" + std::to_string(child->getInfo()) + ")";
-            LOG(INFO) << "  " << edge_string;
-        }
+void _printNode(FTANode *node) {
+    auto oup_list = node->oup_info->getFullOutput();
+    LOG(INFO) << "Node#" << node->getInfo() << " " << node->symbol->name << "@"
+              << node->size << " " << data::dataList2String(oup_list);
+    for (auto *edge : node->edge_list) {
+        auto edge_string = edge->semantics->getName();
+        for (auto *child : edge->node_list)
+            edge_string += " (" + std::to_string(child->getInfo()) + ")";
+        LOG(INFO) << "  " << edge_string;
     }
-} // namespace
+}
+}  // namespace
 
 void util::showFTA(FTA *fta) {
     int total_nodes = assignFTAIndex(fta);
     std::string info = "Roots [";
     for (int i = 0; i < fta->root_list.size(); ++i) {
-        if (i)
-            info += ", ";
+        if (i) info += ", ";
         info += std::to_string(fta->root_list[i]->getInfo());
     }
     LOG(INFO) << info << "] with " << total_nodes << " nodes" << std::endl;
@@ -120,26 +118,26 @@ using fta::size::FTASize;
 using fta::size::FTASizeInfo;
 
 namespace {
-    FTASizeInfo prepareNodeSize(FTA *fta) {
-        int n = util::assignFTAIndex(fta);
-        FTASizeInfo counter(n, 0.0);
-        for (int size = 1; size <= fta->size_limit; ++size) {
-            for (auto &[_, storage] : fta->node_map) {
-                for (auto *node : storage[size]) {
-                    auto &node_size = counter[node->getInfo()];
-                    for (auto *edge : node->edge_list) {
-                        auto edge_size = 1.0;
-                        for (auto *child : edge->node_list) {
-                            edge_size *= counter[child->getInfo()];
-                        }
-                        node_size += edge_size;
+FTASizeInfo prepareNodeSize(FTA *fta) {
+    int n = util::assignFTAIndex(fta);
+    FTASizeInfo counter(n, 0.0);
+    for (int size = 1; size <= fta->size_limit; ++size) {
+        for (auto &[_, storage] : fta->node_map) {
+            for (auto *node : storage[size]) {
+                auto &node_size = counter[node->getInfo()];
+                for (auto *edge : node->edge_list) {
+                    auto edge_size = 1.0;
+                    for (auto *child : edge->node_list) {
+                        edge_size *= counter[child->getInfo()];
                     }
+                    node_size += edge_size;
                 }
             }
         }
-        return counter;
     }
-} // namespace
+    return counter;
+}
+}  // namespace
 
 FTASize size::getFTASize(FTA *fta) {
     auto counter = prepareNodeSize(fta);
@@ -186,8 +184,7 @@ FTASizeInfo size::getCompressVector(FTA *fta, FTA *base) {
 std::string size::sizeInfo2String(const FTASizeInfo &info) {
     std::string res = "[";
     for (int i = 0; i < info.size(); ++i) {
-        if (i)
-            res += ", ";
+        if (i) res += ", ";
         if (fabs(info[i] - int(info[i])) < 1e-8 && info[i] >= 0 &&
             info[i] < 1e9) {
             res += std::to_string(int(info[i]));
@@ -247,24 +244,14 @@ PFTA util::cloneFTA(FTA *fta) {
         FTANodeStorage new_storage;
         for (auto &list : storage) {
             FTANodeList new_list;
-            for (auto *node : list)
-                new_list.push_back(get_new_node(node));
+            for (auto *node : list) new_list.push_back(get_new_node(node));
             new_storage.push_back(new_list);
         }
         holder[name] = new_storage;
     }
 
     FTANodeList root_list;
-    for (auto *root : fta->root_list)
-        root_list.push_back(get_new_node(root));
+    for (auto *root : fta->root_list) root_list.push_back(get_new_node(root));
     return std::make_shared<FTA>(fta->grammar, fta->size_limit, holder,
                                  root_list, fta->info_list, fta->examples);
-}
-std::pair<long long, long long> fta::util::getTotalSize(FTA *x) {
-    static long long total_node = 0, total_edge = 0;
-    if (x) {
-        total_node += x->nodeCount();
-        total_edge += x->edgeCount();
-    }
-    return std::pair<int, int>(total_node, total_edge);
 }

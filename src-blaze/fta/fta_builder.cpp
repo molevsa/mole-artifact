@@ -39,16 +39,14 @@ MultiOutputInfo::MultiOutputInfo(FixedVector<PInfo> &&_info_list)
 DataList MultiOutputInfo::getFullOutput() const {
     DataList result;
     for (int i = 0; i < info_list.size(); ++i) {
-        for (auto &v : info_list[i]->getFullOutput())
-            result.push_back(v);
+        for (auto &v : info_list[i]->getFullOutput()) result.push_back(v);
     }
     return result;
 }
 
 std::string FTAEdge::toString() const {
     std::string res = semantics->getName();
-    for (auto *child : node_list)
-        res += " " + child->toString();
+    for (auto *child : node_list) res += " " + child->toString();
     return res;
 }
 
@@ -75,8 +73,7 @@ FTA::~FTA() {
     root_list.clear();
     for (auto &[_, storage] : node_map) {
         for (auto &list : storage) {
-            for (auto *node : list)
-                delete node;
+            for (auto *node : list) delete node;
         }
     }
 }
@@ -84,8 +81,7 @@ FTA::~FTA() {
 int FTA::nodeCount() const {
     int res = 0;
     for (auto &[_, storage] : node_map) {
-        for (auto &list : storage)
-            res += list.size();
+        for (auto &list : storage) res += list.size();
     }
     return res;
 }
@@ -94,8 +90,7 @@ int FTA::edgeCount() const {
     int res = 0;
     for (auto &[_, storage] : node_map) {
         for (auto &list : storage) {
-            for (auto *node : list)
-                res += node->edge_list.size();
+            for (auto *node : list) res += node->edge_list.size();
         }
     }
     return res;
@@ -107,8 +102,7 @@ FTANode::FTANode(NonTerminal *_symbol, const PInfo &_info, int _size)
 }
 
 fta::FTANode::~FTANode() {
-    for (auto *edge : edge_list)
-        delete edge;
+    for (auto *edge : edge_list) delete edge;
 }
 
 void FTANode::setInfo(int info) { extra_info = info; }
@@ -121,85 +115,80 @@ std::string FTANode::toString() const {
 }
 
 namespace {
-    void _getAllSizeScheme(int pos, int rem,
-                           const std::vector<std::vector<int>> &pool,
-                           std::vector<int> &tmp,
-                           std::vector<std::vector<int>> &res) {
-        if (pos == pool.size()) {
-            if (rem == 0)
-                res.push_back(tmp);
-            return;
-        }
-        for (auto size : pool[pos]) {
-            if (size > rem)
-                continue;
-            tmp.push_back(size);
-            _getAllSizeScheme(pos + 1, rem - size, pool, tmp, res);
-            tmp.pop_back();
-        }
+void _getAllSizeScheme(int pos, int rem,
+                       const std::vector<std::vector<int>> &pool,
+                       std::vector<int> &tmp,
+                       std::vector<std::vector<int>> &res) {
+    if (pos == pool.size()) {
+        if (rem == 0) res.push_back(tmp);
+        return;
     }
-
-    std::vector<std::vector<int>> getAllSizeScheme(
-        int size, const std::vector<std::vector<int>> &pool) {
-        std::vector<int> tmp;
-        std::vector<std::vector<int>> res;
-        if (size < 0)
-            return res;
-        _getAllSizeScheme(0, size, pool, tmp, res);
-        return res;
+    for (auto size : pool[pos]) {
+        if (size > rem) continue;
+        tmp.push_back(size);
+        _getAllSizeScheme(pos + 1, rem - size, pool, tmp, res);
+        tmp.pop_back();
     }
+}
 
-    template <typename T>
-    void _cartesianProduct(int index, FixedVector<T> &tmp,
-                           const std::vector<std::vector<T>> &storage,
-                           std::vector<FixedVector<T>> &res) {
-        if (index == tmp.size()) {
-            res.emplace_back(tmp.clone());
-            return;
-        }
-        for (auto &choice : storage[index]) {
-            tmp[index] = choice;
-            _cartesianProduct(index + 1, tmp, storage, res);
-        }
+std::vector<std::vector<int>> getAllSizeScheme(
+    int size, const std::vector<std::vector<int>> &pool) {
+    std::vector<int> tmp;
+    std::vector<std::vector<int>> res;
+    if (size < 0) return res;
+    _getAllSizeScheme(0, size, pool, tmp, res);
+    return res;
+}
+
+template <typename T>
+void _cartesianProduct(int index, FixedVector<T> &tmp,
+                       const std::vector<std::vector<T>> &storage,
+                       std::vector<FixedVector<T>> &res) {
+    if (index == tmp.size()) {
+        res.emplace_back(tmp.clone());
+        return;
     }
-
-    template <typename T>
-    std::vector<FixedVector<T>> cartesianProduct(
-        const std::vector<std::vector<T>> &storage) {
-        std::vector<FixedVector<T>> res;
-        FixedVector<T> tmp(storage.size());
-        _cartesianProduct(0, tmp, storage, res);
-        return res;
+    for (auto &choice : storage[index]) {
+        tmp[index] = choice;
+        _cartesianProduct(index + 1, tmp, storage, res);
     }
+}
 
-    void _resetFTAInfo(FTA *fta, int info) {
-        for (const auto &[_, storage] : fta->node_map) {
-            for (const auto &list : storage) {
-                for (auto *node : list)
-                    node->setInfo(info);
-            }
+template <typename T>
+std::vector<FixedVector<T>> cartesianProduct(
+    const std::vector<std::vector<T>> &storage) {
+    std::vector<FixedVector<T>> res;
+    FixedVector<T> tmp(storage.size());
+    _cartesianProduct(0, tmp, storage, res);
+    return res;
+}
+
+void _resetFTAInfo(FTA *fta, int info) {
+    for (const auto &[_, storage] : fta->node_map) {
+        for (const auto &list : storage) {
+            for (auto *node : list) node->setInfo(info);
         }
     }
+}
 
-    template <typename T>
-    std::string _vec2String(const std::vector<T> &xs) {
-        std::string res = "[";
-        for (int i = 0; i < xs.size(); ++i) {
-            if (i)
-                res += ", ";
-            res += std::to_string(xs[i]);
-        }
-        return res + "]";
+template <typename T>
+std::string _vec2String(const std::vector<T> &xs) {
+    std::string res = "[";
+    for (int i = 0; i < xs.size(); ++i) {
+        if (i) res += ", ";
+        res += std::to_string(xs[i]);
     }
+    return res + "]";
+}
 
-    Data _getSingleOutput(OutputInfo *info) {
-        auto *single_info = dynamic_cast<SingleOutputInfo *>(info);
+Data _getSingleOutput(OutputInfo *info) {
+    auto *single_info = dynamic_cast<SingleOutputInfo *>(info);
 #ifdef DEBUF
-        assert(single_info);
+    assert(single_info);
 #endif
-        return single_info->value;
-    }
-} // namespace
+    return single_info->value;
+}
+}  // namespace
 
 PFTA fta::buildFTA(Grammar *grammar, Env *env, const IOExample &example,
                    int size_limit, bool is_strictly_equal,
@@ -208,8 +197,7 @@ PFTA fta::buildFTA(Grammar *grammar, Env *env, const IOExample &example,
 
     grammar->indexSymbol();
     std::vector<FTANodeStorage> node_holder(grammar->symbol_list.size());
-    for (auto &storage : node_holder)
-        storage.resize(size_limit + 1);
+    for (auto &storage : node_holder) storage.resize(size_limit + 1);
 
     for (int size = 0; size <= size_limit; ++size) {
         for (auto *symbol : grammar->symbol_list) {
@@ -232,36 +220,40 @@ PFTA fta::buildFTA(Grammar *grammar, Env *env, const IOExample &example,
                     size_pool.push_back(possible_size);
                 }
 
-                for (auto &size_scheme : getAllSizeScheme(
-                         size - 1, size_pool)) {
+                for (auto &size_scheme :
+                     getAllSizeScheme(size - 1, size_pool)) {
                     FTANodeStorage sub_nodes;
                     for (int i = 0; i < size_scheme.size(); ++i) {
-                        sub_nodes.push_back(
-                            node_holder[rule->param_list[i]->id][size_scheme[i]]);
+                        sub_nodes.push_back(node_holder[rule->param_list[i]->id]
+                                                       [size_scheme[i]]);
                     }
                     for (auto &combination : cartesianProduct(sub_nodes)) {
                         DataList sub_inps(combination.size());
                         for (int i = 0; i < combination.size(); ++i) {
-                            sub_inps[i] = _getSingleOutput(combination[i]->oup_info.get());
+                            sub_inps[i] = _getSingleOutput(
+                                combination[i]->oup_info.get());
                         }
-                        // LOG(INFO) << "try merge " << cr->semantics->getName() << " " <<
-                        // data::dataList2String(sub_inps) << " " <<
+                        // LOG(INFO) << "try merge " << cr->semantics->getName()
+                        // << " " << data::dataList2String(sub_inps) << " " <<
                         // data::dataList2String(info->param_value);
                         auto oup = fta_value_sets->getAvailableValue(
-                            example, util::mergeOutput(cr->semantics.get(),
-                                                       std::move(sub_inps), info));
+                            example,
+                            util::mergeOutput(cr->semantics.get(),
+                                              std::move(sub_inps), info));
                         auto feature = oup.toString();
                         auto it = output_node_map.find(feature);
                         FTANode *target = nullptr;
                         if (it == output_node_map.end()) {
                             target = new FTANode(
-                                symbol, std::make_shared<SingleOutputInfo>(oup), size);
+                                symbol, std::make_shared<SingleOutputInfo>(oup),
+                                size);
                             current_holder.push_back(target);
                             output_node_map[feature] = target;
                         } else {
                             target = it->second;
                         }
-                        auto *edge = new FTAEdge(cr->semantics, std::move(combination));
+                        auto *edge =
+                            new FTAEdge(cr->semantics, std::move(combination));
                         target->edge_list.push_back(edge);
                     }
                 }
@@ -286,8 +278,7 @@ PFTA fta::buildFTA(Grammar *grammar, Env *env, const IOExample &example,
         name_holder[symbol->name] = std::move(node_holder[symbol->id]);
 
         int node_num = 0;
-        for (auto &list : name_holder[symbol->name])
-            node_num += list.size();
+        for (auto &list : name_holder[symbol->name]) node_num += list.size();
     }
 
     IOExampleList examples;
@@ -312,8 +303,7 @@ PFTA fta::rebuildFTA(FTA *x, Env *env, const IOExample &example, int size_limit,
 
     std::vector<FTANodeStorage> node_holder(x->grammar->symbol_list.size());
     std::unordered_map<FTANode *, std::vector<FTANode *>> node_mapper;
-    for (auto &storage : node_holder)
-        storage.resize(size_limit + 1);
+    for (auto &storage : node_holder) storage.resize(size_limit + 1);
 
     auto add_node =
         [](NonTerminal *symbol, Data cur_out, DataList oup_list,
@@ -324,9 +314,11 @@ PFTA fta::rebuildFTA(FTA *x, Env *env, const IOExample &example, int size_limit,
             if (it == new_node_output_mapper.end()) {
                 FixedVector<PInfo> info_list(oup_list.size());
                 for (int i = 0; i < oup_list.size(); i++) {
-                    info_list[i] = std::make_shared<SingleOutputInfo>(oup_list[i]);
+                    info_list[i] =
+                        std::make_shared<SingleOutputInfo>(oup_list[i]);
                 }
-                auto info = std::make_shared<MultiOutputInfo>(std::move(info_list));
+                auto info =
+                    std::make_shared<MultiOutputInfo>(std::move(info_list));
                 new_node = new FTANode(symbol, info, size);
                 new_node_output_mapper[cur_out.toString()] = new_node;
             } else {
@@ -348,7 +340,8 @@ PFTA fta::rebuildFTA(FTA *x, Env *env, const IOExample &example, int size_limit,
                 auto prog_out = fta_value_sets->getAvailableValue(
                     example, util::mergeOutput(edge->semantics.get(),
                                                std::move(param_list), info));
-                if (size == size_limit && !prog_out.get()->isSubValue(output.get()))
+                if (size == size_limit &&
+                    !prog_out.get()->isSubValue(output.get()))
                     return;
                 FixedVector<FTANode *> cur_edge_nodes(edge_nodes.size());
                 for (int i = 0; i < edge_nodes.size(); i++)
@@ -368,8 +361,8 @@ PFTA fta::rebuildFTA(FTA *x, Env *env, const IOExample &example, int size_limit,
             int current_param_id = edge_nodes.size();
             for (auto node : node_mapper[edge->node_list[current_param_id]]) {
                 edge_nodes.push_back(node);
-                self(self, edge, new_node_output_mapper, edge_nodes, old_oup_list,
-                     symbol, size);
+                self(self, edge, new_node_output_mapper, edge_nodes,
+                     old_oup_list, symbol, size);
                 edge_nodes.pop_back();
             }
         };
@@ -379,13 +372,14 @@ PFTA fta::rebuildFTA(FTA *x, Env *env, const IOExample &example, int size_limit,
             auto &current_holder = x->node_map[symbol->name][size];
             auto &new_holder = node_holder[symbol->id][size];
             for (auto *node : current_holder) {
-                std::unordered_map<std::string, FTANode *> new_node_output_mapper;
+                std::unordered_map<std::string, FTANode *>
+                    new_node_output_mapper;
                 std::vector<FTANode *> new_nodes;
                 auto oup_list = node->oup_info->getFullOutput();
                 for (auto *edge : node->edge_list) {
                     std::vector<FTANode *> edge_nodes;
-                    add_edge(add_edge, edge, new_node_output_mapper, edge_nodes, oup_list,
-                             node->symbol, size);
+                    add_edge(add_edge, edge, new_node_output_mapper, edge_nodes,
+                             oup_list, node->symbol, size);
                 }
                 for (auto [out, new_node] : new_node_output_mapper) {
                     new_holder.push_back(new_node);
@@ -413,13 +407,11 @@ PFTA fta::rebuildFTA(FTA *x, Env *env, const IOExample &example, int size_limit,
         name_holder[symbol->name] = std::move(node_holder[symbol->id]);
 
         int node_num = 0;
-        for (auto &list : name_holder[symbol->name])
-            node_num += list.size();
+        for (auto &list : name_holder[symbol->name]) node_num += list.size();
     }
 
     auto examples = x->examples;
-    if (x->examples.size() <= example_index)
-        examples.push_back(example);
+    if (x->examples.size() <= example_index) examples.push_back(example);
     auto raw_fta = std::make_shared<FTA>(x->grammar, size_limit, name_holder,
                                          root_list, x->info_list, examples);
     raw_fta->cutBackward();
@@ -437,12 +429,10 @@ PFTA fta::buildFTAFromExamples(
     for (int i = 1; i < example_list.size() && !util::isEmpty(fta.get()); ++i) {
         auto next_single = buildFTA(grammar, env, example_list[i], size_limit,
                                     is_strictly_equal, fta_value_sets);
-        if (util::isEmpty(next_single.get()))
-            return nullptr;
+        if (util::isEmpty(next_single.get())) return nullptr;
         fta = mergeFTA(fta.get(), next_single.get(), FORWARD);
     }
-    if (util::isEmpty(fta.get()))
-        return nullptr;
+    if (util::isEmpty(fta.get())) return nullptr;
     return fta;
 }
 
@@ -452,32 +442,31 @@ std::string FTA::getSizeInfo() const {
 }
 
 namespace {
-    const int VISITED = 1, UNVISITED = 0;
+const int VISITED = 1, UNVISITED = 0;
 
-    bool _isEdgeVisited(FTAEdge *edge) {
-        for (auto *node : edge->node_list) {
-            if (node->getInfo() == UNVISITED)
-                return false;
-        }
-        return true;
+bool _isEdgeVisited(FTAEdge *edge) {
+    for (auto *node : edge->node_list) {
+        if (node->getInfo() == UNVISITED) return false;
     }
+    return true;
+}
 
-    void _clearNodeMap(SymbolNameFTANodeHolder &node_map) {
-        for (auto &[_, node_storage] : node_map) {
-            for (auto &node_list : node_storage) {
-                int index = 0;
-                for (auto *node : node_list) {
-                    if (node->getInfo() == UNVISITED) {
-                        delete node;
-                    } else {
-                        node_list[index++] = node;
-                    }
+void _clearNodeMap(SymbolNameFTANodeHolder &node_map) {
+    for (auto &[_, node_storage] : node_map) {
+        for (auto &node_list : node_storage) {
+            int index = 0;
+            for (auto *node : node_list) {
+                if (node->getInfo() == UNVISITED) {
+                    delete node;
+                } else {
+                    node_list[index++] = node;
                 }
-                node_list.resize(index);
             }
+            node_list.resize(index);
         }
     }
-} // namespace
+}
+}  // namespace
 
 void FTA::cutForward() {
     _resetFTAInfo(this, UNVISITED);
@@ -494,15 +483,13 @@ void FTA::cutForward() {
                     }
                 }
                 node->edge_list.resize(num);
-                if (num)
-                    node->setInfo(VISITED);
+                if (num) node->setInfo(VISITED);
             }
         }
     }
     int num = 0;
     for (auto *root : root_list) {
-        if (root->getInfo() == VISITED)
-            root_list[num++] = root;
+        if (root->getInfo() == VISITED) root_list[num++] = root;
     }
     root_list.resize(num);
     _clearNodeMap(node_map);
@@ -519,8 +506,7 @@ void FTA::cutBackward() {
         }
     };
 
-    for (auto *root : root_list)
-        insert(root);
+    for (auto *root : root_list) insert(root);
     while (!Q.empty()) {
         auto *node = Q.front();
         Q.pop();
@@ -534,22 +520,20 @@ void FTA::cutBackward() {
 }
 
 void FTA::fullyCut() {
-    if (!isEmpty())
-        cutForward();
-    if (!isEmpty())
-        cutBackward();
+    if (!isEmpty()) cutForward();
+    if (!isEmpty()) cutBackward();
 }
 
 namespace {
-    PProgram _extractProgramFrom(FTANode *node) {
-        auto *edge = node->edge_list[0];
-        ProgramList sub_programs;
-        for (auto *child : edge->node_list) {
-            sub_programs.push_back(_extractProgramFrom(child));
-        }
-        return std::make_shared<Program>(edge->semantics, sub_programs);
+PProgram _extractProgramFrom(FTANode *node) {
+    auto *edge = node->edge_list[0];
+    ProgramList sub_programs;
+    for (auto *child : edge->node_list) {
+        sub_programs.push_back(_extractProgramFrom(child));
     }
-}; // namespace
+    return std::make_shared<Program>(edge->semantics, sub_programs);
+}
+};  // namespace
 
 PProgram util::extractMinimalProgram(FTA *x) {
     FTANode *start = nullptr;
@@ -567,17 +551,17 @@ PProgram util::extractMinimalProgramFromNode(FTANode *node) {
 }
 
 namespace {
-    PProgram _extractRandomFrom(FTANode *node, Env *env) {
-        auto dist =
-            std::uniform_int_distribution<int>(0, int(node->edge_list.size()) - 1);
-        auto *edge = node->edge_list[dist(env->random_engine)];
-        ProgramList sub_programs;
-        for (auto *child : edge->node_list) {
-            sub_programs.push_back(_extractRandomFrom(child, env));
-        }
-        return std::make_shared<Program>(edge->semantics, sub_programs);
+PProgram _extractRandomFrom(FTANode *node, Env *env) {
+    auto dist =
+        std::uniform_int_distribution<int>(0, int(node->edge_list.size()) - 1);
+    auto *edge = node->edge_list[dist(env->random_engine)];
+    ProgramList sub_programs;
+    for (auto *child : edge->node_list) {
+        sub_programs.push_back(_extractRandomFrom(child, env));
     }
-}; // namespace
+    return std::make_shared<Program>(edge->semantics, sub_programs);
+}
+};  // namespace
 
 PProgram util::extractRandomMinimalProgram(FTA *x, Env *env) {
     FTANode *start = nullptr;
@@ -613,19 +597,19 @@ PFTA fta::grammar2FTA(Grammar *grammar, int size_limit,
                     choices.push_back(choice_list);
                 }
 
-                for (auto scheme : getAllSizeScheme(
-                         size - 1, choices)) {
+                for (auto scheme : getAllSizeScheme(size - 1, choices)) {
                     FixedVector<FTANode *> children(scheme.size());
                     for (int i = 0; i < scheme.size(); ++i) {
                         auto *param_symbol = cr->param_list[i];
                         children[i] = node_storage[param_symbol->id][scheme[i]];
                     }
-                    edge_list.push_back(new FTAEdge(cr->semantics, std::move(children)));
+                    edge_list.push_back(
+                        new FTAEdge(cr->semantics, std::move(children)));
                 }
             }
             if (!edge_list.empty()) {
-                auto *new_node =
-                    new FTANode(symbol, std::make_shared<EmptyOutputInfo>(), size);
+                auto *new_node = new FTANode(
+                    symbol, std::make_shared<EmptyOutputInfo>(), size);
                 new_node->edge_list = edge_list;
                 node_storage[symbol->id][size] = new_node;
             }
@@ -652,12 +636,9 @@ PFTA fta::grammar2FTA(Grammar *grammar, int size_limit,
     }
 
     IOExampleList examples;
-    auto raw_fta = std::make_shared<FTA>(grammar, size_limit, holder, root_list,
-                                         std::vector<ExecuteInfo *>(), examples);
+    auto raw_fta =
+        std::make_shared<FTA>(grammar, size_limit, holder, root_list,
+                              std::vector<ExecuteInfo *>(), examples);
     raw_fta->cutBackward();
     return raw_fta;
-}
-
-std::pair<long long, long long> fta::util::getTotalSize() {
-    return std::make_pair(tot_node, tot_edge);
 }
