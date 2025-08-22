@@ -12,13 +12,10 @@ CMakeFiles
 cmake_install.cmake
 *.a
 Makefile
-run_cegis
-run_merge
-task_enumeration
-task_fta
-test
 scripts
 tmp*
 *.tar.gz
 Dockerfile
 .dockerignore
+z3-z3-4.15.1
+solver
